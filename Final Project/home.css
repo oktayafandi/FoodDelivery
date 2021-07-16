@@ -2,6 +2,13 @@
   background-color: white;
 }
 
+.navbar-position-class {
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 10000000000 !important;
+  width: 100%;
+}
+
 .nav-link {
   font-family: "Oswald", sans-serif;
   font-size: 18px;
@@ -197,5 +204,29 @@
 
 .contactabout .workabout {
   color: black;
+}
+
+.pagenav {
+  font-family: "Oswald", sans-serif;
+  color: #009de0;
+  padding: 30px;
+}
+
+.restcaption {
+  font-family: "Oswald", sans-serif;
+  color: #009de0;
+}
+
+.restaurants-detail {
+  padding: 17px 20px 15px;
+  font-family: "Oswald", sans-serif;
+  border: 1px solid #e1e1e1;
+}
+
+.searchform {
+  position: absolute;
+  bottom: -45px;
+  z-index: 1000;
+  display: none;
 }
 /*# sourceMappingURL=home.css.map */

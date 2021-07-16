@@ -47,7 +47,7 @@
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
+            <div class="container" style="position: relative;">
                 <img src="" style="size: 50px;" class="navbar-brand" href="#"></img>
                 <buttons class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -72,12 +72,18 @@
                         </li>
                     </ul>
                     <div class="navicons">
-                        <a href="" style="color: #009DE0;"><i class="fas fa-search"></i></a>
-                        <a href="" style="color: #009DE0;"><i class="fas fa-hashtag"></i></a>
+                        <a href="" style="color: #009DE0;"><i class="searchbtn fas fa-search"></i></a>
+                        <a href="" style="color: #009DE0;"><i class="searchbtn fas fa-hashtag"></i></a>
                         <a href="" style="color: #009DE0;"><i class="fas fa-dice"></i></a>
                         <a href="" style="color: #009DE0;"><i class="fas fa-shopping-basket"></i></a>
                     </div>
                 </div>
+                <div class="searchform">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+
             </div>
         </nav>
     </header>
@@ -124,35 +130,246 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Active</a>
+
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"
+                                style="justify-content: space-between; align-items: center;">
+                                <li class="nav-item section-3-button-1" role="presentation">
+                                    <button class="pagenav nav-link section-3-button-1"
+                                        style="padding: 3px 65px; border-radius: 22px !important;"
+                                        id="pills-home-tab section3libutton1" data-bs-toggle="pill"
+                                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                        aria-selected="false" style="color:#009de0;">Burgerlər</button>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                                        aria-expanded="false">Dropdown</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                    </ul>
+                                <li class="nav-item section-3-button-2" role="presentation">
+                                    <button class="pagenav nav-link" id="pills-profile-tab"
+                                        style="padding: 3px 65px; border-radius: 22px !important;" data-bs-toggle="pill"
+                                        data-bs-target="#pills-profile" type="button" role="tab"
+                                        aria-controls="pills-profile" aria-selected="false"
+                                        style="color:#009de0;">Qəlyanaltılar</button>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
+                                <li class="nav-item section-3-button-3" role="presentation">
+                                    <button class="pagenav nav-link" id="pills-contact-tab"
+                                        style="padding: 3px 65px; border-radius: 22px !important;" data-bs-toggle="pill"
+                                        data-bs-target="#pills-contact" type="button" role="tab"
+                                        aria-controls="pills-contact" aria-selected="false"
+                                        style="color:#009de0;">İçkilər</button>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link disabled" href="#" tabindex="-1"
-                                        aria-disabled="true">Disabled</a>
+                                <li class="nav-item section-3-button-4" role="presentation">
+                                    <button class="pagenav nav-link" id="pills-settings-tab"
+                                        style="padding: 3px 65px; border-radius: 22px !important;" data-bs-toggle="pill"
+                                        data-bs-target="#pills-settings" type="button" role="tab"
+                                        aria-controls="pills-settings" aria-selected="false"
+                                        style="color:#009de0;">Toyuqlar</button>
+                                </li>
+                                <li class="nav-item section-3-button-5" role="presentation">
+                                    <button class="pagenav nav-link active" id="pills-messages-tab"
+                                        style="padding: 3px 65px; border-radius: 22px !important;" data-bs-toggle="pill"
+                                        data-bs-target="#pills-messages" type="button" role="tab"
+                                        aria-controls="pills-messages" aria-selected="true"
+                                        style="color:#009de0;">Kampaniyalar</button>
                                 </li>
                             </ul>
-                        </div>
 
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                    aria-labelledby="pills-home-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
+                                        <div class="menu-detail">
+                                            <h1 class="foodcap">Burgerlər</h1>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                    aria-labelledby="pills-profile-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
+                                        <div class="menu-detail">
+                                            <h1 class="foodcap">Qəlyanaltılar</h1>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                                    aria-labelledby="pills-contact-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
+                                        <div class="menu-detail">
+                                            <h1 class="foodcap">İçkilər</h1>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-settings" role="tabpanel"
+                                    aria-labelledby="pills-settings-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
+                                        <div class="menu-detail">
+                                            <h1 class="foodcap">Toyuqlar</h1>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-messages" role="tabpanel"
+                                    aria-labelledby="pills-messages-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
+                                        <div class="menu-detail">
+                                            <h1 class="foodcap">Kampaniyalar</h1>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                            <h4 class="foodtext" style="padding-top: 20px">Big King <a href=""><i
+                                                        class="plus fas fa-plus-square"></i></a></h4>
+                                            <p class="fooddetailtext">Dana əti, karamelizə soğan, burger sous, kağı,
+                                                turşu</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            Dəyərləndir
+                            <div class="star-rating">
+                                <input type="radio" class="btnrating" id="5-stars" name="rating" value="5">
+                                <label for="5-stars" class="star">★</label>
+                                <input type="radio" class="btnrating" id="4-stars" name="rating" value="4">
+                                <label for="4-stars" class="star">★</label>
+                                <input type="radio" class="btnrating" id="3-stars" name="rating" value="3">
+                                <label for="3-stars" class="star">★</label>
+                                <input type="radio" class="btnrating" id="2-stars" name="rating" value="2">
+                                <label for="2-stars" class="star">★</label>
+                                <input type="radio" class="btnrating" id="1-star" name="rating" value="1">
+                                <label for="1-star" class="star">★</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label"></label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <button type="button" class="cmntbtn btn">Paylaş</button>
+                            </div>
+                            <hr>
+                            <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h4 class="username">Username</h4>
+                                <p class="usercmnt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                                    mollitia facere architecto, consequuntur vel nobis dolore possimus a sunt quis at
+                                    cupiditate. Eos ex veniam totam tempora temporibus recusandae voluptas!</p>
+                                <i class="fas fa-star" style="color: #009de0;">4</i>
+                            </div>
+                            <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h4 class="username">Username</h4>
+                                <p class="usercmnt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                                    mollitia facere architecto, consequuntur vel nobis dolore possimus a sunt quis at
+                                    cupiditate. Eos ex veniam totam tempora temporibus recusandae voluptas!</p>
+                                <i class="fas fa-star" style="color: #009de0;">4</i>
+                            </div>
                         </div>
                     </div>
                 </div>

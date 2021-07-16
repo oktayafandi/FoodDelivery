@@ -229,4 +229,74 @@
   z-index: 1000;
   display: none;
 }
+
+.menu-detail {
+  padding: 17px 20px 15px;
+  font-family: "Oswald", sans-serif;
+  border: 1px solid #e1e1e1;
+}
+
+.menu-detail .foodcap {
+  color: #009de0;
+}
+
+.menu-detail .fooddetailtext {
+  color: #aaa;
+  font-family: "Roboto", sans-serif;
+}
+
+.plus {
+  color: #009de0;
+  margin-left: 20px;
+}
+
+.star-rating {
+  width: 300px;
+  height: 50px;
+  margin-top: 15px;
+  border: solid 1px #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  font-size: 1.5em;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0 0.3em;
+  text-align: center;
+  list-style: none;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating :checked ~ label {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star {
+  text-align: left;
+  font-size: 20px;
+  line-height: 29px;
+  font-weight: 400;
+  padding-top: 9px;
+  margin-bottom: 17px;
+}
+
+.cmntbtn {
+  color: white !important;
+  background-color: #009de0 !important;
+  margin-top: 15px;
+}
+
+.userscomment {
+  border: solid 1px #ccc;
+  padding: 17px 20px 15px;
+  margin: 15px;
+}
 /*# sourceMappingURL=home.css.map */

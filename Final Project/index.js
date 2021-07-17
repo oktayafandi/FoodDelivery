@@ -17,4 +17,9 @@ $(document).ready(function () {
       $(".navbar").removeClass("navbar-position-class");
     }
   });
+
+  $(".rating__input").click(function () {
+    var star = $(this);
+    console.log(star.val());
+  });
 });

@@ -161,8 +161,8 @@
 }
 
 .dropdown {
+  color: #009de0;
   margin: auto;
-  margin-bottom: 50px;
   margin-top: 30px;
 }
 
@@ -297,6 +297,11 @@
 .userscomment {
   border: solid 1px #ccc;
   padding: 17px 20px 15px;
-  margin: 15px;
+  margin-top: 15px;
+}
+
+.dropbtn {
+  background-color: #009de0 !important;
+  color: white !important;
 }
 /*# sourceMappingURL=home.css.map */

@@ -171,6 +171,19 @@
   font-size: 35px;
 }
 
+.cardcontact {
+  color: #009de0;
+  width: 100%;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.cardcontact1 {
+  width: 100%;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
 .cardcontact:hover {
   background-color: #009de0;
   color: white;
@@ -196,6 +209,10 @@
 
 .logregcap {
   font-family: "Oswald", sans-serif;
+}
+
+.conicon {
+  font-size: 38px;
 }
 
 .mainabout {
@@ -254,6 +271,11 @@
   color: #009de0;
 }
 
+.restcaption img {
+  height: 60px;
+  margin-right: 10px;
+}
+
 .restaurants-detail {
   padding: 17px 20px 15px;
   font-family: "Oswald", sans-serif;
@@ -280,6 +302,28 @@
 .menu-detail .fooddetailtext {
   color: #aaa;
   font-family: "Roboto", sans-serif;
+}
+
+.contact-item {
+  border: 1px solid #e1e1e1;
+  text-align: center;
+  padding: 30px;
+  width: 100%;
+  margin-bottom: 50px;
+  bottom: 15px;
+}
+
+.contact-item img {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.contact-item h4 {
+  font-size: 18px;
+  color: #000;
+  font-weight: 500;
+  line-height: 24px;
+  padding: 26px 0 12px;
 }
 
 .plus {

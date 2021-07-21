@@ -22,4 +22,12 @@ $(document).ready(function () {
     var star = $(this);
     console.log(star.val());
   });
+
+  // Swal.fire({
+  //   position: "top-end",
+  //   icon: "success",
+  //   title: "Məhsul səbətə əlavə olundu!",
+  //   showConfirmButton: false,
+  //   timer: 800,
+  // });
 });

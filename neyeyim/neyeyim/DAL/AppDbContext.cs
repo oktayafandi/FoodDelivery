@@ -24,6 +24,8 @@ namespace neyeyim.DAL
          public DbSet<Tag> Tags { get; set; }
          public DbSet<PlaceTag> PlaceTags { get; set; }
          public DbSet<Jobad> Jobads { get; set; }
+        public DbSet<Campaign> Campaigns { get; set; }
+        public DbSet<PlaceMenu> PlaceMenus { get; set; }
 
     }
 }

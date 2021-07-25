@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace neyeyim.ViewModels
 {
-    public class HomeViewModel
+    public class JobadViewModel
     {
-        public List<Slider> Sliders { get; set; }
-        public List<Place> Places { get; set; }
+        public List<Jobad> Jobads { get; set; }
+        public List<Promotion> Promotions { get; set; }
         public List<Setting> Settings { get; set; }
     }
 }

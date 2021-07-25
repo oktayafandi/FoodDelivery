@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace neyeyim.ViewModels
 {
-    public class HomeViewModel
+    public class CampaignViewModel
     {
-        public List<Slider> Sliders { get; set; }
-        public List<Place> Places { get; set; }
+        public List<Campaign> Campaigns { get; set; }
         public List<Setting> Settings { get; set; }
     }
 }

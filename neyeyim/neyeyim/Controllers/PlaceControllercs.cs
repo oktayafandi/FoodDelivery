@@ -1,33 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using neyeyim.DAL;
 using neyeyim.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace neyeyim.Controllers
 {
-    public class HomeController : Controller
+    public class PlaceControllercs : Controller
     {
         private readonly AppDbContext _context;
-        public HomeController(AppDbContext context)
+        public PlaceControllercs(AppDbContext context)
         {
             _context = context;
         }
 
+
         public IActionResult Index()
         {
-            HomeViewModel homeVM = new HomeViewModel
+            PlaceViewModel placeVM = new PlaceViewModel
             {
-                Sliders = _context.Sliders.OrderBy(x => x.Order).ToList(),
                 Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Jobads).Include(x => x.Campaigns).Take(6).ToList(),
                 Settings = _context.Settings.ToList()
             };
-            return View(homeVM);
+
+            return View(placeVM);
         }
     }
 }

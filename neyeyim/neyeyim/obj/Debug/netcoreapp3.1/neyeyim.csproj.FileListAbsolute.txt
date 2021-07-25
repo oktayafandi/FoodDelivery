@@ -143,3 +143,6 @@ C:\Users\User\Desktop\neyeyim\neyeyim\bin\Debug\netcoreapp3.1\runtimes\unix\lib\
 C:\Users\User\Desktop\neyeyim\neyeyim\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\User\Desktop\neyeyim\neyeyim\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.csprojAssemblyReference.cache
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Place\Index.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Campaign\Index.cshtml.g.cs

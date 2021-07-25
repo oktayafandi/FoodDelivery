@@ -17,6 +17,10 @@ namespace neyeyim.Models
         public string Position { get; set; }
 
         [Required]
+        [StringLength(maximumLength: 100)]
+        public string Logo { get; set; }
+
+        [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Salary { get; set; }
 

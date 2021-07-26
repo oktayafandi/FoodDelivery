@@ -17,15 +17,12 @@ namespace neyeyim.Controllers
             _context = context;
         }
 
-
         public IActionResult Index()
         {
             PlaceViewModel placeVM = new PlaceViewModel
             {
                 Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Jobads).Include(x => x.Campaigns).Take(6).ToList(),
-                Settings = _context.Settings.ToList()
             };
-
             return View(placeVM);
         }
     }

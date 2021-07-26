@@ -23,7 +23,6 @@ namespace neyeyim.Controllers
             {
                 Jobads = _context.Jobads.Take(8).ToList(),
                 Promotions = _context.Promotions.ToList(),
-                Settings = _context.Settings.ToList()
             };
             return View(jobadVM);
         }

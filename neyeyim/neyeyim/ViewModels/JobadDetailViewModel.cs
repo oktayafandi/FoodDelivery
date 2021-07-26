@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace neyeyim.ViewModels
 {
-    public class InfoViewModel
+    public class JobadDetailViewModel
     {
-        public List<Info> Information { get; set; }
-        public List<Promotion> Promotions { get; set; }
+        public Jobad Jobad { get; set; }
+        public List<Jobad> Jobads { get; set; }
     }
 }

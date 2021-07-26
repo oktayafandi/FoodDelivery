@@ -10,6 +10,5 @@ namespace neyeyim.ViewModels
     {
         public List<Slider> Sliders { get; set; }
         public List<Place> Places { get; set; }
-        public List<Setting> Settings { get; set; }
     }
 }

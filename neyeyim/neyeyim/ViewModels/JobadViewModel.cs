@@ -10,6 +10,5 @@ namespace neyeyim.ViewModels
     {
         public List<Jobad> Jobads { get; set; }
         public List<Promotion> Promotions { get; set; }
-        public List<Setting> Settings { get; set; }
     }
 }

@@ -9,6 +9,5 @@ namespace neyeyim.ViewModels
     public class ContactViewModel
     {
         public List<Promotion> Promotions { get; set; }
-        public List<Setting> Settings { get; set; }
     }
 }

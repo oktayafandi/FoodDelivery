@@ -21,7 +21,6 @@ namespace neyeyim.Controllers
             ContactViewModel contactVM = new ContactViewModel
             {
                 Promotions = _context.Promotions.ToList(),
-                Settings = _context.Settings.ToList()
             };
 
             return View(contactVM);

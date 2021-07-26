@@ -25,7 +25,6 @@ namespace neyeyim.Controllers
             {
                 Sliders = _context.Sliders.OrderBy(x => x.Order).ToList(),
                 Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Jobads).Include(x => x.Campaigns).Take(6).ToList(),
-                Settings = _context.Settings.ToList()
             };
             return View(homeVM);
         }

@@ -22,7 +22,6 @@ namespace neyeyim.Controllers
             CampaignViewModel campaignVM = new CampaignViewModel
             {
                 Campaigns = _context.Campaigns.Include(x => x.Place).Take(6).ToList(),
-                Settings = _context.Settings.ToList()
             };
             return View(campaignVM);
         }

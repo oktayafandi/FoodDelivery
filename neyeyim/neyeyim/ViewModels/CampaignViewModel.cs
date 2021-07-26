@@ -9,6 +9,5 @@ namespace neyeyim.ViewModels
     public class CampaignViewModel
     {
         public List<Campaign> Campaigns { get; set; }
-        public List<Setting> Settings { get; set; }
     }
 }

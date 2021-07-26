@@ -10,12 +10,12 @@ namespace neyeyim.Models
     public class Setting:BaseEntity
     {
         [Required]
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal ContactPhone { get; set; }
+        [StringLength(maximumLength: 50)]
+        public string ContactPhone { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal InfoPhone { get; set; }
+        [StringLength(maximumLength: 50)]
+        public string InfoPhone { get; set; }
 
         [Required]
         [StringLength(maximumLength: 50)]

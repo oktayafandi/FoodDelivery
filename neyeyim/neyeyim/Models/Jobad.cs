@@ -48,8 +48,8 @@ namespace neyeyim.Models
         public DateTime Deadline { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal ContactPhone { get; set; }
+        [StringLength(maximumLength: 50)]
+        public string ContactPhone { get; set; }
 
         [Required]
         [StringLength(maximumLength: 50)]

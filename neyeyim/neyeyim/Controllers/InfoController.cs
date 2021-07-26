@@ -22,7 +22,6 @@ namespace neyeyim.Controllers
             {
                 Information = _context.Information.ToList(),
                 Promotions = _context.Promotions.ToList(),
-                Settings = _context.Settings.ToList()
             };
             return View(infoVM);
         }

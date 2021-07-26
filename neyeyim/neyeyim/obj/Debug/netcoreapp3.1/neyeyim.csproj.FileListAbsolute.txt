@@ -148,3 +148,4 @@ C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Place\
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Campaign\Index.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Jobad\Index.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Info\Index.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs

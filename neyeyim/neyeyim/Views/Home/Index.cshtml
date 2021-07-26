@@ -29,89 +29,22 @@
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Seçilmiş məkanlar</h1>
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
+           @foreach (var item in Model.Places)
+            {
+                <div class="col-lg-4 col-md-4">
+                    <a href="restdetail.html" style="text-decoration: none;">
+                        <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
+                            <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h class="restname">@item.Name</h>
+                                <p class="Category-name">@item.Category.Name</p>
+                                <hr>
+                                <i class="fas fa-star" style="color: #009de0;"> @item.Rate</i>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         </div>
     </div>
 </section>
@@ -122,89 +55,23 @@
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Ən populyar məkanlar</h1>
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
+           @foreach (var item in Model.Places)
+            {
+                <div class="col-lg-4 col-md-4">
+                    <a href="restdetail.html" style="text-decoration: none;">
+                        <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
+                            <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h class="restname">@item.Name</h>
+                                <p class="Category-name">@item.Category.Name</p>
+                                <hr>
+                                <i class="fas fa-star" style="color: #009de0;"> @item.Rate</i>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
 
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </div>
     </div>
 </section>
@@ -215,89 +82,22 @@
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Ən son sifariş verdiyiniz məkanlar</h1>
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
+           @foreach (var item in Model.Places)
+            {
+                <div class="col-lg-4 col-md-4">
+                    <a href="restdetail.html" style="text-decoration: none;">
+                        <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
+                            <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h class="restname">@item.Name</h>
+                                <p class="Category-name">@item.Category.Name</p>
+                                <hr>
+                                <i class="fas fa-star" style="color: #009de0;"> @item.Rate</i>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <a href="restdetail.html" style="text-decoration: none;">
-                    <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                        <img src="uploads/img/burgerking.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h class="restname">Burger King</h>
-                            <p class="Category-name">Restoran</p>
-                            <hr>
-                            <i class="fas fa-star" style="color: #009de0;"> 4.5</i>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         </div>
     </div>
 </section>

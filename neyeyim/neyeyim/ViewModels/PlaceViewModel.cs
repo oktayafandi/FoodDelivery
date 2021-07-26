@@ -9,5 +9,6 @@ namespace neyeyim.ViewModels
     public class PlaceViewModel
     {
         public List<Place> Places { get; set; }
+
     }
 }

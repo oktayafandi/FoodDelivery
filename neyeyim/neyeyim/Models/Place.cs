@@ -29,6 +29,14 @@ namespace neyeyim.Models
         public string Servisfee { get; set; }
 
         [Required]
+        [StringLength(maximumLength: 100)]
+        public string Image { get; set; }
+
+        [Required]
+        [StringLength(maximumLength: 100)]
+        public string Logo { get; set; }
+
+        [Required]
         public string Deposit { get; set; }
 
         [Required]

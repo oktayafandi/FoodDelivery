@@ -21,7 +21,7 @@ namespace neyeyim.Controllers
         {
             JobadViewModel jobadVM = new JobadViewModel
             {
-                Jobads = _context.Jobads.Take(8).ToList(),
+                Jobads = _context.Jobads.Include(x => x.Category).Include(x => x.Place).Take(8).ToList(),
                 Promotions = _context.Promotions.ToList(),
             };
             return View(jobadVM);

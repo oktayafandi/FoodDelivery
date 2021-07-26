@@ -41,7 +41,6 @@
 
     <!--Start of Top and Nav Bars-->
     <header>
-
         <div class="topbar">
             <div class="container">
                 <div class="row">
@@ -71,16 +70,16 @@
                 <div class="navtext collapse navbar-collapse animate__animated animate__fadeInDown" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" style="color: #009DE0" href="homepage.html">Ana səhifə</a>
+                            <a class="nav-link active" aria-current="page" style="color: #009DE0" asp-action="index" asp-controller="home">Ana səhifə</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" style="color: #009DE0" href="allrest.html">Məkanlar</a>
+                            <a class="nav-link active" aria-current="page" style="color: #009DE0" asp-action="index" asp-controller="place">Məkanlar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" style="color: #009DE0" href="campaigns.html">Kampaniyalar</a>
+                            <a class="nav-link active" style="color: #009DE0" asp-action="index" asp-controller="campaign">Kampaniyalar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" style="color: #009DE0" href="workad.html">İş elanları</a>
+                            <a class="nav-link active" style="color: #009DE0" asp-action="index" asp-controller="jobad">İş elanları</a>
                         </li>
                     </ul>
                     <div class="navicons">
@@ -116,12 +115,12 @@
             </div>
             <ul class="list-inline">
                 <li class="footer-text list-inline-item">
-                    <a href="homepage.html">Ana səhifə</a>
+                    <a asp-action="index" asp-controller="home">Ana səhifə</a>
                 </li>
                 <li class="footer-text list-inline-item">
-                    <a href="about.html">Haqqımızda</a>
+                    <a asp-action="index" asp-controller="info">Haqqımızda</a>
                 </li>
-                <li class="footer-text list-inline-item"><a href="contact.html">Əlaqə</a></li>
+                <li class="footer-text list-inline-item"><a asp-action="index" asp-controller="contact">Əlaqə</a></li>
             </ul>
             <p class="copyright">"Nə Yeyim?" © 2021</p>
         </footer>

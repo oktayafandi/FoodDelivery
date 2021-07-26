@@ -5,128 +5,35 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <a href="workpagedetail.html" style="text-decoration: none;">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aşbaz</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">1000 AZN</h6>
-                                    <p class="card-text" style="color: black;">KFC - Restoran</p>
-                                    <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: 14.07.21</h6>
-
+                    @foreach (var item in Model.Jobads)
+                    {
+                        <div class="col-lg-6">
+                            <a href="workpagedetail.html" style="text-decoration: none;">
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Position</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">@item.Salary AZN</h6>
+                                        <p class="card-text" style="color: black;">@item.Place.Name - @item.Category.Name</p>
+                                        <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: @item.Deadline</h6>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a href="workpagedetail.html" style="text-decoration: none;">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aşbaz</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">1000 AZN</h6>
-                                    <p class="card-text" style="color: black;">KFC - Restoran</p>
-                                    <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: 14.07.21</h6>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a href="workpagedetail.html" style="text-decoration: none;">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aşbaz</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">1000 AZN</h6>
-                                    <p class="card-text" style="color: black;">KFC - Restoran</p>
-                                    <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: 14.07.21</h6>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a href="workpagedetail.html" style="text-decoration: none;">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aşbaz</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">1000 AZN</h6>
-                                    <p class="card-text" style="color: black;">KFC - Restoran</p>
-                                    <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: 14.07.21</h6>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a href="workpagedetail.html" style="text-decoration: none;">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aşbaz</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">1000 AZN</h6>
-                                    <p class="card-text" style="color: black;">KFC - Restoran</p>
-                                    <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: 14.07.21</h6>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a href="workpagedetail.html" style="text-decoration: none;">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aşbaz</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">1000 AZN</h6>
-                                    <p class="card-text" style="color: black;">KFC - Restoran</p>
-                                    <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: 14.07.21</h6>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a href="workpagedetail.html" style="text-decoration: none;">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aşbaz</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">1000 AZN</h6>
-                                    <p class="card-text" style="color: black;">KFC - Restoran</p>
-                                    <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: 14.07.21</h6>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <a href="workpagedetail.html" style="text-decoration: none;">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aşbaz</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">1000 AZN</h6>
-                                    <p class="card-text" style="color: black;">KFC - Restoran</p>
-                                    <h6 class="card-subtitle mb-2 text-muted">Elanın bitmə tarixi: 14.07.21</h6>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    }
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                <a href="campaigns.html">
-                    <div class="col-lg-12" style="height: 100%">
-                        <img class="promotion" src="uploads/img/promotion.jpg" alt=""
-                             style="width: 100%; position: sticky !important; top: 1px" />
-                    </div>
-                </a>
+            @foreach (var item in Model.Promotions)
+             {
+                <div class="col-lg-4">
+                    <a href="campaigns.html">
+                        <div class="col-lg-12" style="height: 100%">
+                            <img class="promotion" src="~/uploads/img/@item.Image" alt=""
+                                 style="width: 100%; position: sticky !important; top: 1px" />
+                        </div>
+                    </a>
+                </div>
+             }
             </div>
-        </div>
     </div>
 </section>

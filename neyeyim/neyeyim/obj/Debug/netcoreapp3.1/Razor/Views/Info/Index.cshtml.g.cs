@@ -27,7 +27,7 @@ using neyeyim.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fec64b458e70c7d357cc145ad3fd58e09f4bd762", @"/Views/Info/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"06dbfdd97164da5b3c8c4c8243fbd02cae7bdd71", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"abb900363127bca3854ca107bde25ff7c9a2b1e4", @"/Views/_ViewImports.cshtml")]
     public class Views_Info_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<InfoViewModel>
     {
         #pragma warning disable 1998

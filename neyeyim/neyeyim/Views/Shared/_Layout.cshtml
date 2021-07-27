@@ -46,14 +46,26 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="topbar-right text-md-right animate__animated animate__fadeInDown">
-                            <a href="login.html" style="color: #707174; margin-right: 13px; text-decoration: none;">
-                                <i class="fas fa-sign-in-alt">
-                                    Daxil ol
-                                </i>
-                            </a>
-                            <a href="register.html" style="color: #707174; margin-right: 13px; text-decoration: none;">
-                                <i class="fas fa-user-friends"> Qeydiyyat</i>
-                            </a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <span class="font-weight-bold">@User.Identity.Name</span><br>
+                                <a asp-action="logout" asp-controller="account" style="color: #707174; margin-right: 13px; text-decoration: none;">
+                                    <i class="fas fa-sign-in-alt">
+                                        Çıxış
+                                    </i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-action="login" asp-controller="account" style="color: #707174; margin-right: 13px; text-decoration: none;">
+                                    <i class="fas fa-sign-in-alt">
+                                        Daxil ol
+                                    </i>
+                                </a>
+                                <a asp-action="register" asp-controller="account" style="color: #707174; margin-right: 13px; text-decoration: none;">
+                                    <i class="fas fa-user-friends"> Qeydiyyat</i>
+                                </a>
+                            }
                         </div>
                     </div>
                 </div>

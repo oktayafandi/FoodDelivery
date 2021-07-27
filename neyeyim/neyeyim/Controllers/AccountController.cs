@@ -33,11 +33,19 @@ namespace neyeyim.Controllers
         public async Task<IActionResult> Register(MemberRegisterModel registerModel)
         {
             if (!ModelState.IsValid) return View();
+
             AppUser existUser = await _userManager.FindByNameAsync(registerModel.UserName);
+            AppUser existEmail = await _userManager.FindByNameAsync(registerModel.Email);
 
             if (existUser != null)
             {
-                ModelState.AddModelError("UserName", "UserName already taken");
+                ModelState.AddModelError("UserName", "Bu username artıq istifadə olunur.");
+                return View();
+            }
+
+            if (existEmail != null)
+            {
+                ModelState.AddModelError("Email", "Bu email daha əvvəl qeydiyyatdan keçib.");
                 return View();
             }
 
@@ -58,9 +66,42 @@ namespace neyeyim.Controllers
                 }
                 return View();
             }
-
             await _signInManager.SignInAsync(user, true);
             return RedirectToAction("index", "home");
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(MemberLoginModel loginModel)
+        {
+            AppUser user = await _userManager.FindByNameAsync(loginModel.UserName);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("", "İstifadəçi adı və ya şifrə səhvdir");
+                return View();
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(user, loginModel.Password, true, true);
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("", "İstifadəçi adı və ya şifrə səhvdir");
+                return View();
+            }
+            return RedirectToAction("index", "home");
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("login");
+        }
+
     }
 }

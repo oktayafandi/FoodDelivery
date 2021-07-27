@@ -158,3 +158,4 @@ C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.csprojAsse
 C:\Users\User\Desktop\neyeyim\neyeyim\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\User\Desktop\neyeyim\neyeyim\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\User\Desktop\neyeyim\neyeyim\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using neyeyim.Models;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace neyeyim.DAL
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
-         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
-         {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
 
-         }
+        }
 
          public DbSet<Slider> Sliders { get; set; }
          public DbSet<Category> Categories { get; set; }
@@ -24,8 +25,7 @@ namespace neyeyim.DAL
          public DbSet<Tag> Tags { get; set; }
          public DbSet<PlaceTag> PlaceTags { get; set; }
          public DbSet<Jobad> Jobads { get; set; }
-        public DbSet<Campaign> Campaigns { get; set; }
-        public DbSet<PlaceMenu> PlaceMenus { get; set; }
-
+         public DbSet<Campaign> Campaigns { get; set; }
+         public DbSet<PlaceMenu> PlaceMenus { get; set; }
     }
 }

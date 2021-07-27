@@ -13,9 +13,23 @@
     <Compile Remove="Migrations\20210723225314_JobadsTableCreated.Designer.cs" />
     <Compile Remove="Migrations\20210723230158_JobadsTableCreated.cs" />
     <Compile Remove="Migrations\20210723230158_JobadsTableCreated.Designer.cs" />
+    <Compile Remove="Migrations\20210727112812_IdentitTableCreated.cs" />
+    <Compile Remove="Migrations\20210727112812_IdentitTableCreated.Designer.cs" />
+    <Compile Remove="Migrations\20210727114951_SomeColumnAddedanChangedIntoIdentity.cs" />
+    <Compile Remove="Migrations\20210727114951_SomeColumnAddedanChangedIntoIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20210727130859_SomeColumnAddedIntoIdentity.cs" />
+    <Compile Remove="Migrations\20210727130859_SomeColumnAddedIntoIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20210727131215_SomeColumnChangedIntoJobads.cs" />
+    <Compile Remove="Migrations\20210727131215_SomeColumnChangedIntoJobads.Designer.cs" />
+    <Compile Remove="Migrations\20210727132140_SomeColumnChaged.cs" />
+    <Compile Remove="Migrations\20210727132140_SomeColumnChaged.Designer.cs" />
+    <Compile Remove="Migrations\20210727132927_SomeCoumnsd.cs" />
+    <Compile Remove="Migrations\20210727132927_SomeCoumnsd.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.14">

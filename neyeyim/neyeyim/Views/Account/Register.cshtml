@@ -1,0 +1,40 @@
+﻿@model MemberRegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+        <section class="register animate__animated animate__fadeIn" style="padding: 50px;">
+            <div class="container">
+                <div class="row">
+                    <div class="card col-lg-4 col-sm-12 col-xs-12">
+                        <form style="padding: 30px;">
+                            <h1 class="logregcap">Qeydiyyatdan keç</h1>
+                            <div class="mb-3">
+                                <label asp-for="@Model.Name">Ad</label>
+                                <input class="form-control" type="text" asp-for="@Model.Name" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="@Model.Surname">Soyad</label>
+                                <input class="form-control" type="text" asp-for="@Model.Surname" name="surname">
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="@Model.UserName">İstifadəçi adı</label>
+                                <input class="form-control" type="text" asp-for="@Model.UserName" name="username">
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="@Model.Email">Email</label>
+                                <input class="form-control" type="email" asp-for="@Model.Email" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label label asp-for="@Model.Password">Şifrə</label>
+                                <input class="form-control" type="password" asp-for="@Model.Password" name="password">
+                            </div>
+                            <button type="submit" class="btn"
+                                    style="background-color: #009de0; color: white;">
+                                Qeydiyyatdan keç
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>

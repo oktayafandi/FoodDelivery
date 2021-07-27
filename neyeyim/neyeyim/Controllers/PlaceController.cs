@@ -21,7 +21,7 @@ namespace neyeyim.Controllers
         {
             PlaceViewModel placeVM = new PlaceViewModel
             {
-                Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Jobads).Include(x => x.Campaigns).Include(x => x.Category).Take(6).ToList(),
+                Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.Jobads).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Campaigns).Include(x => x.Category).Take(6).ToList(),
             };
             return View(placeVM);
         }

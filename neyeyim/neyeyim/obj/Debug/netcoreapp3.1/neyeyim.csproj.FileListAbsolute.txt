@@ -163,3 +163,4 @@ C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Dashboard\Index.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Place\Detail.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Jobad\Detail.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Index.cshtml.g.cs

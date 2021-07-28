@@ -73,6 +73,10 @@ namespace neyeyim
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                name: "area",
+                pattern: "{area:exists}/{controller=dashboard}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

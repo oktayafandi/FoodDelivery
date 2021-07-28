@@ -1,0 +1,47 @@
+﻿@using neyeyim.Models;
+@model List<Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+
+    int i = 0;
+}
+
+<div class="container-fluid">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="row">
+                <th class="col-md-1">#</th>
+                <th class="col-md-7">Ad</th>
+                <th class="col-md-1">Məkan sayı</th>
+                <th class="col-md-1">İş elan sayı</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                i++;
+            <tr class="row">
+                <td class="col-md-1">@i</td>
+                <td class="col-md-7">@item.Name</td>
+                <td class="col-md-1">@item.Places.Count()</td>
+                <td class="col-md-1">@item.Jobads.Count()</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+</div>
+

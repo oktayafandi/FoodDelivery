@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace neyeyim.Areas.Manage.Controllers
 {
+    [Area("manage")]
     public class DashboardController : Controller
     {
         public IActionResult Index()

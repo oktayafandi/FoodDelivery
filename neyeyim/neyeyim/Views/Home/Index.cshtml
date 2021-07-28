@@ -31,9 +31,8 @@
             <h1 class="cardcaption" style="padding: 20px;">Seçilmiş məkanlar</h1>
            @foreach (var item in Model.Places)
             {
-
                 <div class="col-lg-4 col-md-4">
-                    <a href="restdetail.html" style="text-decoration: none;">
+                    <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
                         <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
                             <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -59,7 +58,7 @@
            @foreach (var item in Model.Places)
             {
                 <div class="col-lg-4 col-md-4">
-                    <a href="restdetail.html" style="text-decoration: none;">
+                    <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
                         <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
                             <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -72,7 +71,6 @@
                     </a>
                 </div>
             }
-
         </div>
     </div>
 </section>
@@ -86,7 +84,7 @@
            @foreach (var item in Model.Places)
             {
                 <div class="col-lg-4 col-md-4">
-                    <a href="restdetail.html" style="text-decoration: none;">
+                    <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
                         <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
                             <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
                             <div class="card-body">

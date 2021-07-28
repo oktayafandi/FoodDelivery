@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using neyeyim.DAL;
 using neyeyim.Models;
+using neyeyim.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,8 @@ namespace neyeyim
 
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
             services.AddSession();
+
+            services.AddScoped<LayoutViewModelService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

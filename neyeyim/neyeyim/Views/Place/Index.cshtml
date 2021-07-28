@@ -58,7 +58,7 @@
            @foreach (var item in Model.Places)
             {
                 <div class="col-lg-4 col-md-12">
-                    <a href="restdetail.html" style="text-decoration: none;">
+                    <a asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
                         <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
                             <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
                             <div class="card-body">

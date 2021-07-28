@@ -8,7 +8,7 @@
                     @foreach (var item in Model.Jobads)
                     {
                         <div class="col-lg-6">
-                            <a href="workpagedetail.html" style="text-decoration: none;">
+                            <a asp-action="detail" asp-controller="jobad" asp-route-id="@item.Id" style="text-decoration: none;">
                                 <div class="card" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">@item.Position</h5>

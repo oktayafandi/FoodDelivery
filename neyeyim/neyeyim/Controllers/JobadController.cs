@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using neyeyim.DAL;
+using neyeyim.Models;
 using neyeyim.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,12 @@ namespace neyeyim.Controllers
                 Promotions = _context.Promotions.ToList(),
             };
             return View(jobadVM);
+        }
+
+        public IActionResult Detail(int Id)
+        {
+            Jobad jobad = _context.Jobads.Include(x => x.Place).FirstOrDefault(x => x.Id == Id);
+            return View(jobad);
         }
     }
 }

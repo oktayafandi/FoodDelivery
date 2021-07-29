@@ -1,0 +1,17 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="@Model.Name">Ad</label>
+            <input type="text" asp-for="@Model.Name" class="form-control" id="Name" placeholder="Yaratmaq istədiyiniz kateqoriyanın adı">
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Yarat</button>
+    </form>
+</div>
+

@@ -18,8 +18,11 @@ namespace neyeyim.Areas.Manage.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
+            ViewBag.SelectedPage = page;
+            ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
+
             List<Jobad> jobads = _context.Jobads.Include(x => x.Place).ToList();
             return View(jobads);
         }

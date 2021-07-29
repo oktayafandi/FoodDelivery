@@ -18,8 +18,11 @@ namespace neyeyim.Areas.Manage.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
+            ViewBag.SelectedPage = page;
+            ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
+
             List<PlaceTag> placetags = _context.PlaceTags.Include(x => x.Place).Include(x => x.Tag).ToList();
             return View(placetags);
         }

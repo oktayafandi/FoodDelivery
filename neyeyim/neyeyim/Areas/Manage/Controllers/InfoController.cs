@@ -17,10 +17,60 @@ namespace neyeyim.Areas.Manage.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            List<Info> inform = _context.Information.ToList();
+            ViewBag.SelectedPage = page;
+            ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
+
+            List<Info> inform = _context.Information.Where(x => x.IsDeleted == false).Skip((page - 1) * 2).Take(3).ToList();
             return View(inform);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Info ınfo = _context.Information.FirstOrDefault(x => x.Id == id);
+
+            if (ınfo == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            return View(ınfo);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, Info ınfo)
+        {
+            Info existInfo = _context.Information.FirstOrDefault(x => x.Id == id);
+
+            if (existInfo == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            existInfo.Team = ınfo.Team;
+            existInfo.WhatFor = ınfo.WhatFor;
+            existInfo.HowUsed = ınfo.HowUsed;
+
+            _context.SaveChanges();
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Info ınfo = _context.Information.FirstOrDefault(x => x.Id == id);
+
+            if (ınfo == null) return RedirectToAction("index");
+
+            ınfo.IsDeleted = true;
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
         }
     }
 }

@@ -1,0 +1,29 @@
+﻿@model Info
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="@Model.Team">Komanda Haqqında</label>
+            <input type="text" asp-for="@Model.Team" class="form-control" id="Team">
+            <span asp-validation-for="@Model.Team" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.WhatFor">Nə üçün istifadə olunur?</label>
+            <input type="text" asp-for="@Model.WhatFor" class="form-control" id="WhatFor">
+            <span asp-validation-for="@Model.WhatFor" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.HowUsed">Necə istifadə olunur?</label>
+            <input type="text" asp-for="@Model.HowUsed" class="form-control" id="HowUsed">
+            <span asp-validation-for="@Model.HowUsed" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Redaktə et</button>
+    </form>
+</div>

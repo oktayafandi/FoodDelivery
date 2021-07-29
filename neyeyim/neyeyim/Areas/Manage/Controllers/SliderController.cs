@@ -17,10 +17,77 @@ namespace neyeyim.Areas.Manage.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            List<Slider> sliders = _context.Sliders.ToList();
+            ViewBag.SelectedPage = page;
+            ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
+
+            List<Slider> sliders = _context.Sliders.Where(x => x.IsDeleted == false).ToList();
             return View(sliders);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Slider slider)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            _context.Sliders.Add(slider);
+            _context.SaveChanges();
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Slider slider = _context.Sliders.FirstOrDefault(x => x.Id == id);
+
+            if (slider == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            return View(slider);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, Slider slider)
+        {
+            Slider existSlider = _context.Sliders.FirstOrDefault(x => x.Id == id);
+
+            if (existSlider == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            existSlider.Image = slider.Image;
+            existSlider.Order = slider.Order;
+
+            _context.SaveChanges();
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Slider slider = _context.Sliders.FirstOrDefault(x => x.Id == id);
+
+            if (slider == null) return RedirectToAction("index");
+
+            slider.IsDeleted = true;
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
         }
     }
 }

@@ -14,6 +14,7 @@ namespace neyeyim.Models
 
         [StringLength(maximumLength: 500)]
         public string RedirectUrl { get; set; }
+        public bool? IsDeleted { get; set; }
 
         public int Order { get; set; }
     }

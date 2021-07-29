@@ -1,0 +1,25 @@
+﻿@model Slider
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Image">Şəkil</label>
+                <input type="text" asp-for="@Model.Image" class="form-control" id="Image">
+                <span asp-validation-for="@Model.Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Order">Sıra</label>
+                <input type="text" asp-for="@Model.Order" class="form-control" id="Order">
+                <span asp-validation-for="@Model.Order" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Redaktə et</button>
+    </form>
+</div>

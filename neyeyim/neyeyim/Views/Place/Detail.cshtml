@@ -136,60 +136,17 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
                                         <div class="menu-detail">
                                             <h1 class="foodcap">Qəlyanaltılar</h1>
-                                            <h4 class="foodtext">
-                                                Big King - 8 AZN<a href="">
-                                                    <i class="plus fas fa-plus-square"></i>
-                                                </a>
-                                            </h4>
-                                            <p class="fooddetailtext">
-                                                Dana əti, karamelizə soğan, burger sous, kağı,
-                                                turşu
-                                            </p>
-                                            <h4 class="foodtext">
-                                                Big King - 8 AZN<a href="">
-                                                    <i class="plus fas fa-plus-square"></i>
-                                                </a>
-                                            </h4>
-                                            <p class="fooddetailtext">
-                                                Dana əti, karamelizə soğan, burger sous, kağı,
-                                                turşu
-                                            </p>
-                                            <h4 class="foodtext">
-                                                Big King - 8 AZN<a href="">
-                                                    <i class="plus fas fa-plus-square"></i>
-                                                </a>
-                                            </h4>
-                                            <p class="fooddetailtext">
-                                                Dana əti, karamelizə soğan, burger sous, kağı,
-                                                turşu
-                                            </p>
-                                            <h4 class="foodtext">
-                                                Big King - 8 AZN<a href="">
-                                                    <i class="plus fas fa-plus-square"></i>
-                                                </a>
-                                            </h4>
-                                            <p class="fooddetailtext">
-                                                Dana əti, karamelizə soğan, burger sous, kağı,
-                                                turşu
-                                            </p>
-                                            <h4 class="foodtext">
-                                                Big King - 8 AZN<a href="">
-                                                    <i class="plus fas fa-plus-square"></i>
-                                                </a>
-                                            </h4>
-                                            <p class="fooddetailtext">
-                                                Dana əti, karamelizə soğan, burger sous, kağı,
-                                                turşu
-                                            </p>
-                                            <h4 class="foodtext">
-                                                Big King - 8 AZN<a href="">
-                                                    <i class="plus fas fa-plus-square"></i>
-                                                </a>
-                                            </h4>
-                                            <p class="fooddetailtext">
-                                                Dana əti, karamelizə soğan, burger sous, kağı,
-                                                turşu
-                                            </p>
+                                           @foreach (var item in Model.PlaceMenus)
+                                            {
+                                                <h4 class="foodtext">
+                                                    @item.FoodName - @item.FoodPrice AZN<a href="">
+                                                        <i class="plus fas fa-plus-square"></i>
+                                                    </a>
+                                                </h4>
+                                                <p class="fooddetailtext">
+                                                    @item.FoodContent
+                                                </p>
+                                            }
                                         </div>
                                     </div>
                                 </div>

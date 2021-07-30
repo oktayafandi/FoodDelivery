@@ -28,6 +28,8 @@ namespace neyeyim.Models
         [StringLength(maximumLength: 30)]
         public string City { get; set; }
 
+        public bool? IsDeleted { get; set; }
+
         [Required]
         [StringLength(maximumLength: 30)]
         public string Age { get; set; }

@@ -1,0 +1,92 @@
+﻿@model Jobad
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.CategoryId">Kateqoriya</label>
+                <input type="text" asp-for="@Model.CategoryId" class="form-control" id="CategoryId">
+                <span asp-validation-for="@Model.CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.PlaceId">Şirkət</label>
+                <input type="text" asp-for="@Model.PlaceId" class="form-control" id="PlaceId">
+                <span asp-validation-for="@Model.PlaceId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Position">Vəzifə</label>
+                <input type="text" asp-for="@Model.Position" class="form-control" id="Position">
+                <span asp-validation-for="@Model.Position" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Salary">Maaş</label>
+                <input type="text" asp-for="@Model.Salary" class="form-control" id="Salary">
+                <span asp-validation-for="@Model.Salary" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Deadline">Son tarix</label>
+                <input type="text" asp-for="@Model.Deadline" class="form-control" id="Deadline">
+                <span asp-validation-for="@Model.Deadline" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.City">Şəhər</label>
+                <input type="text" asp-for="@Model.City" class="form-control" id="City">
+                <span asp-validation-for="@Model.City" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Age">Yaş</label>
+                <input type="text" asp-for="@Model.Age" class="form-control" id="Age">
+                <span asp-validation-for="@Model.Age" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.ContactPhone">Əlaqə nömrəsi</label>
+                <input type="text" asp-for="@Model.ContactPhone" class="form-control" id="ContactPhone">
+                <span asp-validation-for="@Model.ContactPhone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.ContactMail">Mail</label>
+                <input type="text" asp-for="@Model.ContactMail" class="form-control" id="ContactMail">
+                <span asp-validation-for="@Model.ContactMail" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Education">Təhsil</label>
+                <input type="text" asp-for="@Model.Education" class="form-control" id="Education">
+                <span asp-validation-for="@Model.Education" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Experience">Təcrübə</label>
+                <input type="text" asp-for="@Model.Experience" class="form-control" id="Experience">
+                <span asp-validation-for="@Model.Experience" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.GeneralInfo">Ümumi məlumat</label>
+                <input type="text" asp-for="@Model.GeneralInfo" class="form-control" id="GeneralInfo">
+                <span asp-validation-for="@Model.GeneralInfo" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Redaktə et</button>
+    </form>
+</div>

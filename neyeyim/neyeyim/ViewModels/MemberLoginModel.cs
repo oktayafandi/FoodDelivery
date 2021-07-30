@@ -8,9 +8,11 @@ namespace neyeyim.ViewModels
 {
     public class MemberLoginModel
     {
+        [Required]
         [StringLength(maximumLength: 20)]
         public string UserName { get; set; }
 
+        [Required]
         [StringLength(maximumLength: 50)]
         [DataType(DataType.Password)]
         public string Password { get; set; }

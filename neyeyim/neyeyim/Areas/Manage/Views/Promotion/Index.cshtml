@@ -19,19 +19,22 @@
                 <th class="col-md-1">#</th>
                 <th class="col-md-4">Şəkil</th>
                 <th class="col-md-4">Url</th>
-                <th class="col-md-2"></th>
+                <th class="col-md-1"></th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach (var item in Model)
+           @foreach (var item in Model)
             {
                 i++;
-                <tr class="row">
-                    <td class="col-md-1">@i</td>
-                    <td class="col-md-4">@item.Image</td>
-                    <td class="col-md-4">@item.RedirectUrl</td>
-                </tr>
+            <tr class="row">
+                <td class="col-md-1">@i</td>
+                <td class="col-md-4">@item.Image</td>
+                <td class="col-md-4">@item.RedirectUrl</td>
+                <td class="col-md-1">
+                    <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Redaktə et</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

@@ -12,24 +12,36 @@
 }
 
 <div class="container-fluid">
+    <div class="row d-flex justify-content-end mb-2">
+        <div class="col-md-1">
+            <a class="btn btn-primary" asp-action="create">Create</a>
+        </div>
+    </div>
 
     <table class="table table-bordered">
         <thead>
             <tr class="row">
                 <th class="col-md-1">#</th>
-                <th class="col-md-8">Ad</th>
+                <th class="col-md-9">Ad</th>
                 <th class="col-md-2"></th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach (var item in Model)
+           @foreach (var item in Model)
             {
                 i++;
-                <tr class="row">
-                    <td class="col-md-1">@i</td>
-                    <td class="col-md-8">@item.Name</td>
-                </tr>
+            <tr class="row">
+                <td class="col-md-1">@i</td>
+                <td class="col-md-9">@item.Name</td>
+                <td class="col-md-2">
+                    <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Redaktə et</a>
+                    @if (item.IsDeleted == false)
+                    {
+                        <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Sil</a>
+                    }
+                </td>
+            </tr>
             }
         </tbody>
     </table>

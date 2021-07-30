@@ -13,6 +13,11 @@
 
 
 <div class="container-fluid">
+    <div class="row d-flex justify-content-end mb-2">
+        <div class="col-md-1">
+            <a class="btn btn-primary" asp-action="create">Yarat</a>
+        </div>
+    </div>
 
     <table class="table table-bordered">
         <thead>
@@ -20,26 +25,33 @@
                 <th class="col-md-1">#</th>
                 <th class="col-md-4">Məkan</th>
                 <th class="col-md-4">Tag</th>
-                <th class="col-md-2"></th>
+                <th class="col-md-3"></th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach (var item in Model)
+           @foreach (var item in Model)
             {
                 i++;
-                <tr class="row">
-                    <td class="col-md-1">@i</td>
-                    <td class="col-md-4">@item.Place.Name</td>
-                    <td class="col-md-4">@item.Tag.Name</td>
-                </tr>
+            <tr class="row">
+                <td class="col-md-1">@i</td>
+                <td class="col-md-4">@item.Place.Name</td>
+                <td class="col-md-4">@item.Tag.Name</td>
+                <td class="col-md-3">
+                    <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Redaktə et</a>
+                    @if (item.IsDeleted == false)
+                    {
+                        <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Sil</a>
+                    }
+                </td>
+            </tr>
             }
         </tbody>
     </table>
 
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item @(selectedPage==1?"disabled":"")"><a class="page-link" asp-action="index" asp-route-page="@(selectedPage-1)">Previous</a></li>
+            <li class="page-item @(selectedPage==1?"disabled":"")"><a class="page-link" asp-action="index" asp-route-page="@(selectedPage-1)">Geri</a></li>
 
             @{
                 int startpage = selectedPage - 1;
@@ -61,7 +73,7 @@
             {
                 <li class="page-item @(j==selectedPage?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@j">@j</a></li>
             }
-            <li class="page-item @(selectedPage==totalPage?"disabled":"") "><a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)">Next</a></li>
+            <li class="page-item @(selectedPage==totalPage?"disabled":"") "><a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)">İrəli</a></li>
         </ul>
     </nav>
 </div>

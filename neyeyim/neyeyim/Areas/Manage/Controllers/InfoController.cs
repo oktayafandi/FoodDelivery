@@ -22,7 +22,7 @@ namespace neyeyim.Areas.Manage.Controllers
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
 
-            List<Info> inform = _context.Information.Where(x => x.IsDeleted == false).Skip((page - 1) * 2).Take(3).ToList();
+            List<Info> inform = _context.Information.Where(x => x.IsDeleted == false).Skip((page - 1) * 3).Take(3).ToList();
             return View(inform);
         }
 

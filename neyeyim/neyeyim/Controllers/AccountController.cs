@@ -32,10 +32,14 @@ namespace neyeyim.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(MemberRegisterModel registerModel)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("User", "Qeydiyyatdan kechmedi");
+                return View(registerModel);
+            }
 
             AppUser existUser = await _userManager.FindByNameAsync(registerModel.UserName);
-            AppUser existEmail = await _userManager.FindByNameAsync(registerModel.Email);
+            AppUser existEmail = await _userManager.FindByEmailAsync(registerModel.Email);
 
             if (existUser != null)
             {
@@ -55,6 +59,7 @@ namespace neyeyim.Controllers
                 Surname = registerModel.Surname,
                 Email = registerModel.Email,
                 UserName = registerModel.UserName,
+                PasswordHash = registerModel.Password,
             };
 
             var result = await _userManager.CreateAsync(user, registerModel.Password);
@@ -66,7 +71,9 @@ namespace neyeyim.Controllers
                 }
                 return View();
             }
+
             await _signInManager.SignInAsync(user, true);
+            _context.SaveChanges();
             return RedirectToAction("index", "home");
         }
 
@@ -102,6 +109,5 @@ namespace neyeyim.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("login");
         }
-
     }
 }

@@ -22,8 +22,42 @@ namespace neyeyim.Areas.Manage.Controllers
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
 
-            List<Promotion> promotions = _context.Promotions.ToList();
+            List<Promotion> promotions = _context.Promotions.Skip((page - 1) * 3).Take(3).ToList();
             return View(promotions);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Promotion promotion = _context.Promotions.FirstOrDefault(x => x.Id == id);
+
+            if (promotion == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            return View(promotion);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, Promotion promotion)
+        {
+            Promotion existPromotion = _context.Promotions.FirstOrDefault(x => x.Id == id);
+
+            if (existPromotion == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            existPromotion.Image = promotion.Image;
+            existPromotion.RedirectUrl = promotion.RedirectUrl;
+
+            _context.SaveChanges();
+            return RedirectToAction("index");
         }
     }
 }

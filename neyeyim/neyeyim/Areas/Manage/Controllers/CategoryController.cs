@@ -23,7 +23,7 @@ namespace neyeyim.Areas.Manage.Controllers
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
 
-            List<Category> categories = _context.Categories.Include(x => x.Places).Include(x => x.Jobads).Where(x => x.IsDeleted == false).Skip((page - 1) * 2).Take(3).ToList();
+            List<Category> categories = _context.Categories.Include(x => x.Places).Include(x => x.Jobads).Where(x => x.IsDeleted == false).Skip((page - 1) * 3).Take(3).ToList();
             return View(categories);
         }
 
@@ -40,6 +40,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 return View();
             }
 
+            category.IsDeleted = false;
             _context.Categories.Add(category);
             _context.SaveChanges();
             return RedirectToAction("index");

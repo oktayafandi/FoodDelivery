@@ -22,7 +22,7 @@ namespace neyeyim.Areas.Manage.Controllers
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
 
-            List<Slider> sliders = _context.Sliders.Where(x => x.IsDeleted == false).ToList();
+            List<Slider> sliders = _context.Sliders.Where(x => x.IsDeleted == false).Skip((page - 1) * 3).Take(3).ToList();
             return View(sliders);
         }
 
@@ -39,6 +39,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 return View();
             }
 
+            slider.IsDeleted = false;
             _context.Sliders.Add(slider);
             _context.SaveChanges();
             return RedirectToAction("index");

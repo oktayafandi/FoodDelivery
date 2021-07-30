@@ -14,6 +14,7 @@ namespace neyeyim.Models
         [Required]
         [StringLength(maximumLength: 30)]
         public string Name { get; set; }
+        public bool? IsDeleted { get; set; }
 
         [Required]
         [StringLength(maximumLength: 100)]

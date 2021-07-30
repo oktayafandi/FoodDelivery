@@ -9,7 +9,7 @@ namespace neyeyim.Models
     {
         public int PlaceId { get; set; }
         public int TagId { get; set; }
-
+        public bool? IsDeleted { get; set; }
         public Place Place { get; set; }
         public Tag Tag { get; set; }
     }

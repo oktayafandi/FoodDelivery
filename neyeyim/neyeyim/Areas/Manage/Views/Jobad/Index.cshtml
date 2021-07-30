@@ -12,6 +12,11 @@
 }
 
 <div class="container-fluid">
+    <div class="row d-flex justify-content-end mb-2">
+        <div class="col-md-1">
+            <a class="btn btn-primary" asp-action="create">Yarat</a>
+        </div>
+    </div>
 
     <table class="table table-bordered">
         <thead>
@@ -19,23 +24,32 @@
                 <th class="col-md-1">#</th>
                 <th class="col-md-2">Vəzifə</th>
                 <th class="col-md-2">Şirkət</th>
-                <th class="col-md-2">Maaş</th>
+                <th class="col-md-1">Maaş</th>
+                <th class="col-md-2">Təcrübə</th>
                 <th class="col-md-2">Son tarix</th>
                 <th class="col-md-2"></th>
             </tr>
         </thead>
 
         <tbody>
-           @foreach (var item in Model)
+            @foreach (var item in Model)
             {
                 i++;
-                <tr class="row">
-                    <td class="col-md-1">@i</td>
-                    <td class="col-md-2">@item.Position</td>
-                    <td class="col-md-2">@item.Place.Name</td>
-                    <td class="col-md-2">@item.Salary</td>
-                    <td class="col-md-2">@item.Deadline</td>
-                </tr>
+            <tr class="row">
+                <td class="col-md-1">@i</td>
+                <td class="col-md-2">@item.Position</td>
+                <td class="col-md-2">@item.Place.Name</td>
+                <td class="col-md-1">@item.Salary</td>
+                <td class="col-md-2">@item.Experience</td>
+                <td class="col-md-2">@item.Deadline</td>
+                <td class="col-md-2">
+                    <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Redaktə et</a>
+                    @if (item.IsDeleted == false)
+                    {
+                        <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Sil</a>
+                    }
+                </td>
+            </tr>
             }
         </tbody>
     </table>

@@ -11,7 +11,7 @@ namespace neyeyim.Models
     public class Jobad : BaseEntity
     {
         public int? PlaceId { get; set; }
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         [Required]
         [StringLength(maximumLength: 30)]

@@ -30,19 +30,8 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Categories = _context.Categories.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
-
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+            ViewBag.Places = _context.Places.ToList();
+            ViewBag.Categories = _context.Categories.ToList();
 
             return View();
         }
@@ -50,19 +39,18 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Jobad jobad)
         {
-            ViewBag.Categories = _context.Categories.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+            ViewBag.Places = _context.Places.ToList();
+            ViewBag.Categories = _context.Categories.ToList();
 
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            if (!_context.Places.Any(x => x.Id == jobad.PlaceId))
             {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+                ModelState.AddModelError("PlaceId", "Xeta var!");
+            }
+
+            if (!_context.Categories.Any(x => x.Id == jobad.CategoryId))
+            {
+                ModelState.AddModelError("CategoryId", "Xeta var!");
+            }
 
             if (!ModelState.IsValid)
             {
@@ -72,25 +60,12 @@ namespace neyeyim.Areas.Manage.Controllers
             jobad.IsDeleted = false;
             _context.Jobads.Add(jobad);
             _context.SaveChanges();
+
             return RedirectToAction("index");
         }
 
         public IActionResult Edit(int id)
         {
-            ViewBag.Categories = _context.Categories.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
-
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
-
             Jobad jobad = _context.Jobads.FirstOrDefault(x => x.Id == id);
 
             if (jobad == null)
@@ -98,25 +73,17 @@ namespace neyeyim.Areas.Manage.Controllers
                 return RedirectToAction("index");
             }
 
+            ViewBag.Places = _context.Places.ToList();
+            ViewBag.Categories = _context.Categories.ToList();
+
             return View(jobad);
         }
 
         [HttpPost]
         public IActionResult Edit(int id, Jobad jobad)
         {
-            ViewBag.Categories = _context.Categories.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
-
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+            ViewBag.Places = _context.Places.ToList();
+            ViewBag.Categories = _context.Categories.ToList();
 
             Jobad existJobad = _context.Jobads.FirstOrDefault(x => x.Id == id);
 
@@ -125,10 +92,10 @@ namespace neyeyim.Areas.Manage.Controllers
                 return RedirectToAction("index");
             }
 
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+
+            if (!_context.Places.Any(x => x.Id == jobad.PlaceId)) return RedirectToAction("index");
+
+            if (!_context.Categories.Any(x => x.Id == jobad.CategoryId)) return RedirectToAction("index");
 
             existJobad.PlaceId = jobad.PlaceId;
             existJobad.CategoryId = jobad.CategoryId;

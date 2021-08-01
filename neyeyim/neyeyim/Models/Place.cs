@@ -39,7 +39,6 @@ namespace neyeyim.Models
 
         [NotMapped]
         public IFormFile ImageFile { get; set; }
-
         [NotMapped]
         public IFormFile LogoFile { get; set; }
 

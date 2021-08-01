@@ -1,0 +1,77 @@
+﻿@model Place
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Name">Ad</label>
+                <input type="text" asp-for="@Model.Name" class="form-control" id="Name">
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Adress">Ünvan</label>
+                <input type="text" asp-for="@Model.Adress" class="form-control" id="Adress">
+                <span asp-validation-for="@Model.Adress" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.OpenCloseTime">İş saatları</label>
+                <input type="text" asp-for="@Model.OpenCloseTime" class="form-control" id="OpenCloseTime">
+                <span asp-validation-for="@Model.OpenCloseTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.CategoryId">Kateqoriya</label>
+                <select class="form-control" asp-for="@Model.CategoryId" asp-items="ViewBag.Categories">
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Status">Status</label>
+                <input type="text" asp-for="@Model.Status" class="form-control" id="Status">
+                <span asp-validation-for="@Model.Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Servisfee">Servis haqqı</label>
+                <input type="text" asp-for="@Model.Servisfee" class="form-control" id="Servisfee">
+                <span asp-validation-for="@Model.Servisfee" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.Deposit">Depozit</label>
+                <input type="text" asp-for="@Model.Deposit" class="form-control" id="Deposit">
+                <span asp-validation-for="@Model.Deposit" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="@Model.ContactPhone">Əlaqə</label>
+                <input type="text" asp-for="@Model.ContactPhone" class="form-control" id="ContactPhone">
+                <span asp-validation-for="@Model.ContactPhone" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+
+
+            <div class="form-group col-md-1">
+                <label asp-for="@Model.IsSelected">Seçilmiş</label>
+                <input asp-for="@Model.IsSelected" class="form-control" id="IsFeatured" placeholder="IsFeatured">
+                <span asp-validation-for="@Model.IsSelected" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Yarat</button>
+    </form>
+</div>
+
+

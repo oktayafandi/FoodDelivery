@@ -20,7 +20,7 @@ namespace neyeyim.Areas.Manage.Controllers
         public IActionResult Index(int page = 1)
         {
             ViewBag.SelectedPage = page;
-            ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
+            ViewBag.TotalPageCount = Math.Ceiling(_context.Information.Count() / 3d);
 
             List<Info> inform = _context.Information.Where(x => x.IsDeleted == false).Skip((page - 1) * 3).Take(3).ToList();
             return View(inform);
@@ -58,18 +58,6 @@ namespace neyeyim.Areas.Manage.Controllers
             existInfo.HowUsed = ınfo.HowUsed;
 
             _context.SaveChanges();
-            return RedirectToAction("index");
-        }
-
-        public IActionResult Delete(int id)
-        {
-            Info ınfo = _context.Information.FirstOrDefault(x => x.Id == id);
-
-            if (ınfo == null) return RedirectToAction("index");
-
-            ınfo.IsDeleted = true;
-            _context.SaveChanges();
-
             return RedirectToAction("index");
         }
     }

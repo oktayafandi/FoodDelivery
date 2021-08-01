@@ -15,11 +15,7 @@ namespace neyeyim.Models
         [StringLength(maximumLength: 30)]
         public string Name { get; set; }
         public bool? IsDeleted { get; set; }
-
-        [Required]
-        [StringLength(maximumLength: 100)]
-        public string Image { get; set; }
-
+ 
         [Required]
         [StringLength(maximumLength: 500)]
         public string Content { get; set; }

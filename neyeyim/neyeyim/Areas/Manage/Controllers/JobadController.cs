@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using neyeyim.DAL;
 using neyeyim.Models;
@@ -21,7 +22,7 @@ namespace neyeyim.Areas.Manage.Controllers
         public IActionResult Index(int page = 1)
         {
             ViewBag.SelectedPage = page;
-            ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
+            ViewBag.TotalPageCount = Math.Ceiling(_context.Jobads.Count() / 3d);
 
             List<Jobad> jobads = _context.Jobads.Include(x => x.Place).Include(x => x.Category).Where(x => x.IsDeleted == false).Skip((page - 1) * 3).Take(3).ToList();
             return View(jobads);
@@ -29,12 +30,40 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Categories = _context.Categories.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Jobad jobad)
         {
+            ViewBag.Categories = _context.Categories.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
             if (!ModelState.IsValid)
             {
                 return View();
@@ -48,6 +77,20 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Edit(int id)
         {
+            ViewBag.Categories = _context.Categories.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
             Jobad jobad = _context.Jobads.FirstOrDefault(x => x.Id == id);
 
             if (jobad == null)
@@ -61,6 +104,20 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Edit(int id, Jobad jobad)
         {
+            ViewBag.Categories = _context.Categories.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
             Jobad existJobad = _context.Jobads.FirstOrDefault(x => x.Id == id);
 
             if (existJobad == null)

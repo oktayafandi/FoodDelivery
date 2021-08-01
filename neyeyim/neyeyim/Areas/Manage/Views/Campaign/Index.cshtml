@@ -1,8 +1,89 @@
-﻿
+﻿@using neyeyim.Models;
+@model List<Campaign>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+
+    int selectedPage = (int)ViewBag.SelectedPage;
+    int totalPage = (int)ViewBag.TotalPageCount;
+
+    int i = ((int)ViewBag.SelectedPage - 1) * 3;
 }
 
-<h1>Index</h1>
+<div class="container-fluid">
+    <div class="row d-flex justify-content-end mb-2">
+        <div class="col-md-1">
+            <a class="btn btn-primary" asp-action="create">Yarat</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="row">
+                <th class="col-md-1">#</th>
+                <th class="col-md-2">Kampaniyanın adı</th>
+                <th class="col-md-2">Kontent</th>
+                <th class="col-md-1">Qiymət</th>
+                <th class="col-md-2">Məkan</th>
+                <th class="col-md-2">Url</th>
+                <th class="col-md-2"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+           @foreach (var item in Model)
+            {
+                i++;
+            <tr class="row">
+                <td class="col-md-1">@i</td>
+                <td class="col-md-2">@item.Name</td>
+                <td class="col-md-2">@item.Content</td>
+                <td class="col-md-1">@item.Price</td>
+                <td class="col-md-2">@item.Place</td>
+                <td class="col-md-2">@item.RedirectUrl</td>
+                <td class="col-md-2">
+                    <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Redaktə et</a>
+                   @if (item.IsDeleted == false)
+                    {
+                        <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Sil</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" asp-action="restore" asp-route-id="@item.Id">Geri qaytar</a>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item @(selectedPage==1?"disabled":"")"><a class="page-link" asp-action="index" asp-route-page="@(selectedPage-1)">Previous</a></li>
+
+            @{
+                int startpage = selectedPage - 1;
+                int endPage = selectedPage + 1;
+
+                if (selectedPage == 1)
+                {
+                    startpage = 1;
+                    endPage = 3 > totalPage ? totalPage : 3;
+                }
+                else if (selectedPage == totalPage)
+                {
+                    startpage = (selectedPage - 2) < 1 ? 1 : selectedPage - 2;
+                    endPage = totalPage;
+                }
+
+            }
+            @for (int j = startpage; j <= endPage; j++)
+            {
+                <li class="page-item @(j==selectedPage?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@j">@j</a></li>
+            }
+            <li class="page-item @(selectedPage==totalPage?"disabled":"") "><a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)">Next</a></li>
+        </ul>
+    </nav>
+</div>
 

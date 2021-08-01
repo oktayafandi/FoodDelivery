@@ -1,0 +1,47 @@
+﻿@model Campaign
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.PlaceId">Məkanlar</label>
+                <select class="form-control" asp-for="@Model.PlaceId" asp-items="ViewBag.Places">
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Name">Kampaniyanın adı</label>
+                <input type="text" asp-for="@Model.Name" class="form-control" id="Name">
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="@Model.Price">Qiymət</label>
+                <input type="text" asp-for="@Model.Price" class="form-control" id="Price">
+                <span asp-validation-for="@Model.Price" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.Content">Kontent</label>
+                <input type="text" asp-for="@Model.Content" class="form-control" id="Content">
+                <span asp-validation-for="@Model.Content" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.RedirectUrl">Url</label>
+                <input type="text" asp-for="@Model.RedirectUrl" class="form-control" id="RedirectUrl">
+                <span asp-validation-for="@Model.RedirectUrl" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Yarat</button>
+    </form>
+</div>
+

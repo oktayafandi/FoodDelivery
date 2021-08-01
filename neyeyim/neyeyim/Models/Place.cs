@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -36,17 +37,24 @@ namespace neyeyim.Models
         [StringLength(maximumLength: 100)]
         public string Logo { get; set; }
 
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+
+        [NotMapped]
+        public IFormFile LogoFile { get; set; }
+
+        public bool IsSelected { get; set; }
+
         [Required]
         public string Deposit { get; set; }
 
         [Required]
         [StringLength(maximumLength: 50)]
         public string ContactPhone { get; set; }
-        
+
         public double Rate { get; set; }
         
         public Category Category { get; set; }
-
         public List<PlaceImage> PlaceImages { get; set; }
         public List<PlaceTag> PlaceTags { get; set; }
         public List<Jobad> Jobads { get; set; }

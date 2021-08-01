@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,10 +16,6 @@ namespace neyeyim.Models
         [Required]
         [StringLength(maximumLength: 30)]
         public string Position { get; set; }
-
-        [Required]
-        [StringLength(maximumLength: 100)]
-        public string Logo { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]

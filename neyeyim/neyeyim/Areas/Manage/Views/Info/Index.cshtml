@@ -34,10 +34,6 @@
                 <td class="col-md-3">@item.HowUsed</td>
                 <td class="col-md-2">
                     <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Redaktə et</a>
-                    @if (item.IsDeleted == false)
-                    {
-                        <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Sil</a>
-                    }
                 </td>
             </tr>
             }

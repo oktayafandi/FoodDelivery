@@ -29,7 +29,8 @@ namespace neyeyim.Controllers
 
         public IActionResult Detail(int Id)
         {
-            Place place = _context.Places.Include(x => x.PlaceMenus).Include(x => x.PlaceTags).ThenInclude(x => x.Tag).FirstOrDefault(x => x.Id == Id);
+            ViewBag.Tags = _context.PlaceTags.Include(x => x.Tag).Where(x => x.IsDeleted == false).ToList();
+            Place place = _context.Places.Include(x => x.PlaceMenus).FirstOrDefault(x => x.Id == Id);
             return View(place);
         }
     }

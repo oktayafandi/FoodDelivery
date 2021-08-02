@@ -47,6 +47,13 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Place place)
         {
+            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
             if (!ModelState.IsValid)
             {
                 return View();

@@ -51,7 +51,7 @@
                                     <p class="restdetailtext">Depozit: @Model.Deposit</p>
                                     <p class="restdetailtext">Əlaqə nömrəsi: @Model.ContactPhone</p>
                                     <p class="restdetailtext">Tag: 
-                                   @foreach (var item in Model.PlaceTags)
+                                   @foreach (var item in ViewBag.Tags)
                                     {
                                        <span>@item.Tag.Name</span>
                                     }

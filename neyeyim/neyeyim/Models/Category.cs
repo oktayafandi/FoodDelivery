@@ -14,7 +14,5 @@ namespace neyeyim.Models
         public bool? IsDeleted { get; set; }
         public List<Place> Places { get; set; }
         public List<Jobad> Jobads { get; set; }
-
-
     }
 }

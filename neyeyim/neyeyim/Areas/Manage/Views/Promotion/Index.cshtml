@@ -38,33 +38,4 @@
             }
         </tbody>
     </table>
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item @(selectedPage==1?"disabled":"")"><a class="page-link" asp-action="index" asp-route-page="@(selectedPage-1)">Previous</a></li>
-
-            @{
-                int startpage = selectedPage - 1;
-                int endPage = selectedPage + 1;
-
-                if (selectedPage == 1)
-                {
-                    startpage = 1;
-                    endPage = 3 > totalPage ? totalPage : 3;
-                }
-                else if (selectedPage == totalPage)
-                {
-                    startpage = (selectedPage - 2) < 1 ? 1 : selectedPage - 2;
-                    endPage = totalPage;
-                }
-
-            }
-            @for (int j = startpage; j <= endPage; j++)
-            {
-                <li class="page-item @(j==selectedPage?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@j">@j</a></li>
-            }
-            <li class="page-item @(selectedPage==totalPage?"disabled":"") "><a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)">Next</a></li>
-        </ul>
-    </nav>
 </div>
-

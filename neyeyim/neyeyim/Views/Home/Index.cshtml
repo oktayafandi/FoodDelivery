@@ -29,7 +29,7 @@
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Seçilmiş məkanlar</h1>
-           @foreach (var item in Model.Places)
+            @foreach (var item in Model.Places.Where(x => x.IsSelected == true))
             {
                 <div class="col-lg-4 col-md-4">
                     <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
@@ -55,7 +55,7 @@
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Ən populyar məkanlar</h1>
-           @foreach (var item in Model.Places)
+            @foreach (var item in Model.Places)
             {
                 <div class="col-lg-4 col-md-4">
                     <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
@@ -81,7 +81,7 @@
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Ən son sifariş verdiyiniz məkanlar</h1>
-           @foreach (var item in Model.Places)
+            @foreach (var item in Model.Places)
             {
                 <div class="col-lg-4 col-md-4">
                     <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">

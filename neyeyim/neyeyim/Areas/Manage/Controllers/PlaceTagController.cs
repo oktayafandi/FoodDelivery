@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using neyeyim.DAL;
@@ -14,9 +15,11 @@ namespace neyeyim.Areas.Manage.Controllers
     public class PlaceTagController : Controller
     {
         private readonly AppDbContext _context;
-        public PlaceTagController(AppDbContext context)
+        private readonly IWebHostEnvironment _env;
+        public PlaceTagController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult Index(int page = 1)

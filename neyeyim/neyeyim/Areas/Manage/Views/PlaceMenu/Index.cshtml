@@ -1,0 +1,15 @@
+﻿@using neyeyim.Models;
+@model List<PlaceMenu>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+
+    int selectedPage = (int)ViewBag.SelectedPage;
+    int totalPage = (int)ViewBag.TotalPageCount;
+
+    int i = ((int)ViewBag.SelectedPage - 1) * 3;
+}
+
+<h1>Index</h1>
+

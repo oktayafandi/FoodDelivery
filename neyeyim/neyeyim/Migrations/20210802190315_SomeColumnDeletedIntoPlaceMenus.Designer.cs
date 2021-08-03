@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using neyeyim.DAL;
 
 namespace neyeyim.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210802190315_SomeColumnDeletedIntoPlaceMenus")]
+    partial class SomeColumnDeletedIntoPlaceMenus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -382,28 +384,6 @@ namespace neyeyim.Migrations
                     b.ToTable("Jobads");
                 });
 
-            modelBuilder.Entity("neyeyim.Models.MenuCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<int>("PlaceMenuId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlaceMenuId");
-
-                    b.ToTable("MenuCategories");
-                });
-
             modelBuilder.Entity("neyeyim.Models.Place", b =>
                 {
                     b.Property<int>("Id")
@@ -514,9 +494,6 @@ namespace neyeyim.Migrations
 
                     b.Property<decimal>("FoodPrice")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<int?>("PlaceId")
                         .HasColumnType("int");
@@ -745,15 +722,6 @@ namespace neyeyim.Migrations
                     b.HasOne("neyeyim.Models.Place", "Place")
                         .WithMany("Jobads")
                         .HasForeignKey("PlaceId");
-                });
-
-            modelBuilder.Entity("neyeyim.Models.MenuCategory", b =>
-                {
-                    b.HasOne("neyeyim.Models.PlaceMenu", "PlaceMenu")
-                        .WithMany("MenuCategories")
-                        .HasForeignKey("PlaceMenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("neyeyim.Models.Place", b =>

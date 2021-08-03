@@ -50,7 +50,6 @@ namespace neyeyim.Models
         [Required]
         [StringLength(maximumLength: 50)]
         public string ContactPhone { get; set; }
-
         public double Rate { get; set; }
         
         public Category Category { get; set; }

@@ -34,7 +34,7 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
 
             return View();
         }
@@ -43,7 +43,7 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Place place)
         {
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
 
             if (place.ImageFile != null)
             {
@@ -115,9 +115,30 @@ namespace neyeyim.Areas.Manage.Controllers
             return RedirectToAction("index");
         }
 
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+
+            Place place = _context.Places.FirstOrDefault(x => x.Id == id);
+
+            if (place == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            return View(place);
+        }
+
         public IActionResult Edit(int id, Place place)
         {
+            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+
             Place existPlace = _context.Places.FirstOrDefault(x => x.Id == id);
+
+            if (existPlace == null)
+            {
+                return RedirectToAction("index");
+            }
 
             if (place.ImageFile != null)
             {
@@ -166,10 +187,50 @@ namespace neyeyim.Areas.Manage.Controllers
                 }
             }
 
-            if (place == null) return RedirectToAction("index");
-            ViewBag.Categories = _context.Categories.ToList();
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
 
-            return View(place);
+            existPlace.Name = place.Name;
+            existPlace.Adress = place.Adress;
+            existPlace.OpenCloseTime = place.OpenCloseTime;
+            existPlace.Status = place.Status;
+            existPlace.Servisfee = place.Servisfee;
+            existPlace.Image = place.Image;
+            existPlace.Logo = place.Logo;
+            existPlace.IsSelected = place.IsSelected;
+            existPlace.Deposit = place.Deposit;
+            existPlace.ContactPhone = place.ContactPhone;
+            existPlace.Rate = place.Rate;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Place place = _context.Places.FirstOrDefault(x => x.Id == id);
+
+            if (place == null) return RedirectToAction("index");
+
+            place.IsDeleted = true;
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Restore(int id)
+        {
+            Place place = _context.Places.FirstOrDefault(x => x.Id == id);
+
+            if (place == null) return RedirectToAction("index");
+
+            place.IsDeleted = false;
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
         }
     }
 }

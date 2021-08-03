@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using neyeyim.DAL;
 using neyeyim.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,11 +14,12 @@ namespace neyeyim.Areas.Manage.Controllers
     public class SliderController : Controller
     {
         private readonly AppDbContext _context;
-        public SliderController(AppDbContext context)
+        private readonly IWebHostEnvironment _env;
+        public SliderController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
-
         public IActionResult Index(int page = 1)
         {
             ViewBag.SelectedPage = page;
@@ -34,6 +37,33 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Slider slider)
         {
+            if (slider.ImageFile != null)
+            {
+                if (slider.ImageFile.ContentType != "image/png" && slider.ImageFile.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("ImageFile", "Mime type yanlisdir!");
+                    return View();
+                }
+
+                if (slider.ImageFile.Length > (1024 * 1024) * 2)
+                {
+                    ModelState.AddModelError("ImageFile", "Faly olcusu 2MB-dan cox ola bilmez!");
+                    return View();
+                }
+
+                string rootPath = _env.WebRootPath;
+                var filename = Guid.NewGuid().ToString() + slider.ImageFile.FileName;
+                var path = Path.Combine(rootPath, "img", filename);
+
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    slider.ImageFile.CopyTo(stream);
+                }
+
+                slider.Image = filename;
+            }
+
+
             if (!ModelState.IsValid)
             {
                 return View();
@@ -65,6 +95,53 @@ namespace neyeyim.Areas.Manage.Controllers
             if (existSlider == null)
             {
                 return RedirectToAction("index");
+            }
+
+            if (slider.ImageFile != null)
+            {
+                if (slider.ImageFile.ContentType != "image/png" && slider.ImageFile.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("ImageFile", "Mime type yanlisdir!");
+                    return View();
+                }
+
+                if (slider.ImageFile.Length > (1024 * 1024) * 2)
+                {
+                    ModelState.AddModelError("ImageFile", "Faly olcusu 2MB-dan cox ola bilmez!");
+                    return View();
+                }
+
+                string filename = Guid.NewGuid().ToString() + slider.ImageFile.FileName;
+                string path = Path.Combine(_env.WebRootPath, "uploads", filename);
+
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    slider.ImageFile.CopyTo(stream);
+                }
+
+                if (existSlider.Image != null)
+                {
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existSlider.Image);
+                    if (System.IO.File.Exists(existPath))
+                    {
+                        System.IO.File.Delete(existPath);
+                    }
+                }
+
+                existSlider.Image = filename;
+            }
+            else if (slider.Image == null)
+            {
+                if (existSlider.Image != null)
+                {
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existSlider.Image);
+                    if (System.IO.File.Exists(existPath))
+                    {
+                        System.IO.File.Delete(existPath);
+                    }
+
+                    existSlider.Image = null;
+                }
             }
 
             if (!ModelState.IsValid)

@@ -23,7 +23,7 @@ namespace neyeyim.Areas.Manage.Controllers
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
 
-            List<Tag> tags = _context.Tags.Include(x => x.PlaceTags).Where(x => x.IsDeleted == false).Skip((page - 1) * 3).Take(3).ToList();
+            List<Tag> tags = _context.Tags.Include(x => x.PlaceTags).Skip((page - 1) * 3).Take(3).ToList();
             return View(tags);
         }
 
@@ -76,6 +76,18 @@ namespace neyeyim.Areas.Manage.Controllers
             if (tag == null) return RedirectToAction("index");
 
             tag.IsDeleted = true;
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Restore(int id)
+        {
+            Tag tag = _context.Tags.FirstOrDefault(x => x.Id == id);
+
+            if (tag == null) return RedirectToAction("index");
+
+            tag.IsDeleted = false;
             _context.SaveChanges();
 
             return RedirectToAction("index");

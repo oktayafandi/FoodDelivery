@@ -37,7 +37,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 Selected = true
             }).ToList();
 
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
             {
                 Value = a.Id.ToString(),
                 Text = a.Name,

@@ -24,13 +24,13 @@ namespace neyeyim.Areas.Manage.Controllers
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Campaigns.Count() / 3d);
 
-            List<Campaign> campaigns = _context.Campaigns.Include(x => x.Place).Where(x => x.IsDeleted == false).Skip((page - 1) * 3).Take(3).ToList();
+            List<Campaign> campaigns = _context.Campaigns.Include(x => x.Place).Skip((page - 1) * 3).Take(3).ToList();
             return View(campaigns);
         }
 
         public IActionResult Create()
         {
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
             {
                 Value = a.Id.ToString(),
                 Text = a.Name,
@@ -43,7 +43,7 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Campaign campaign)
         {
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
             {
                 Value = a.Id.ToString(),
                 Text = a.Name,
@@ -70,7 +70,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 return RedirectToAction("index");
             }
 
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
             {
                 Value = a.Id.ToString(),
                 Text = a.Name,
@@ -83,7 +83,7 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Edit(int id, Campaign campaign)
         {
-            ViewBag.Places = _context.Places.Select(a => new SelectListItem
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
             {
                 Value = a.Id.ToString(),
                 Text = a.Name,

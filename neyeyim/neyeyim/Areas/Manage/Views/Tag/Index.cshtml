@@ -40,6 +40,10 @@
                     {
                         <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Sil</a>
                     }
+                    else
+                    {
+                        <a class="btn btn-info" asp-action="restore" asp-route-id="@item.Id">Geri qaytar</a>
+                    }
                 </td>
             </tr>
             }
@@ -48,7 +52,7 @@
 
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item @(selectedPage==1?"disabled":"")"><a class="page-link" asp-action="index" asp-route-page="@(selectedPage-1)">Previous</a></li>
+            <li class="page-item @(selectedPage==1?"disabled":"")"><a class="page-link" asp-action="index" asp-route-page="@(selectedPage-1)">Geri</a></li>
 
             @{
                 int startpage = selectedPage - 1;
@@ -70,7 +74,7 @@
             {
                 <li class="page-item @(j==selectedPage?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@j">@j</a></li>
             }
-            <li class="page-item @(selectedPage==totalPage?"disabled":"") "><a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)">Next</a></li>
+            <li class="page-item @(selectedPage==totalPage?"disabled":"") "><a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)">İrəli</a></li>
         </ul>
     </nav>
 </div>

@@ -30,8 +30,8 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Places = _context.Places.ToList();
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
 
             return View();
         }
@@ -39,8 +39,8 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Jobad jobad)
         {
-            ViewBag.Places = _context.Places.ToList();
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
 
             if (!_context.Places.Any(x => x.Id == jobad.PlaceId))
             {
@@ -73,7 +73,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 return RedirectToAction("index");
             }
 
-            ViewBag.Places = _context.Places.ToList();
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).ToList();
             ViewBag.Categories = _context.Categories.ToList();
 
             return View(jobad);
@@ -82,7 +82,7 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Edit(int id, Jobad jobad)
         {
-            ViewBag.Places = _context.Places.ToList();
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).ToList();
             ViewBag.Categories = _context.Categories.ToList();
 
             Jobad existJobad = _context.Jobads.FirstOrDefault(x => x.Id == id);

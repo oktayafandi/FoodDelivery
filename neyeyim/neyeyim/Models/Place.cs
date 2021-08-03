@@ -36,6 +36,7 @@ namespace neyeyim.Models
         [Required]
         [StringLength(maximumLength: 100)]
         public string Logo { get; set; }
+        public bool? IsDeleted { get; set; }
 
         [NotMapped]
         public IFormFile ImageFile { get; set; }

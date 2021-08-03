@@ -8,11 +8,20 @@
 <div class="container-fluid">
     <form method="post">
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label asp-for="@Model.Image">Şəkil</label>
-                <input type="text" asp-for="@Model.Image" class="form-control" id="Image">
-                <span asp-validation-for="@Model.Image" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="@Model.ImageFile">Şəkil</label>
+                <input asp-for="@Model.ImageFile" />
+                <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
             </div>
+
+            @if (Model.Image != null)
+            {
+                <div class="img-box" style="position:relative;max-width:200px">
+                    <img class="d-block" src="~/uploads/img/@Model.Image" style="max-width:200px" />
+                    <i class="fas fa-times remove-img-box" style="color:red;position:absolute;top:-7px;right:10px;cursor:pointer"></i>
+                    <input type="hidden" name="Photo" value="@Model.Image" />
+                </div>
+            }
 
             <div class="form-group col-md-6">
                 <label asp-for="@Model.RedirectUrl">Url</label>

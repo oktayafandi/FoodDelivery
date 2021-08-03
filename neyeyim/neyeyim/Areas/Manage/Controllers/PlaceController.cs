@@ -187,6 +187,53 @@ namespace neyeyim.Areas.Manage.Controllers
                 }
             }
 
+            if (place.LogoFile != null)
+            {
+                if (place.LogoFile.ContentType != "image/png" && place.LogoFile.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("LogoFile", "Mime type yanlisdir!");
+                    return View();
+                }
+
+                if (place.LogoFile.Length > (1024 * 1024) * 2)
+                {
+                    ModelState.AddModelError("LogoFile", "Faly olcusu 2MB-dan cox ola bilmez!");
+                    return View();
+                }
+
+                string filename = Guid.NewGuid().ToString() + place.LogoFile.FileName;
+                string path = Path.Combine(_env.WebRootPath, "uploads", filename);
+
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    place.LogoFile.CopyTo(stream);
+                }
+
+                if (existPlace.Logo != null)
+                {
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPlace.Logo);
+                    if (System.IO.File.Exists(existPath))
+                    {
+                        System.IO.File.Delete(existPath);
+                    }
+                }
+
+                existPlace.Logo = filename;
+            }
+            else if (place.Logo == null)
+            {
+                if (existPlace.Logo != null)
+                {
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPlace.Logo);
+                    if (System.IO.File.Exists(existPath))
+                    {
+                        System.IO.File.Delete(existPath);
+                    }
+
+                    existPlace.Logo = null;
+                }
+            }
+
             if (!ModelState.IsValid)
             {
                 return View();

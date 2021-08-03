@@ -20,6 +20,7 @@ namespace neyeyim.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
+
         public IActionResult Index(int page = 1)
         {
             ViewBag.SelectedPage = page;

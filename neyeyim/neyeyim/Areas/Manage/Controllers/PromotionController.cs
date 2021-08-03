@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using neyeyim.DAL;
 using neyeyim.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,9 +14,11 @@ namespace neyeyim.Areas.Manage.Controllers
     public class PromotionController : Controller
     {
         private readonly AppDbContext _context;
-        public PromotionController(AppDbContext context)
+        private readonly IWebHostEnvironment _env;
+        public PromotionController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult Index(int page = 1)
@@ -47,6 +51,55 @@ namespace neyeyim.Areas.Manage.Controllers
             {
                 return RedirectToAction("index");
             }
+
+
+            if (promotion.ImageFile != null)
+            {
+                if (promotion.ImageFile.ContentType != "image/png" && promotion.ImageFile.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("ImageFile", "Mime type yanlisdir!");
+                    return View();
+                }
+
+                if (promotion.ImageFile.Length > (1024 * 1024) * 2)
+                {
+                    ModelState.AddModelError("ImageFile", "Faly olcusu 2MB-dan cox ola bilmez!");
+                    return View();
+                }
+
+                string filename = Guid.NewGuid().ToString() + promotion.ImageFile.FileName;
+                string path = Path.Combine(_env.WebRootPath, "uploads", filename);
+
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    promotion.ImageFile.CopyTo(stream);
+                }
+
+                if (existPromotion.Image != null)
+                {
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPromotion.Image);
+                    if (System.IO.File.Exists(existPath))
+                    {
+                        System.IO.File.Delete(existPath);
+                    }
+                }
+
+                existPromotion.Image = filename;
+            }
+            else if (promotion.Image == null)
+            {
+                if (existPromotion.Image != null)
+                {
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPromotion.Image);
+                    if (System.IO.File.Exists(existPath))
+                    {
+                        System.IO.File.Delete(existPath);
+                    }
+
+                    existPromotion.Image = null;
+                }
+            }
+
 
             if (!ModelState.IsValid)
             {

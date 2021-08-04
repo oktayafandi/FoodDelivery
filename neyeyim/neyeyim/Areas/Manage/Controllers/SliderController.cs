@@ -150,7 +150,6 @@ namespace neyeyim.Areas.Manage.Controllers
                 return View();
             }
 
-            existSlider.Image = slider.Image;
             existSlider.Order = slider.Order;
 
             _context.SaveChanges();

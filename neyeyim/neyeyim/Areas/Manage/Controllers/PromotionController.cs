@@ -52,7 +52,6 @@ namespace neyeyim.Areas.Manage.Controllers
                 return RedirectToAction("index");
             }
 
-
             if (promotion.ImageFile != null)
             {
                 if (promotion.ImageFile.ContentType != "image/png" && promotion.ImageFile.ContentType != "image/jpeg")
@@ -68,7 +67,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 }
 
                 string filename = Guid.NewGuid().ToString() + promotion.ImageFile.FileName;
-                string path = Path.Combine(_env.WebRootPath, "uploads", filename);
+                string path = Path.Combine(_env.WebRootPath, "uploads\\img", filename);
 
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
@@ -77,7 +76,7 @@ namespace neyeyim.Areas.Manage.Controllers
 
                 if (existPromotion.Image != null)
                 {
-                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPromotion.Image);
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPromotion.Image);
                     if (System.IO.File.Exists(existPath))
                     {
                         System.IO.File.Delete(existPath);
@@ -86,27 +85,20 @@ namespace neyeyim.Areas.Manage.Controllers
 
                 existPromotion.Image = filename;
             }
-            else if (promotion.Image == null)
-            {
-                if (existPromotion.Image != null)
-                {
-                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPromotion.Image);
-                    if (System.IO.File.Exists(existPath))
-                    {
-                        System.IO.File.Delete(existPath);
-                    }
+            //else if (promotion.Image == null)
+            //{
+            //    if (existPromotion.Image != null)
+            //    {
+            //        string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPromotion.Image);
+            //        if (System.IO.File.Exists(existPath))
+            //        {
+            //            System.IO.File.Delete(existPath);
+            //        }
 
-                    existPromotion.Image = null;
-                }
-            }
+            //        existPromotion.Image = null;
+            //    }
+            //}
 
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
-            existPromotion.Image = promotion.Image;
             existPromotion.RedirectUrl = promotion.RedirectUrl;
 
             _context.SaveChanges();

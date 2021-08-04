@@ -185,19 +185,19 @@ namespace neyeyim.Areas.Manage.Controllers
 
                 existPlace.Image = filename;
             }
-            else if (place.Image == null)
-            {
-                if (existPlace.Image != null)
-                {
-                    string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPlace.Image);
-                    if (System.IO.File.Exists(existPath))
-                    {
-                        System.IO.File.Delete(existPath);
-                    }
+            //else if (place.Image == null)
+            //{
+            //    if (existPlace.Image != null)
+            //    {
+            //        string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPlace.Image);
+            //        if (System.IO.File.Exists(existPath))
+            //        {
+            //            System.IO.File.Delete(existPath);
+            //        }
 
-                    existPlace.Image = null;
-                }
-            }
+            //        existPlace.Image = null;
+            //    }
+            //}
 
             if (place.LogoFile != null)
             {
@@ -232,19 +232,19 @@ namespace neyeyim.Areas.Manage.Controllers
 
                 existPlace.Logo = filename;
             }
-            else if (place.Logo == null)
-            {
-                if (existPlace.Logo != null)
-                {
-                    string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPlace.Logo);
-                    if (System.IO.File.Exists(existPath))
-                    {
-                        System.IO.File.Delete(existPath);
-                    }
+            //else if (place.logo == null)
+            //{
+            //    if (existplace.logo != null)
+            //    {
+            //        string existpath = path.combine(_env.webrootpath, "uploads\\img", existplace.logo);
+            //        if (system.ıo.file.exists(existpath))
+            //        {
+            //            system.ıo.file.delete(existpath);
+            //        }
 
-                    existPlace.Logo = null;
-                }
-            }
+            //        existplace.logo = null;
+            //    }
+            //}
 
             if (!ModelState.IsValid)
             {
@@ -256,15 +256,12 @@ namespace neyeyim.Areas.Manage.Controllers
             existPlace.OpenCloseTime = place.OpenCloseTime;
             existPlace.Status = place.Status;
             existPlace.Servisfee = place.Servisfee;
-            existPlace.Image = place.Image;
-            existPlace.Logo = place.Logo;
             existPlace.IsSelected = place.IsSelected;
             existPlace.Deposit = place.Deposit;
             existPlace.ContactPhone = place.ContactPhone;
             existPlace.Rate = place.Rate;
 
             _context.SaveChanges();
-
             return RedirectToAction("index");
         }
 

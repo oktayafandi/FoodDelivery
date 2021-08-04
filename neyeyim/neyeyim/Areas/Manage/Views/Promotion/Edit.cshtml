@@ -6,11 +6,11 @@
 }
 
 <div class="container-fluid">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data" asp-action="edit" asp-controller="promotion">
         <div class="form-row">
             <div class="form-group">
                 <label asp-for="@Model.ImageFile">Şəkil</label>
-                <input asp-for="@Model.ImageFile" />
+                <input asp-for="@Model.ImageFile" id="ImageFile" name="ImageFile"/>
                 <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
             </div>
 
@@ -18,7 +18,6 @@
             {
                 <div class="img-box" style="position:relative;max-width:200px">
                     <img class="d-block" src="~/uploads/img/@Model.Image" style="max-width:200px" />
-                    <i class="fas fa-times remove-img-box" style="color:red;position:absolute;top:-7px;right:10px;cursor:pointer"></i>
                     <input type="hidden" name="Photo" value="@Model.Image" />
                 </div>
             }

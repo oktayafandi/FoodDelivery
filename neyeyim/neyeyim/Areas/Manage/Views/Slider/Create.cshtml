@@ -5,11 +5,11 @@
 }
 
 <div class="container-fluid">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data" asp-action="create" asp-controller="slider">
         <div class="form-row">
                 <div class="form-group">
                     <label asp-for="@Model.ImageFile">Şəkil</label>
-                    <input asp-for="@Model.ImageFile" />
+                    <input asp-for="@Model.ImageFile" id="ImageFile" name="ImageFile" />
                     <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
                 </div>
 
@@ -18,7 +18,7 @@
                     <input type="text" asp-for="@Model.Order" class="form-control" id="Order" placeholder="Şəkilin sırası">
                     <span asp-validation-for="@Model.Order" class="text-danger"></span>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Yarat</button>
+        </div>
+        <button type="submit" class="btn btn-primary">Yarat</button>
 </form>
 </div>

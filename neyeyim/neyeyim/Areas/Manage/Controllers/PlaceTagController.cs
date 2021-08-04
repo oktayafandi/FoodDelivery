@@ -53,6 +53,20 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(PlaceTag placeTag)
         {
+            ViewBag.Tags = _context.Tags.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
             if (!ModelState.IsValid)
             {
                 return View();

@@ -22,7 +22,7 @@ namespace neyeyim.Areas.Manage.Controllers
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.Categories.Count() / 3d);
 
-            List<PlaceMenu> placeMenus = _context.PlaceMenus.Where(x => x.IsDeleted == false).Include(x => x.Place).Skip((page - 1) * 3).Take(3).ToList();
+            List<PlaceMenu> placeMenus = _context.PlaceMenus.Where(x => x.IsDeleted == false).Include(x => x.Place).Include(x => x.MenuCategory).Skip((page - 1) * 3).Take(3).ToList();
             return View(placeMenus);
         }
     }

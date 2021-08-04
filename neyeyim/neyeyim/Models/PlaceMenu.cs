@@ -9,6 +9,7 @@ namespace neyeyim.Models
     public class PlaceMenu:BaseEntity
     {
         public int? PlaceId { get; set; }
+        public int? MenuCategoryId { get; set; }
 
         [Required]
         [StringLength(maximumLength: 30)]
@@ -23,7 +24,6 @@ namespace neyeyim.Models
         public string FoodContent { get; set; }
 
         public Place Place { get; set; }
-        public List<MenuCategory> MenuCategories { get; set; }
-
+        public MenuCategory MenuCategory { get; set; }
     }
 }

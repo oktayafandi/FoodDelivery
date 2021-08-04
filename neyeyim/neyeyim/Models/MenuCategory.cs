@@ -8,10 +8,9 @@ namespace neyeyim.Models
 {
     public class MenuCategory : BaseEntity
     {
-        public int PlaceMenuId { get; set; }
         [Required]
-        [StringLength(maximumLength: 50)]
+        [StringLength(maximumLength: 100)]
         public string Name { get; set; }
-        public PlaceMenu PlaceMenu { get; set; }
+        public List<PlaceMenu> PlaceMenus { get; set; }
     }
 }

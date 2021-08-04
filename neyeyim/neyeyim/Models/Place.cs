@@ -29,14 +29,12 @@ namespace neyeyim.Models
         [Required]
         public string Servisfee { get; set; }
 
-        [Required]
-        [StringLength(maximumLength: 100)]
+        [StringLength(maximumLength: 1000)]
         public string Image { get; set; }
 
-        [Required]
-        [StringLength(maximumLength: 100)]
+        [StringLength(maximumLength: 1000)]
         public string Logo { get; set; }
-        public bool? IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         [NotMapped]
         public IFormFile ImageFile { get; set; }

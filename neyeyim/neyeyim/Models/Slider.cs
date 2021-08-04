@@ -10,7 +10,6 @@ namespace neyeyim.Models
 {
     public class Slider: BaseEntity
     {
-        [Required]
         [StringLength(maximumLength: 100)]
         public string Image { get; set; }
         [NotMapped]

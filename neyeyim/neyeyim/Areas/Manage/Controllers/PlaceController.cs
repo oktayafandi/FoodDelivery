@@ -34,7 +34,11 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = _context.Categories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
 
             return View();
         }
@@ -43,7 +47,13 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Place place)
         {
-            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = _context.Categories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
+
+            string rootPath = _env.WebRootPath;
 
             if (place.ImageFile != null)
             {
@@ -59,9 +69,8 @@ namespace neyeyim.Areas.Manage.Controllers
                     return View();
                 }
 
-                string rootPath = _env.WebRootPath;
                 var filename = Guid.NewGuid().ToString() + place.ImageFile.FileName;
-                var path = Path.Combine(rootPath, "img", filename);
+                var path = Path.Combine(rootPath, "uploads\\img", filename);
 
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
@@ -85,9 +94,8 @@ namespace neyeyim.Areas.Manage.Controllers
                     return View();
                 }
 
-                string rootPath = _env.WebRootPath;
                 var filename = Guid.NewGuid().ToString() + place.LogoFile.FileName;
-                var path = Path.Combine(rootPath, "img", filename);
+                var path = Path.Combine(rootPath, "uploads\\img", filename);
 
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
@@ -97,12 +105,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 place.Logo = filename;
             }
 
-            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+            place.Rate = 0;
 
             if (!ModelState.IsValid)
             {
@@ -117,7 +120,11 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Edit(int id)
         {
-            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = _context.Categories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
 
             Place place = _context.Places.FirstOrDefault(x => x.Id == id);
 
@@ -129,9 +136,14 @@ namespace neyeyim.Areas.Manage.Controllers
             return View(place);
         }
 
+        [HttpPost]
         public IActionResult Edit(int id, Place place)
         {
-            ViewBag.Categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Categories = _context.Categories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
 
             Place existPlace = _context.Places.FirstOrDefault(x => x.Id == id);
 
@@ -155,7 +167,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 }
 
                 string filename = Guid.NewGuid().ToString() + place.ImageFile.FileName;
-                string path = Path.Combine(_env.WebRootPath, "uploads", filename);
+                string path = Path.Combine(_env.WebRootPath, "uploads\\img", filename);
 
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
@@ -164,7 +176,7 @@ namespace neyeyim.Areas.Manage.Controllers
 
                 if (existPlace.Image != null)
                 {
-                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPlace.Image);
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPlace.Image);
                     if (System.IO.File.Exists(existPath))
                     {
                         System.IO.File.Delete(existPath);
@@ -177,7 +189,7 @@ namespace neyeyim.Areas.Manage.Controllers
             {
                 if (existPlace.Image != null)
                 {
-                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPlace.Image);
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPlace.Image);
                     if (System.IO.File.Exists(existPath))
                     {
                         System.IO.File.Delete(existPath);
@@ -202,7 +214,7 @@ namespace neyeyim.Areas.Manage.Controllers
                 }
 
                 string filename = Guid.NewGuid().ToString() + place.LogoFile.FileName;
-                string path = Path.Combine(_env.WebRootPath, "uploads", filename);
+                string path = Path.Combine(_env.WebRootPath, "uploads\\img", filename);
 
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
@@ -211,7 +223,7 @@ namespace neyeyim.Areas.Manage.Controllers
 
                 if (existPlace.Logo != null)
                 {
-                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPlace.Logo);
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPlace.Logo);
                     if (System.IO.File.Exists(existPath))
                     {
                         System.IO.File.Delete(existPath);
@@ -224,7 +236,7 @@ namespace neyeyim.Areas.Manage.Controllers
             {
                 if (existPlace.Logo != null)
                 {
-                    string existPath = Path.Combine(_env.WebRootPath, "uploads", existPlace.Logo);
+                    string existPath = Path.Combine(_env.WebRootPath, "uploads\\img", existPlace.Logo);
                     if (System.IO.File.Exists(existPath))
                     {
                         System.IO.File.Delete(existPath);

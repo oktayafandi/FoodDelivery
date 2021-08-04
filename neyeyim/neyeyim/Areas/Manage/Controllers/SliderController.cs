@@ -38,6 +38,7 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Slider slider)
         {
+            string rootPath = _env.WebRootPath;
             if (slider.ImageFile != null)
             {
                 if (slider.ImageFile.ContentType != "image/png" && slider.ImageFile.ContentType != "image/jpeg")
@@ -52,9 +53,8 @@ namespace neyeyim.Areas.Manage.Controllers
                     return View();
                 }
 
-                string rootPath = _env.WebRootPath;
                 var filename = Guid.NewGuid().ToString() + slider.ImageFile.FileName;
-                var path = Path.Combine(rootPath, "img", filename);
+                var path = Path.Combine(rootPath, "uploads\\img", filename);
 
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {

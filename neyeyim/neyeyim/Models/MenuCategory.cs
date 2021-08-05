@@ -11,6 +11,7 @@ namespace neyeyim.Models
         [Required]
         [StringLength(maximumLength: 100)]
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
         public List<PlaceMenu> PlaceMenus { get; set; }
     }
 }

@@ -19,8 +19,7 @@ namespace neyeyim.Models
         public decimal FoodPrice { get; set; }
         public bool? IsDeleted { get; set; }
 
-        [Required]
-        [StringLength(maximumLength: 30)]
+        [StringLength(maximumLength: 500)]
         public string FoodContent { get; set; }
 
         public Place Place { get; set; }

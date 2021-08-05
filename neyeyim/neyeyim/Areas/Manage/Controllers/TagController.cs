@@ -77,7 +77,6 @@ namespace neyeyim.Areas.Manage.Controllers
 
             tag.IsDeleted = true;
             _context.SaveChanges();
-
             return RedirectToAction("index");
         }
 
@@ -89,7 +88,6 @@ namespace neyeyim.Areas.Manage.Controllers
 
             tag.IsDeleted = false;
             _context.SaveChanges();
-
             return RedirectToAction("index");
         }
     }

@@ -384,3 +384,7 @@ C:\Users\User\Desktop\FinalProject\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyey
 C:\Users\User\Desktop\FinalProject\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.dll
 C:\Users\User\Desktop\FinalProject\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.pdb
 C:\Users\User\Desktop\FinalProject\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.genruntimeconfig.cache
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\MenuCategory\Index.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\MenuCategory\Create.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\MenuCategory\Edit.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\PlaceMenu\Create.cshtml.g.cs

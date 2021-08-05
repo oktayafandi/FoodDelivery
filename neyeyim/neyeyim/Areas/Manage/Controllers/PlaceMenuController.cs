@@ -78,6 +78,71 @@ namespace neyeyim.Areas.Manage.Controllers
             return RedirectToAction("index");
         }
 
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.MenuCategories = _context.MenuCategories.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == id);
+
+            if (placeMenu == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            return View(placeMenu);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, PlaceMenu placeMenu)
+        {
+            PlaceMenu existPlaceMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == id);
+
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.MenuCategories = _context.MenuCategories.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            if (existPlaceMenu == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            existPlaceMenu.FoodName = placeMenu.FoodName;
+            existPlaceMenu.FoodContent = placeMenu.FoodContent;
+            existPlaceMenu.FoodPrice = placeMenu.FoodPrice;
+            existPlaceMenu.Place = placeMenu.Place;
+            existPlaceMenu.MenuCategory = placeMenu.MenuCategory;
+
+            _context.SaveChanges();
+            return RedirectToAction("index");
+        }
+
         public IActionResult Delete(int id)
         {
             PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == id);

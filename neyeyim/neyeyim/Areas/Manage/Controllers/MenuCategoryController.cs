@@ -26,7 +26,7 @@ namespace neyeyim.Areas.Manage.Controllers
             ViewBag.SelectedPage = page;
             ViewBag.TotalPageCount = Math.Ceiling(_context.MenuCategories.Count() / 3d);
 
-            List<MenuCategory> menuCategories = _context.MenuCategories.Include(x => x.PlaceMenus).Skip((page - 1) * 3).Take(3).ToList();
+            List<MenuCategory> menuCategories = _context.MenuCategories.Include(x => x.PlaceMenus).Where(x => x.IsDeleted == false).Skip((page - 1) * 3).Take(3).ToList();
             return View(menuCategories);
         }
 

@@ -79,6 +79,66 @@ namespace neyeyim.Areas.Manage.Controllers
             return RedirectToAction("index");
         }
 
+
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Tags = _context.Tags.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            PlaceTag placeTag = _context.PlaceTags.FirstOrDefault(x => x.Id == id);
+
+            if (placeTag == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            return View(placeTag);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, PlaceTag placeTag)
+        {
+            PlaceTag existPlaceTag = _context.PlaceTags.FirstOrDefault(x => x.Id == id);
+
+            ViewBag.Tags = _context.Tags.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name,
+                Selected = true
+            }).ToList();
+
+            if (existPlaceTag == null)
+            {
+                return RedirectToAction("index");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("index");
+        }
+
         public IActionResult Delete(int id)
         {
             PlaceTag placeTag = _context.PlaceTags.FirstOrDefault(x => x.Id == id);

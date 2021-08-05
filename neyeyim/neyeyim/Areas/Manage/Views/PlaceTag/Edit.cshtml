@@ -1,0 +1,27 @@
+﻿@model PlaceTag
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.TagId">Tag</label>
+                <select class="form-control" asp-for="@Model.TagId" asp-items="ViewBag.Tags">
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.PlaceId">Məkan</label>
+                <select class="form-control" asp-for="@Model.PlaceId" asp-items="ViewBag.Places">
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Redaktə et</button>
+    </form>
+</div>
+
+

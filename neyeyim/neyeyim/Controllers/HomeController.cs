@@ -24,7 +24,7 @@ namespace neyeyim.Controllers
             HomeViewModel homeVM = new HomeViewModel
             {
                 Sliders = _context.Sliders.Where(x => x.IsDeleted == false).OrderBy(x => x.Order).ToList(),
-                Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Jobads).Include(x => x.Campaigns).Include(x => x.Category).Where(x => x.IsDeleted == false).Take(3).ToList(),
+                Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Jobads).Include(x => x.Campaigns).Include(x => x.Category).Where(x => x.IsDeleted == false && x.IsSelected == true).Take(3).ToList(),
             };
             return View(homeVM);
         }

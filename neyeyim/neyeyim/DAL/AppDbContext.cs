@@ -14,7 +14,6 @@ namespace neyeyim.DAL
         {
 
         }
-
          public DbSet<Slider> Sliders { get; set; }
          public DbSet<Category> Categories { get; set; }
          public DbSet<Place> Places { get; set; }
@@ -28,5 +27,6 @@ namespace neyeyim.DAL
          public DbSet<Campaign> Campaigns { get; set; }
          public DbSet<PlaceMenu> PlaceMenus { get; set; }
          public DbSet<MenuCategory> MenuCategories { get; set; }
+        public DbSet<PlaceComment> PlaceComments { get; set; }
     }
 }

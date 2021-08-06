@@ -45,5 +45,6 @@ namespace neyeyim.Models
         public List<Jobad> Jobads { get; set; }
         public List<Campaign> Campaigns { get; set; }
         public List<PlaceMenu> PlaceMenus { get; set; }
+        public List<PlaceComment> PlaceComments { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Place
+﻿@model PlaceDetailViewModel
 
 @{
     ViewData["Title"] = "Detail";
@@ -7,8 +7,8 @@
         <div class="container animate__animated animate__fadeInLeft">
             <div class="row">
                 <div class="restcaption col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex" style="padding: 30px;">
-                    <img src="~/uploads/img/@Model.Logo" alt="">
-                    <h1>@Model.Name</h1>
+                    <img src="~/uploads/img/@Model.Place.Logo" alt="">
+                    <h1>@Model.Place.Name</h1>
                 </div>
             </div>
         </div>
@@ -42,17 +42,17 @@
                              aria-labelledby="nav-home-tab">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 28px">
                                 <div class="restaurants-detail">
-                                    <h4>"@Model.Name" haqqında məlumatlar</h4>
+                                    <h4>"@Model.Place.Name" haqqında məlumatlar</h4>
                                     <p class="restdetailtext" style="padding-top: 20px">
-                                        Ünvanlar: @Model.Adress
+                                        Ünvanlar: @Model.Place.Adress
                                     </p>
-                                    <p class="restdetailtext">Açılış-Bağlanış: @Model.OpenCloseTime</p>
-                                    <p class="restdetailtext">Status: @Model.Status</p>
-                                    <p class="restdetailtext">Servis haqqı: @Model.Servisfee</p>
-                                    <p class="restdetailtext">Depozit: @Model.Deposit</p>
-                                    <p class="restdetailtext">Əlaqə nömrəsi: @Model.ContactPhone</p>
+                                    <p class="restdetailtext">Açılış-Bağlanış: @Model.Place.OpenCloseTime</p>
+                                    <p class="restdetailtext">Status: @Model.Place.Status</p>
+                                    <p class="restdetailtext">Servis haqqı: @Model.Place.Servisfee</p>
+                                    <p class="restdetailtext">Depozit: @Model.Place.Deposit</p>
+                                    <p class="restdetailtext">Əlaqə nömrəsi: @Model.Place.ContactPhone</p>
                                     <p class="restdetailtext">Tag: 
-                                   @foreach (var item in Model.PlaceTags)
+                                   @foreach (var item in Model.Place.PlaceTags)
                                     {
                                        <span>@item.Tag.Name</span>
                                     }
@@ -63,7 +63,7 @@
 
 
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                           @foreach (var item in Model.PlaceMenus)
+                           @foreach (var item in Model.Place.PlaceMenus)
                             {
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"
                                     style="justify-content: space-between; align-items: center;">
@@ -102,63 +102,52 @@
 
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                             <div id="full-stars-example-two">
-                                <div class="rating-group">
-                                    <input disabled checked class="rating__input rating__input--none" name="rating3"
-                                           id="rating3-none" value="0" type="radio">
-                                    <label aria-label="1 star" class="rating__label" for="rating3-1">
-                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                    </label>
-                                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                                    <label aria-label="2 stars" class="rating__label" for="rating3-2">
-                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                    </label>
-                                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                                    <label aria-label="3 stars" class="rating__label" for="rating3-3">
-                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                    </label>
-                                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                                    <label aria-label="4 stars" class="rating__label" for="rating3-4">
-                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                    </label>
-                                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                                    <label aria-label="5 stars" class="rating__label" for="rating3-5">
-                                        <i class="rating__icon rating__icon--star fa fa-star"></i>
-                                    </label>
-                                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label"></label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    <button type="button" class="cmntbtn btn">Paylaş</button>
-                                </div>
+                                <form asp-action="addcomment" method="post">
+                                    <div class="rating-group">
+                                        <input disabled checked class="rating__input rating__input--none" name="rating3"
+                                               id="rating3-none" value="0" type="radio">
+                                        <label aria-label="1 star" class="rating__label" for="rating3-1">
+                                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                        </label>
+                                        <input class="rating__input" name="Rate" id="rating3-1" value="1" type="radio">
+                                        <label aria-label="2 stars" class="rating__label" for="rating3-2">
+                                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                        </label>
+                                        <input class="rating__input" name="Rate" id="rating3-2" value="2" type="radio">
+                                        <label aria-label="3 stars" class="rating__label" for="rating3-3">
+                                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                        </label>
+                                        <input class="rating__input" name="Rate" id="rating3-3" value="3" type="radio">
+                                        <label aria-label="4 stars" class="rating__label" for="rating3-4">
+                                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                        </label>
+                                        <input class="rating__input" name="Rate" id="rating3-4" value="4" type="radio">
+                                        <label aria-label="5 stars" class="rating__label" for="rating3-5">
+                                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                                        </label>
+                                        <input class="rating__input" name="Rate" id="rating3-5" value="5" type="radio">
+                                    </div>
+                                    <input type="hidden" name="PlaceId" value="@Model.Place.Id" />
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label"></label>
+                                        <textarea name="Text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <button type="button" class="cmntbtn btn">Paylaş</button>
+                                    </div>
+                                </form>
                                 <hr>
-                                <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4 class="username">Username</h4>
-                                    <p class="usercmnt">
-                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Ipsam
-                                        mollitia facere architecto, consequuntur vel nobis dolore possimus a sunt
-                                        quis
-                                        at
-                                        cupiditate. Eos ex veniam totam tempora temporibus recusandae voluptas!
-                                    </p>
-                                    <i class="fas fa-star" style="color: #009de0;">4</i>
-                                </div>
-                                <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4 class="username">Username</h4>
-                                    <p class="usercmnt">
-                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        Ipsam
-                                        mollitia facere architecto, consequuntur vel nobis dolore possimus a sunt
-                                        quis
-                                        at
-                                        cupiditate. Eos ex veniam totam tempora temporibus recusandae voluptas!
-                                    </p>
-                                    <i class="fas fa-star" style="color: #009de0;">4</i>
-                                </div>
+                               @foreach (var comment in Model.Place.PlaceComments)
+                                {
+                                    <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <h4 class="username">@comment.AppUser.UserName</h4>
+                                        <p class="usercmnt">
+                                            @comment.Text
+                                        </p>
+                                        <p>@comment.CreatedAt.ToString("MMMM dd, yyyy")</p>
+                                        <i class="fas fa-star" style="color: #009de0;">@comment.Rate</i>
+                                    </div>
+                                }
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

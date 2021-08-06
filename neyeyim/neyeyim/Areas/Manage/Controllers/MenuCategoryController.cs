@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using neyeyim.DAL;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace neyeyim.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin")]
     public class MenuCategoryController : Controller
     {
         private readonly AppDbContext _context;

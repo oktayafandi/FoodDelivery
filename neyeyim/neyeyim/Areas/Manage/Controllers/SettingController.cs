@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using neyeyim.DAL;
 using neyeyim.Models;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace neyeyim.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin")]
     public class SettingController : Controller
     {
         private readonly AppDbContext _context;

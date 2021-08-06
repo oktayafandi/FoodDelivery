@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using neyeyim.DAL;
 using neyeyim.Models;
@@ -27,6 +28,20 @@ namespace neyeyim.Controllers
         {
             return View();
         }
+
+        //public async Task<IActionResult> CreateAdmin()
+        //{
+        //    AppUser admin = new AppUser
+        //    {
+        //        UserName = "SuperAdmin",
+        //        Name = "Ogtay Afandi"
+        //    };
+
+        //    await _userManager.CreateAsync(admin, "admin123");
+        //    await _userManager.AddToRoleAsync(admin, "Admin");
+
+        //    return Ok();
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -72,6 +87,7 @@ namespace neyeyim.Controllers
                 return View();
             }
 
+            await _userManager.AddToRoleAsync(user, "Member");
             await _signInManager.SignInAsync(user, true);
             _context.SaveChanges();
             return RedirectToAction("index", "home");
@@ -108,6 +124,61 @@ namespace neyeyim.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("login");
+        }
+
+        [Authorize(Roles = "Member")]
+        public async Task<IActionResult> Edit()
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            return View(user);
+        }
+
+        [Authorize(Roles = "Member")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(AppUser member)
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (_userManager.Users.Any(x => x.UserName == member.UserName && x.Id != user.Id))
+            {
+                ModelState.AddModelError("UserName", "Bu istifadəçi adı artıq istifadə olunur!");
+                return View();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            user.UserName = member.UserName;
+            user.Name = member.Name;
+            user.Surname = member.Surname;
+            user.Email = member.Email;
+
+            if (!string.IsNullOrWhiteSpace(member.Password))
+            {
+                if (string.IsNullOrWhiteSpace(member.CurrentPassword))
+                {
+                    ModelState.AddModelError("CurrentPassword", "Cari şifrə boş ola bilməz!");
+                    return View();
+                }
+
+                var result = await _userManager.ChangePasswordAsync(user, member.CurrentPassword, member.Password);
+                if (!result.Succeeded)
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+
+                    return View();
+                }
+            }
+            await _userManager.UpdateAsync(user);
+
+            await _signInManager.SignInAsync(user, true);
+            return RedirectToAction("index", "home");
         }
     }
 }

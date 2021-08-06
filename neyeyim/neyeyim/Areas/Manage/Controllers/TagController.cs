@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using neyeyim.DAL;
 using neyeyim.Models;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace neyeyim.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin")]
     public class TagController : Controller
     {
         private readonly AppDbContext _context;

@@ -187,7 +187,6 @@ C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Campaign\Index.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Campaign\Create.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Campaign\Edit.cshtml.g.cs
-C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.csprojAssemblyReference.cache
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Place\Create.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Place\Edit.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\PlaceMenu\Index.cshtml.g.cs
@@ -390,3 +389,6 @@ C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\PlaceMenu\Create.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\PlaceMenu\Edit.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\PlaceTag\Edit.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Login.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Account\Edit.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.csprojAssemblyReference.cache

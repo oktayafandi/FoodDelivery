@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using neyeyim.DAL;
 using neyeyim.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,9 +16,11 @@ namespace neyeyim.Areas.Manage.Controllers
     public class SettingController : Controller
     {
         private readonly AppDbContext _context;
-        public SettingController(AppDbContext context)
+        private readonly IWebHostEnvironment _env;
+        public SettingController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult Index()
@@ -57,6 +61,7 @@ namespace neyeyim.Areas.Manage.Controllers
             existSetting.ContactMail = setting.ContactMail;
             existSetting.InfoMail = setting.InfoMail;
             existSetting.Adress = setting.Adress;
+            existSetting.Logo = setting.Logo;
             existSetting.WorkTime = setting.WorkTime;
             existSetting.InstagramUrl = setting.InstagramUrl;
             existSetting.FacebookUrl = setting.FacebookUrl;

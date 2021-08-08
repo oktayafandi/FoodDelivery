@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using neyeyim.Areas.Manage.Services
+@inject DashboardLayoutViewModelService  service
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -161,16 +166,21 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="~/manage/#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                @{ foreach (var item in service.GetFullName())
+                                                {
+                                                    if (item.UserName == User.Identity.Name)
+                                                    {
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> @item.Name</span> }
+                                                } }
                                 <img class="img-profile rounded-circle"
                                      src="~/manage/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" asp-action="edit" asp-controller="account">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>

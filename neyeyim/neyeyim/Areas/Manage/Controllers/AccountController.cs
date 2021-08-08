@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using neyeyim.Areas.Manage.ViewModels;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace neyeyim.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -60,6 +62,59 @@ namespace neyeyim.Areas.Manage.Controllers
             }
 
             return RedirectToAction("index", "dashboard");
+        }
+
+        public async Task<IActionResult> Edit()
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            return View(user);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(AppUser admin)
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (_userManager.Users.Any(x => x.UserName == admin.UserName && x.Id != user.Id))
+            {
+                ModelState.AddModelError("UserName", "UserName already taken!");
+                return View();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            user.UserName = admin.UserName;
+            user.Name = admin.Name;
+
+
+            if (!string.IsNullOrWhiteSpace(admin.Password))
+            {
+                if (string.IsNullOrWhiteSpace(admin.CurrentPassword))
+                {
+                    ModelState.AddModelError("CurrentPassword", "CurrentPassword can not be emtpy");
+                    return View();
+                }
+
+                var result = await _userManager.ChangePasswordAsync(user, admin.CurrentPassword, admin.Password);
+                if (!result.Succeeded)
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+
+                    return View();
+                }
+            }
+            await _userManager.UpdateAsync(user);
+
+            await _signInManager.SignInAsync(user, true);
+            return RedirectToAction("login", "account");
         }
     }
 }

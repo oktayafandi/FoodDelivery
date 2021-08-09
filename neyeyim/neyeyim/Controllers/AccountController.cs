@@ -16,32 +16,19 @@ namespace neyeyim.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-
-        public AccountController(AppDbContext context, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public AccountController(AppDbContext context, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Register()
         {
             return View();
         }
-
-        //public async Task<IActionResult> CreateAdmin()
-        //{
-        //    AppUser admin = new AppUser
-        //    {
-        //        UserName = "SuperAdmin",
-        //        Name = "Ogtay Afandi"
-        //    };
-
-        //    await _userManager.CreateAsync(admin, "admin123");
-        //    await _userManager.AddToRoleAsync(admin, "Admin");
-
-        //    return Ok();
-        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -125,6 +112,22 @@ namespace neyeyim.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("login");
         }
+
+        //public async Task<IActionResult> CreateSuperAdmin()
+        //{
+        //    AppUser admin = new AppUser
+        //    {
+        //        UserName = "SuperAdmin",
+        //        Name = "Oktay Afandi",
+        //        IsAdmin = true,
+        //    };
+
+        //    //passsword: Superadmin123
+        //    await _userManager.CreateAsync(admin, "Superadmin123");
+        //    await _userManager.AddToRoleAsync(admin, "SuperAdmin");
+
+        //    return Ok();
+        //}
 
         [Authorize(Roles = "Member")]
         public async Task<IActionResult> Edit()

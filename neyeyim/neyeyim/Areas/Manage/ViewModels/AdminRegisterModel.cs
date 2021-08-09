@@ -6,21 +6,14 @@ using System.Threading.Tasks;
 
 namespace neyeyim.Areas.Manage.ViewModels
 {
-    public class AdminUpdateModel
+    public class AdminRegisterModel
     {
-        [Required]
         [StringLength(maximumLength: 30)]
         public string Name { get; set; }
-
-        [StringLength(maximumLength: 30)]
+        [StringLength(maximumLength: 20)]
         public string UserName { get; set; }
-        public string Id { get; set; }
-
+        [StringLength(maximumLength: 50)]
         [DataType(DataType.Password)]
-        [StringLength(maximumLength: 50)]
         public string Password { get; set; }
-
-        [StringLength(maximumLength: 50)]
-        public string CurrentPassword { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace neyeyim.Areas.Manage.Controllers
 {
     [Area("manage")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class DashboardController : Controller
     {
         public IActionResult Index()

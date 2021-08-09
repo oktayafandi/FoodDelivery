@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using neyeyim.Areas.Manage.Services;
 using neyeyim.DAL;
 using neyeyim.Models;
 using neyeyim.Services;
@@ -48,6 +49,8 @@ namespace neyeyim
             services.AddSession();
 
             services.AddScoped<LayoutViewModelService>();
+            services.AddScoped<DashboardLayoutViewModelService>();
+
 
             services.ConfigureApplicationCookie(opt =>
             {
@@ -70,7 +73,6 @@ namespace neyeyim
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

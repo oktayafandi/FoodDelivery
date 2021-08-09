@@ -18,8 +18,8 @@ namespace neyeyim.Areas.Manage.Services
             _context = context;
             _contextAccessor = contextAccessor;
         }
-        [Authorize(Roles = "Admin")]
-        public List<AppUser> GetFullName()
+        [Authorize(Roles = "Admin,SuperAdmin")]
+        public List<AppUser> GetName()
         {
             return _context.Users.Where(x => x.IsAdmin).ToList();
         }

@@ -3,7 +3,7 @@
 <!--Start of Slider Area-->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item">
+        <div class="carousel-item active">
             <a href=""><img class="d-block w-100" src="uploads/img/1.jpg" alt="First slide"></a>
         </div>
         <div class="carousel-item">
@@ -29,7 +29,7 @@
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Seçilmiş məkanlar</h1>
-           @foreach (var item in Model.Places)
+            @foreach (var item in Model.Places)
             {
                 <div class="col-lg-4 col-md-4">
                     <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
@@ -49,13 +49,12 @@
     </div>
 </section>
 <!--End of Selected places Area-->
-
 <!--Start of Most Popular places Area-->
 <section class="cards4 animate__animated animate__fadeIn" style="background-color: #F8F9FA;">
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Ən populyar məkanlar</h1>
-           @foreach (var item in Model.Places)
+            @foreach (var item in Model.Places)
             {
                 <div class="col-lg-4 col-md-4">
                     <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
@@ -75,7 +74,6 @@
     </div>
 </section>
 <!--End of Most Popular places Area-->
-
 <!--Start of Last Ordered places Area-->
 <section class="cards4 animate__animated animate__fadeIn">
     <div class="container">

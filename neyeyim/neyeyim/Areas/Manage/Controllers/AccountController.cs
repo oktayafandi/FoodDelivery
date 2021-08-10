@@ -50,7 +50,7 @@ namespace neyeyim.Areas.Manage.Controllers
         //    AppUser admin = new AppUser
         //    {
         //        UserName = "Admin",
-        //        Name = "Afandi Afandiev"
+        //        Name = "Tural Asadov"
         //    };
 
         //    //passsword: Admin123

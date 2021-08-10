@@ -6,24 +6,6 @@
     Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Banner Area Start -->
-<div class="banner-area-wrapper">
-    <div class="banner-area text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="banner-content-wrapper">
-                        <div class="banner-content">
-                            <h2>Admin yarat</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Banner Area End -->
-
 <div class="register-area pt-150 pb-150">
     <div class="container">
         <div class="row">
@@ -31,8 +13,7 @@
                 <div class="login">
                     <div class="login-form-container">
                         <div class="login-text">
-                            <h2>sign up</h2>
-                            <span>Please login using account detail bellow.</span>
+                            <h2>Admin yarat</h2>
                         </div>
                         <div class="login-form">
                             <form asp-action="createadmin" asp-controller="account" method="post">
@@ -42,7 +23,7 @@
                                 <span class="text-danger" asp-validation-for="@Model.UserName"></span>
                                 <input asp-for="@Model.Password" placeholder="Password">
                                 <span class="text-danger" asp-validation-for="@Model.Password"></span>
-                                <button type="submit" class="default-btn">Admini yarat</button>
+                                <button type="submit" class="btn btn-primary">Admini yarat</button>
                             </form>
                         </div>
                     </div>

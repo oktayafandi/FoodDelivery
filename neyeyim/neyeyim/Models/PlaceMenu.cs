@@ -10,18 +10,14 @@ namespace neyeyim.Models
     {
         public int? PlaceId { get; set; }
         public int? MenuCategoryId { get; set; }
-
         [Required]
         [StringLength(maximumLength: 30)]
         public string FoodName { get; set; }
-
         [Required]
         public decimal FoodPrice { get; set; }
         public bool? IsDeleted { get; set; }
-
         [StringLength(maximumLength: 500)]
         public string FoodContent { get; set; }
-
         public Place Place { get; set; }
         public MenuCategory MenuCategory { get; set; }
     }

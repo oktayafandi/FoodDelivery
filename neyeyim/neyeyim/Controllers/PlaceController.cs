@@ -31,8 +31,12 @@ namespace neyeyim.Controllers
         public IActionResult Detail(int Id)
         {
             ViewBag.Tags = _context.PlaceTags.Include(x => x.Tag).Where(x => x.IsDeleted == false).ToList();
-            Place place = _context.Places.Include(x => x.PlaceMenus).Include(x => x.PlaceTags).Include(x => x.PlaceComments).ThenInclude(x => x.AppUser).FirstOrDefault(x => x.Id == Id);
-            return View(place);
+
+            PlaceDetailViewModel placeDetailVM = new PlaceDetailViewModel
+            {
+                Place = _context.Places.Include(x => x.PlaceMenus).Include(x => x.PlaceTags).Include(x => x.PlaceComments).ThenInclude(x => x.AppUser).FirstOrDefault(x => x.Id == Id),
+            };
+            return View(placeDetailVM);
         }
 
         [Authorize(Roles = "Member")]

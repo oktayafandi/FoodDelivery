@@ -40,6 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\home.css.map" />
+    <None Include="wwwroot\css\home.scss" />
     <None Include="wwwroot\manage\img\undraw_posting_photo.svg" />
     <None Include="wwwroot\manage\img\undraw_profile.svg" />
     <None Include="wwwroot\manage\img\undraw_profile_1.svg" />

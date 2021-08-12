@@ -18,7 +18,9 @@ namespace neyeyim.Models
         [StringLength(maximumLength: 50)]
         public string Adress { get; set; }
         [Required]
-        public string OpenCloseTime { get; set; }
+        public DateTime OpenTime { get; set; }
+        [Required]
+        public DateTime CloseTime { get; set; }
         [Required]
         public string Status { get; set; }
         [Required]

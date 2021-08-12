@@ -383,6 +383,19 @@
   margin-top: 15px;
 }
 
+.userscomment .username {
+  font-family: "Oswald", sans-serif !important;
+}
+
+.userscomment .usercmnt {
+  font-family: "Uchen", serif !important;
+}
+
+.userscomment .commentdatetime {
+  font-family: "Roboto", sans-serif !important;
+  color: #aaa !important;
+}
+
 .dropbtn {
   background-color: #009de0 !important;
   color: white !important;

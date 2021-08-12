@@ -255,7 +255,6 @@ namespace neyeyim.Areas.Manage.Controllers
 
             existPlace.Name = place.Name;
             existPlace.Adress = place.Adress;
-            existPlace.OpenCloseTime = place.OpenCloseTime;
             existPlace.Status = place.Status;
             existPlace.Servisfee = place.Servisfee;
             existPlace.IsSelected = place.IsSelected;

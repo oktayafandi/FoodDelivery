@@ -365,6 +365,16 @@
   border: solid 1px #ccc;
   padding: 17px 20px 15px;
   margin-top: 15px;
+  .username {
+    font-family: "Oswald", sans-serif !important;
+  }
+  .usercmnt {
+    font-family: "Uchen", serif !important;
+  }
+  .commentdatetime {
+    font-family: "Roboto", sans-serif !important;
+    color: #aaa !important;
+  }
 }
 
 .dropbtn {

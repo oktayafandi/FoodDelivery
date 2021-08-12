@@ -50,12 +50,12 @@ namespace neyeyim
 
             services.AddScoped<LayoutViewModelService>();
             services.AddScoped<DashboardLayoutViewModelService>();
-
+            services.Configure<IdentityOptions>(options =>
 
             services.ConfigureApplicationCookie(opt =>
             {
                 opt.AccessDeniedPath = "/account/login";
-            });
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

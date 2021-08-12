@@ -22,8 +22,9 @@
         <thead>
             <tr class="row">
                 <th class="col-md-1">#</th>
-                <th class="col-md-4">Məkan</th>
-                <th class="col-md-4">Menyu kateqoriyası</th>
+                <th class="col-md-3">Məkan</th>
+                <th class="col-md-2">Menyu kateqoriyası</th>
+                <th class="col-md-3">Məhsul</th>
                 <th class="col-md-3"></th>
             </tr>
         </thead>
@@ -32,22 +33,23 @@
            @foreach (var item in Model)
             {
                 i++;
-                <tr class="row">
-                    <td class="col-md-1">@i</td>
-                    <td class="col-md-4">@item.Place.Name</td>
-                    <td class="col-md-4">@item.MenuCategory.Name</td>
-                    <td class="col-md-3">
-                        <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Redaktə et</a>
-                       @if (item.IsDeleted == false)
-                        {
-                            <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Sil</a>
-                        }
-                        else
-                        {
-                            <a class="btn btn-info" asp-action="restore" asp-route-id="@item.Id">Geri qaytar</a>
-                        }
-                    </td>
-                </tr>
+            <tr class="row">
+                <td class="col-md-1">@i</td>
+                <td class="col-md-3">@item.Place.Name</td>
+                <td class="col-md-2">@item.MenuCategory.Name</td>
+                <td class="col-md-3">@item.FoodName</td>
+                <td class="col-md-3">
+                    <a class="btn btn-warning" asp-action="edit" asp-route-id="@item.Id">Redaktə et</a>
+                    @if (item.IsDeleted == false)
+                    {
+                        <a class="btn btn-danger delete-btn" asp-action="delete" asp-route-id="@item.Id">Sil</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" asp-action="restore" asp-route-id="@item.Id">Geri qaytar</a>
+                    }
+                </td>
+            </tr>
             }
         </tbody>
     </table>

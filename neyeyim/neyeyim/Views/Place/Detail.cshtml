@@ -35,31 +35,28 @@
                             </button>
                         </div>
                     </nav>
-                    <div class="tab-content" id="nav-tabContent" style="padding: 30px;">
 
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                    <div class="tab-content" id="nav-tabContent" style="padding: 30px;">
+                       <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                              aria-labelledby="nav-home-tab">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 28px">
                                 <div class="restaurants-detail">
                                     <h4>"@Model.Place.Name" haqqında məlumatlar</h4>
-                                    <p class="restdetailtext" style="padding-top: 20px">
-                                        Ünvanlar: @Model.Place.Adress
-                                    </p>
-                                    <p class="restdetailtext">Açılış-Bağlanış: @Model.Place.OpenCloseTime</p>
+                                    <p class="restdetailtext" style="padding-top: 20px">Ünvanlar: @Model.Place.Adress</p>
                                     <p class="restdetailtext">Status: @Model.Place.Status</p>
+                                    <p class="restdetailtext">Açılış-Bağlanış: @Model.Place.OpenTime.ToString("HH:mm") - @Model.Place.CloseTime.ToString("HH:mm")</p>
                                     <p class="restdetailtext">Servis haqqı: @Model.Place.Servisfee</p>
                                     <p class="restdetailtext">Depozit: @Model.Place.Deposit</p>
                                     <p class="restdetailtext">Əlaqə nömrəsi: @Model.Place.ContactPhone</p>
                                     <p class="restdetailtext">Tag: 
                                    @foreach (var item in Model.Place.PlaceTags)
                                     {
-                                       <span>@item.Tag.Name</span>
+                                            <span>@item.Tag.Name</span>
                                     }
                                     </p>
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                            @foreach (var item in Model.Place.PlaceMenus)
@@ -130,10 +127,10 @@
                                 {
                                     <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <h4 class="username">@comment.AppUser.UserName</h4>
-                                        <p class="usercmnt">
+                                        <p class="usercmnt" style="font-size: 22px;">
                                             @comment.Text
                                         </p>
-                                        <p>@comment.CreatedAt.ToString("MMMM dd, yyyy")</p>
+                                        <p class="commentdatetime">@comment.CreatedAt.ToString("MMMM dd, yyyy")</p>
                                         <i class="fas fa-star" style="color: #009de0;">@comment.Rate</i>
                                     </div>
                                 }
@@ -143,4 +140,3 @@
                 </div>
             </div>
         </div>
-

@@ -34,7 +34,7 @@ namespace neyeyim.Controllers
 
             PlaceDetailViewModel placeDetailVM = new PlaceDetailViewModel
             {
-                Place = _context.Places.Include(x => x.PlaceMenus).Include(x => x.PlaceTags).Include(x => x.PlaceComments).ThenInclude(x => x.AppUser).FirstOrDefault(x => x.Id == Id),
+                Place = _context.Places.Include(x => x.PlaceMenus).ThenInclude(x => x.MenuCategory).Include(x => x.PlaceTags).Include(x => x.PlaceComments).ThenInclude(x => x.AppUser).FirstOrDefault(x => x.Id == Id),
             };
             return View(placeDetailVM);
         }

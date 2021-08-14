@@ -45,21 +45,6 @@ namespace neyeyim.Areas.Manage.Controllers
         //    return Content("ok");
         //}
 
-        //public async Task<IActionResult> CreateAdmin()
-        //{
-        //    AppUser admin = new AppUser
-        //    {
-        //        UserName = "Admin",
-        //        Name = "Tural Asadov"
-        //    };
-
-        //    //passsword: Admin123
-        //    await _userManager.CreateAsync(admin, "Admin123");
-        //    await _userManager.AddToRoleAsync(admin, "Admin");
-
-        //    return Ok();
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(AdminLoginModel login)

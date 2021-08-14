@@ -25,6 +25,16 @@ namespace neyeyim.Controllers
                 Jobads = _context.Jobads.Include(x => x.Category).Where(x => x.IsDeleted == false).Include(x => x.Place).Take(8).ToList(),
                 Promotions = _context.Promotions.ToList(),
             };
+
+            //if (DateTime.Now > jobadVM.Jobad.Deadline)
+            //{
+            //    jobadVM.Jobad.IsDeleted = true;
+            //}
+            //else
+            //{
+            //    jobadVM.Jobad.IsDeleted = false;
+            //}
+
             return View(jobadVM);
         }
 

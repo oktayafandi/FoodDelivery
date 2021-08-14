@@ -25,6 +25,7 @@ namespace neyeyim.Controllers
             {
                 Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.Jobads).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Campaigns).Include(x => x.Category).Where(x => x.IsDeleted == false).Where(x => string.IsNullOrWhiteSpace(search) ? true : (x.Name.ToLower().Contains(search.ToLower()))).ToList(),
             };
+
             return View(placeVM);
         }
 
@@ -36,6 +37,16 @@ namespace neyeyim.Controllers
             {
                 Place = _context.Places.Include(x => x.PlaceMenus).ThenInclude(x => x.MenuCategory).Include(x => x.PlaceTags).Include(x => x.PlaceComments).ThenInclude(x => x.AppUser).FirstOrDefault(x => x.Id == Id),
             };
+
+            if (DateTime.Now.Hour > placeDetailVM.Place.OpenTime.Hour && DateTime.Now.Hour < placeDetailVM.Place.CloseTime.Hour)
+            {
+                placeDetailVM.Place.Status = "Açıqdır";
+            }
+            else
+            {
+                placeDetailVM.Place.Status = "Qapalıdır";
+            }
+
             return View(placeDetailVM);
         }
 

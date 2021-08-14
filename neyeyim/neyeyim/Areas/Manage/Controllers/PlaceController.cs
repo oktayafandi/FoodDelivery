@@ -260,6 +260,8 @@ namespace neyeyim.Areas.Manage.Controllers
             existPlace.IsSelected = place.IsSelected;
             existPlace.Deposit = place.Deposit;
             existPlace.ContactPhone = place.ContactPhone;
+            existPlace.OpenTime = place.OpenTime;
+            existPlace.CloseTime = place.CloseTime;
             existPlace.Rate = place.Rate;
 
             _context.SaveChanges();

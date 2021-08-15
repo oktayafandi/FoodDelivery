@@ -10,7 +10,7 @@ namespace neyeyim.ViewModels
     {
         public List<Slider> Sliders { get; set; }
         public List<Place> Places { get; set; }
+        public List<PlaceComment> PlaceComments { get; set; }
         public List<PlaceImage> PlaceImages { get; set; }
-
     }
 }

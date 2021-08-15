@@ -72,7 +72,7 @@ namespace neyeyim.Controllers
             double commentCount = place.PlaceComments.Count() + 1;
             comment.CreatedAt = DateTime.UtcNow;
             _context.PlaceComments.Add(comment);
-            place.Rate = Math.Ceiling((place.PlaceComments.Sum(x => x.Rate) + comment.Rate) / commentCount);
+            place.Rate = place.Rate != 0 ? Math.Ceiling((place.Rate + comment.Rate) / 2) : (place.Rate + comment.Rate);
             _context.SaveChanges();
             return RedirectToAction("detail", new { id = comment.PlaceId });
         }

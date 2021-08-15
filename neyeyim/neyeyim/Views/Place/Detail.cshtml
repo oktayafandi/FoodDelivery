@@ -16,6 +16,7 @@
         <div class="container animate__animated animate__fadeIn">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!--navbar area start-->
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="pagenav nav-link active" id="nav-home-tab" data-bs-toggle="tab"
@@ -35,9 +36,12 @@
                             </button>
                         </div>
                     </nav>
+                    <!--navbar area end-->
+
 
                     <div class="tab-content" id="nav-tabContent" style="padding: 30px;">
-                       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <!--about area start-->
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 28px">
                                 <div class="restaurants-detail">
                                     <h4>"@Model.Place.Name" haqqında məlumatlar</h4>
@@ -47,67 +51,74 @@
                                     <p class="restdetailtext">Servis haqqı: @Model.Place.Servisfee</p>
                                     <p class="restdetailtext">Depozit: @Model.Place.Deposit</p>
                                     <p class="restdetailtext">Əlaqə nömrəsi: @Model.Place.ContactPhone</p>
-                                    <p class="restdetailtext">Tag: 
-                                   @foreach (var item in Model.Place.PlaceTags)
-                                    {
-                                     <span>@item.Tag.Name</span>
-                                    }
+                                    <p class="restdetailtext">
+                                        Tag:
+                                        @foreach (var item in Model.Place.PlaceTags)
+                                        {
+                                            <span>@item.Tag.Name</span>
+                                        }
                                     </p>
                                 </div>
                             </div>
                         </div>
+                        <!--about area end-->
 
-                        @{ 
+
+                        <!--menu area start-->
+                        @{
                             string i = "";
                         }
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="justify-content: space-between; align-items: center;">
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="justify-content: space-between; align-items: center;">
+                                @foreach (var item in Model.Place.PlaceMenus)
+                                {
+                                    @if (!i.Equals(item.MenuCategory.Name))
+                                    {
+                                        <li class="nav-item section-3-button-1" role="presentation">
+                                            <button class="pagenav nav-link section-3-button-1"
+                                                    style="padding: 3px 65px; border-radius: 22px !important;"
+                                                    id="@item.MenuCategory.Name-tab section3libutton1" data-bs-toggle="pill"
+                                                    data-bs-target="#@item.MenuCategory.Name" type="button" role="tab" aria-controls="@item.MenuCategory.Name"
+                                                    aria-selected="@(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item.MenuCategory.Name) ? false:true)" style="color:#009de0;">
+                                                @item.MenuCategory.Name
+                                            </button>
+                                        </li>
+                                    }
+                                    i = item.MenuCategory.Name;
+                                }
+                            </ul>
+
+                            @{
+                                i = "";
+                            }
                             @foreach (var item in Model.Place.PlaceMenus)
                             {
-                                @if (!i.Equals(item.MenuCategory.Name))
-                                {
-                                    <li class="nav-item section-3-button-1" role="presentation">
-                                        <button class="pagenav nav-link section-3-button-1"
-                                                style="padding: 3px 65px; border-radius: 22px !important;"
-                                                id="@item.MenuCategory.Name-tab section3libutton1" data-bs-toggle="pill"
-                                                data-bs-target="#@item.MenuCategory.Name" type="button" role="tab" aria-controls="@item.MenuCategory.Name"
-                                                aria-selected="@(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item.MenuCategory.Name) ? false:true)" style="color:#009de0;">
-                                            @item.MenuCategory.Name
-                                        </button>
-                                    </li>
-                                }
-                                i = item.MenuCategory.Name;
-                            }
-                        </ul>
-
-                        @{
-                            i = "";
-                        }
-                        @foreach (var item in Model.Place.PlaceMenus)
-                        {
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade show @(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item.MenuCategory.Name) ? "":"active")" id="@item.MenuCategory.Name" role="tabpanel" aria-labelledby="@item.MenuCategory.Name-tab">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
-                                        <div class="menu-detail">
-                                            <h1 class="foodcap @(!i.Equals(item.MenuCategory.Name) ? "":"d-none")">
-                                                @item.MenuCategory.Name
-                                            </h1>
-                                            <h4 class="foodtext">
-                                                @item.FoodName - @item.FoodPrice AZN<a href="">
-                                                    <i class="plus fas fa-plus-square"></i>
-                                                </a>
-                                            </h4>
-                                            <p class="fooddetailtext">
-                                                @item.FoodContent
-                                            </p>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show @(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item.MenuCategory.Name) ? "":"active")" id="@item.MenuCategory.Name" role="tabpanel" aria-labelledby="@item.MenuCategory.Name-tab">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
+                                            <div class="menu-detail">
+                                                <h1 class="foodcap @(!i.Equals(item.MenuCategory.Name) ? "":"d-none")">
+                                                    @item.MenuCategory.Name
+                                                </h1>
+                                                <h4 class="foodtext">
+                                                    @item.FoodName - @item.FoodPrice AZN<a href="">
+                                                        <i class="plus fas fa-plus-square"></i>
+                                                    </a>
+                                                </h4>
+                                                <p class="fooddetailtext">
+                                                    @item.FoodContent
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            i = item.MenuCategory.Name;
-                        }
-                    </div>
+                                i = item.MenuCategory.Name;
+                            }
+                        </div>
+                        <!--menu area end-->
 
+
+                        <!--rate area start-->
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                             <div id="full-stars-example-two">
                                 <form asp-action="addcomment" method="post">
@@ -137,7 +148,7 @@
                                     </div>
                                 </form>
                                 <hr>
-                               @foreach (var comment in Model.Place.PlaceComments)
+                                @foreach (var comment in Model.Place.PlaceComments)
                                 {
                                     <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <h4 class="username">@comment.AppUser.UserName</h4>
@@ -150,6 +161,7 @@
                                 }
                             </div>
                         </div>
+                        <!--rate area end-->
                     </div>
                 </div>
             </div>

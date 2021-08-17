@@ -34,6 +34,8 @@
                             var restoreUrl = $(this).data("restore-url");
                             $(this).attr("href", restoreUrl)
                             $(this).removeClass("delete-btn")
+
+                            window.location.reload();
                         }
                     });
             }

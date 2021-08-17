@@ -26,15 +26,19 @@ namespace neyeyim.Controllers
                 Promotions = _context.Promotions.ToList(),
             };
 
-            //if (DateTime.Now > jobadVM.Jobad.Deadline)
-            //{
-            //    jobadVM.Jobad.IsDeleted = true;
-            //}
-            //else
-            //{
-            //    jobadVM.Jobad.IsDeleted = false;
-            //}
+            foreach (var item in jobadVM.Jobads)
+            {
+                if (DateTime.Now > item.Deadline)
+                {
+                    item.IsDeleted = true;
+                }
+                else
+                {
+                    item.IsDeleted = false;
+                }
+            }
 
+            _context.SaveChanges();
             return View(jobadVM);
         }
 

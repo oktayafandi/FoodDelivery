@@ -24,6 +24,7 @@ namespace neyeyim.Controllers
             PlaceViewModel placeVM = new PlaceViewModel
             {
                 Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.Jobads).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Campaigns).Include(x => x.Category).Where(x => x.IsDeleted == false).Where(x => string.IsNullOrWhiteSpace(search) ? true : (x.Name.ToLower().Contains(search.ToLower()))).ToList(),
+                PlaceTags = _context.PlaceTags.Include(x => x.Tag).ToList()
             };
 
             return View(placeVM);
@@ -76,5 +77,23 @@ namespace neyeyim.Controllers
             _context.SaveChanges();
             return RedirectToAction("detail", new { id = comment.PlaceId });
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult FilterSearch(string Category, string PlaceTag, string Status)
+        {
+            PlaceViewModel placeVM = new PlaceViewModel
+            {
+                Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.Jobads).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Campaigns).Include(x => x.Category).ToList(),
+                FilterPlaces = _context.Places
+                .Include(x => x.PlaceTags).Include(x => x.Jobads).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Campaigns).Include(x => x.Category)
+                .Where(x => x.Category.Name == Category || x.Status == Status || x.PlaceTags.Where(x => x.Tag.Name == PlaceTag).Count() != 0).ToList(),
+                PlaceTags = _context.PlaceTags.Include(x => x.Tag).ToList()
+            };
+
+            return View(placeVM);
+        }
+
+
     }
 }

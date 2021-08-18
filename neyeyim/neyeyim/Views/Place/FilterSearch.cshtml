@@ -1,5 +1,4 @@
 ﻿@model PlaceViewModel
-
 <!--Start of DropDown Area-->
 <section class="dropdowns animate__animated animate__fadeIn">
     <div class="container">
@@ -9,7 +8,7 @@
                     <div class="dropdown input-group">
                         <select name="Category" class="form-select" id="inputGroupSelect02">
                             <option selected>Kateqoriya</option>
-                           @foreach (var item in Model.Places.GroupBy(x => x.Category).Select(x => x.FirstOrDefault()))
+                            @foreach (var item in Model.Places.GroupBy(x => x.Category).Select(x => x.FirstOrDefault()))
                             {
                                 <option value="@item.Category.Name">@item.Category.Name</option>
                             }
@@ -21,7 +20,7 @@
                     <div class="dropdown input-group">
                         <select name="PlaceTag" class="form-select" id="inputGroupSelect02">
                             <option selected>Taq</option>
-                           @foreach (var item in Model.PlaceTags.GroupBy(x => x.Tag).Select(x => x.FirstOrDefault()))
+                            @foreach (var item in Model.PlaceTags.GroupBy(x => x.Tag).Select(x => x.FirstOrDefault()))
                             {
                                 <option value="@item.Tag.Name">@item.Tag.Name</option>
                             }
@@ -33,8 +32,8 @@
                     <div class="dropdown input-group">
                         <select name="Status" class="form-select" id="inputGroupSelect02">
                             <option selected>Status</option>
-                            <option value="Açıq">Açıq</option>
-                            <option value="Qapalı">Qapalı</option>
+                            <option value="1">Açıq</option>
+                            <option value="2">Qapalı</option>
                         </select>
                     </div>
                 </div>
@@ -52,21 +51,30 @@
 <section class="cards  animate__animated animate__fadeIn">
     <div class="container">
         <div class="row">
-           @foreach (var item in Model.Places)
+           @if (Model.FilterPlaces.Count() == 0)
             {
-                <div class="col-lg-4 col-md-12">
-                    <a asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
-                        <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                            <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h class="restname">@item.Name</h>
-                                <p class="Category-name">Kateqoriya: @item.Category.Name <br /> İş saatı: @item.OpenTime.ToString("HH:mm") - @item.CloseTime.ToString("HH:mm")</p>
-                                <hr>
-                                <i class="fas fa-star" style="color: #009de0;"> @item.Rate </i>
+            <div class="col-12">
+                <img src="~/uploads/img/error.gif" class="card-img-top" alt="...">
+            </div>
+            }
+            else
+            {
+                @foreach (var item in Model.FilterPlaces)
+                {
+                    <div class="col-lg-4 col-md-12">
+                        <a asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
+                            <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
+                                <img src="~/uploads/img/@item.Image" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h class="restname">@item.Name</h>
+                                    <p class="Category-name">Kateqoriya: @item.Category.Name <br /> İş saatı: @item.OpenTime.ToString("HH:mm") - @item.CloseTime.ToString("HH:mm")</p>
+                                    <hr>
+                                    <i class="fas fa-star" style="color: #009de0;"> @item.Rate </i>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                }
             }
         </div>
     </div>

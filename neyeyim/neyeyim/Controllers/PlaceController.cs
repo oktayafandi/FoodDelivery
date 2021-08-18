@@ -94,6 +94,19 @@ namespace neyeyim.Controllers
             return View(placeVM);
         }
 
+        public IActionResult Random()
+        {
+            Random random = new Random();
+            int number;
+            Place place;
 
+            do
+            {
+                number = random.Next(_context.Places.OrderByDescending(x => x.Id).FirstOrDefault().Id);
+                place = _context.Places.FirstOrDefault(x => x.Id == number);
+            } while (place == null);
+
+            return RedirectToAction("detail", new { id = number });
+        }
     }
 }

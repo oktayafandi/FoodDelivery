@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using neyeyim.DAL;
 using neyeyim.Models;
 using neyeyim.ViewModels;
@@ -107,6 +109,24 @@ namespace neyeyim.Controllers
             } while (place == null);
 
             return RedirectToAction("detail", new { id = number });
+        }
+
+        public IActionResult AddBasket(int id)
+        {
+            //HttpContext.Session.SetString("foodName", "Burger");
+            //HttpContext.Response.Cookies.Append("name", "Burger");
+
+            HttpContext.Response.Cookies.Append("foodId", id.ToString());
+            return RedirectToAction("index");
+        }
+
+        public IActionResult ShowBasket()
+        {
+            //var foodName = HttpContext.Session.GetString("foodName");
+            //var name = HttpContext.Request.Cookies["name"];
+
+            var foodId = HttpContext.Request.Cookies["basket"];
+            return Content(foodId);
         }
     }
 }

@@ -50,6 +50,10 @@ namespace neyeyim
 
             services.AddScoped<LayoutViewModelService>();
             services.AddScoped<DashboardLayoutViewModelService>();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+            });
             services.Configure<IdentityOptions>(options =>
 
             services.ConfigureApplicationCookie(opt =>
@@ -74,6 +78,7 @@ namespace neyeyim
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -167,7 +167,7 @@ namespace neyeyim.Areas.Manage.Controllers
             slider.IsDeleted = true;
             _context.SaveChanges();
 
-            return RedirectToAction("index");
+            return Json(new { isSuccedded = true });
         }
     }
 }

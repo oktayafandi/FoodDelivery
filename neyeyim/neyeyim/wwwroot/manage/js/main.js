@@ -22,11 +22,6 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.isSuccedded) {
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
 
                             $(this).removeClass("btn-danger")
                             $(this).addClass("btn-info")
@@ -35,8 +30,12 @@
                             $(this).attr("href", restoreUrl)
                             $(this).removeClass("delete-btn")
 
-                            window.location.reload();
+                            console.log("testing")
+                            window.location.reload(true);
                         }
+                    }).catch(err => {
+                        // Do something for an error here
+                        console.log("Error Reading data " + err);
                     });
             }
             else {

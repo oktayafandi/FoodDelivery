@@ -79,7 +79,7 @@ namespace neyeyim.Areas.Manage.Controllers
 
             tag.IsDeleted = true;
             _context.SaveChanges();
-            return RedirectToAction("index");
+            return Json(new { isSuccedded = true });
         }
 
         public IActionResult Restore(int id)

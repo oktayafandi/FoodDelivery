@@ -125,7 +125,7 @@ namespace neyeyim.Areas.Manage.Controllers
             jobad.IsDeleted = true;
             _context.SaveChanges();
 
-            return RedirectToAction("index");
+            return Json(new { isSuccedded = true });
         }
 
     }

@@ -90,7 +90,7 @@
                             @{
                                 i = "";
                             }
-                            @foreach (var item in Model.Place.PlaceMenus)
+                           @foreach (var item in Model.Place.PlaceMenus)
                             {
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show @(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item.MenuCategory.Name) ? "":"active")" id="@item.MenuCategory.Name" role="tabpanel" aria-labelledby="@item.MenuCategory.Name-tab">
@@ -99,10 +99,7 @@
                                                 <h1 class="foodcap @(!i.Equals(item.MenuCategory.Name) ? "":"d-none")">
                                                     @item.MenuCategory.Name
                                                 </h1>
-                                                <h4 class="foodtext">
-                                                    @item.FoodName - @item.FoodPrice AZN<a href="" style="text-decoration: none">
-                                                        <i class="plus fas fa-plus-square"></i>
-                                                    </a>
+                                                <h4 class="foodtext">@item.FoodName - @item.FoodPrice AZN<a asp-action="addbasket" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none"><i class="plus fas fa-plus-square"></i></a>
                                                 </h4>
                                                 <p class="fooddetailtext">
                                                     @item.FoodContent

@@ -116,7 +116,46 @@ namespace neyeyim.Controllers
             //HttpContext.Session.SetString("foodName", "Burger");
             //HttpContext.Response.Cookies.Append("name", "Burger");
 
-            HttpContext.Response.Cookies.Append("foodId", id.ToString());
+            PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == id);
+
+            if (placeMenu == null) return RedirectToAction("index", "home");
+
+            List<BasketItemViewModel> basketItems = new List<BasketItemViewModel>();
+            BasketItemViewModel placeVM = new BasketItemViewModel
+            {
+                Id = placeMenu.Id,
+                FoodName = placeMenu.FoodName,
+                FoodPrice = placeMenu.FoodPrice,
+                Count = 1,
+                TotalPrice = placeMenu.FoodPrice
+            };
+
+            if (HttpContext.Request.Cookies["basket"] == null)
+            {
+                basketItems.Add(placeVM);
+            }
+            else
+            {
+                //basketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
+
+                var existBasketItem = basketItems.FirstOrDefault(x => x.Id == placeVM.Id);
+
+                if (existBasketItem != null)
+                {
+                    existBasketItem.Count += 1;
+                    existBasketItem.TotalPrice += existBasketItem.TotalPrice;
+                }
+                else
+                {
+                    basketItems.Add(placeVM);
+                }
+            }
+
+            HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketItems, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            }));
+
             return RedirectToAction("index");
         }
 
@@ -125,8 +164,10 @@ namespace neyeyim.Controllers
             //var foodName = HttpContext.Session.GetString("foodName");
             //var name = HttpContext.Request.Cookies["name"];
 
-            var foodId = HttpContext.Request.Cookies["basket"];
-            return Content(foodId);
+            var placeMenuStr = HttpContext.Request.Cookies["basket"];
+            List<BasketItemViewModel> placeMenu = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(placeMenuStr);
+
+            return Ok(placeMenu);
         }
     }
 }

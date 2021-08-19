@@ -29,6 +29,9 @@ namespace neyeyim
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews()
+            .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -46,8 +49,9 @@ namespace neyeyim
                 options.Lockout.MaxFailedAccessAttempts = 3;
 
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
-            services.AddSession();
 
+            services.AddSession();
+            services.AddHttpContextAccessor();
             services.AddScoped<LayoutViewModelService>();
             services.AddScoped<DashboardLayoutViewModelService>();
             services.AddSession(options =>

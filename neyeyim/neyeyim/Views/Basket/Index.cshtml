@@ -8,38 +8,39 @@
         }
         else
         {
-    <div class="col-lg-8 col-sm-12 col-md-12 col-xs-12 animate__animated animate__fadeInLeft">
-       @foreach (var item in Model.BasketItems)
-        {
+            <div class="col-lg-8 col-sm-12 col-md-12 col-xs-12 animate__animated animate__fadeInLeft">
+               @foreach (var item in Model.BasketItems)
+                {
 
-            <div class="order-card">
-                <div class="card w-75">
-                    <div class="card-body" style="position: relative;">
-                        <i class="fas fa-times" style="position: absolute; right: 0;"></i>
-                        <h1 class="orderrestn">Burger King</h1>
-                        <h3 class=" ordername">@item.FoodName</h3>
-                        <div class="plusminusicon">
-                            <i class="fas fa-plus-circle"></i>
-                            <i class="fas fa-minus-circle"></i>
-                        </div>
-                        <p class="card-text paytext">Qiymət: @item.FoodPrice AZN</p>
-                    </div>
-                </div>
-            </div>
-
-        }
-    </div>
-                <div class="col-lg-4 col-sm-12 col-md-12 col-xs-12 animate__animated animate__fadeIn">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h1 class="pay-card-title">Yekun</h1>
-                            <p class="pay-card-text">@Model.Count Məhsul: @Model.TotalPrice AZN</p>
-                            <hr>
-                            <p class="pay-card-text">Cəmi: @Model.TotalPrice AZN</p>
-                            <a asp-action="checkout" asp-controller="order" class="paybtn btn">Sifariş ver</a>
+                    <div class="order-card">
+                        <div class="card w-75">
+                            <div class="card-body" style="position: relative;">
+                                <i class="fas fa-times" style="position: absolute; right: 0;"></i>
+                                <h1 class="orderrestn">Burger King</h1>
+                                <h3 class=" ordername">@item.FoodName</h3>
+                                <div class="plusminusicon">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <i class="fas fa-minus-circle"></i>
+                                </div>
+                                <p class="card-text paytext">Qiymət: @item.FoodPrice AZN</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+
                 }
             </div>
+
+            <div class="col-lg-4 col-sm-12 col-md-12 col-xs-12 animate__animated animate__fadeIn">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h1 class="pay-card-title">Yekun</h1>
+                        <p class="pay-card-text">@Model.Count Məhsul: @Model.TotalPrice AZN</p>
+                        <hr>
+                        <p class="pay-card-text">Cəmi: @Model.TotalPrice AZN</p>
+                        <a asp-action="checkout" asp-controller="order" class="paybtn btn">Sifariş ver</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

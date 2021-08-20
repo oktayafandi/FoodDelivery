@@ -20,6 +20,6 @@ namespace neyeyim.Models
         public OrderStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public AppUser AppUser { get; set; }
-
+        public List<OrderItem> OrderItems { get; set; }
     }
 }

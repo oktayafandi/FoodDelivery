@@ -14,6 +14,9 @@ namespace neyeyim.Models
         public string Name { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal TotalPrice { get; set; }
+
         public Order Order { get; set; }
         public PlaceMenu PlaceMenu { get; set; }
     }

@@ -23,12 +23,19 @@ namespace neyeyim.Controllers
             //var name = HttpContext.Request.Cookies["name"];
 
             var placeMenuStr = HttpContext.Request.Cookies["basket"];
-            List<BasketItemViewModel> placeMenu = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(placeMenuStr);
-            BasketViewModel basket = new BasketViewModel
+            BasketViewModel basket = new BasketViewModel();
+            if (placeMenuStr == null)
             {
-
-            };
-            return Ok(placeMenu);
+                basket.BasketItems = null;
+            }
+            else
+            {
+                List<BasketItemViewModel> basketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(placeMenuStr);
+                basket.BasketItems = basketItems;
+                basket.TotalPrice = basketItems.Sum(x => x.FoodPrice);
+                basket.Count = basketItems.Count;
+            }
+            return View(basket);
         }
     }
 }

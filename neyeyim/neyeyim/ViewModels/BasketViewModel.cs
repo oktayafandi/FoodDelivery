@@ -9,5 +9,6 @@ namespace neyeyim.ViewModels
     {
         public List<BasketItemViewModel> BasketItems { get; set; }
         public decimal TotalPrice { get; set; }
+        public int Count { get; set; }
     }
 }

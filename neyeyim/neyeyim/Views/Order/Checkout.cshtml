@@ -1,0 +1,54 @@
+﻿@model List<BasketItemViewModel>
+
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-8 col-sm-6 col-md-12 col-xs-12 animate__animated animate__fadeInLeft">
+            <form id="order" method="post" class="mb-40">
+               @if (!ViewBag.IsAuthenticated)
+                {
+                    <div class="orderfcard">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Ad</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Soyad</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Ünvan</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Mobil nömrə</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Əlavə mesaj</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </div>
+                }
+            </form>
+        </div>
+
+        <div class="col-lg-4 col-sm-12 col-md-12 col-xs-12 animate__animated animate__fadeIn">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h1 class="pay-card-title">Yekun</h1>
+                    <p class="pay-card-text">3 Məhsul: 24 AZN</p>
+                    <hr>
+                    <p class="pay-card-text">Cəmi: 24 AZN</p>
+                    <button type="submit" form="order" href="orderform.html" class="paybtn btn">Sifariş ver</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

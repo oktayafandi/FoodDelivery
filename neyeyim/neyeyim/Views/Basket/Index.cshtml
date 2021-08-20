@@ -28,7 +28,7 @@
                         <p class="pay-card-text">@item.Count Məhsul: @item.TotalPrice AZN</p>
                         <hr>
                         <p class="pay-card-text">Cəmi: @item.TotalPrice AZN</p>
-                        <a href="orderform.html" class="paybtn btn">Sifariş ver</a>
+                        <a asp-action="checkout" asp-controller="order" class="paybtn btn">Sifariş ver</a>
                     </div>
                 </div>
             </div>

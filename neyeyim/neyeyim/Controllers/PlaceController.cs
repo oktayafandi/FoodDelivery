@@ -136,7 +136,7 @@ namespace neyeyim.Controllers
             }
             else
             {
-                //basketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
+                basketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
 
                 var existBasketItem = basketItems.FirstOrDefault(x => x.Id == placeVM.Id);
 

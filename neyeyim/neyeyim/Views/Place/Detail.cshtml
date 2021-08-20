@@ -4,161 +4,177 @@
     ViewData["Title"] = "Detail";
 }
 
-        <div class="container animate__animated animate__fadeInLeft">
-            <div class="row">
-                <div class="restcaption col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex" style="padding: 30px;">
-                    <img src="~/uploads/img/@Model.Place.Logo" alt="">
-                    <h1>@Model.Place.Name</h1>
-                </div>
-            </div>
+<div class="container animate__animated animate__fadeInLeft">
+    <div class="row">
+        <div class="restcaption col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex" style="padding: 30px;">
+            <img src="~/uploads/img/@Model.Place.Logo" alt="">
+            <h1>@Model.Place.Name</h1>
         </div>
+    </div>
+</div>
 
-        <div class="container animate__animated animate__fadeIn">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <!--navbar area start-->
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="pagenav nav-link active" id="nav-home-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                    aria-selected="true" style="color:#009de0;">
-                                Məlumat
-                            </button>
-                            <button class="pagenav nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                                    aria-selected="false" style="color:#009de0;">
-                                Menyu
-                            </button>
-                            <button class="pagenav nav-link" id="nav-contact-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
-                                    aria-selected="false" style="color:#009de0;">
-                                Dəyərləndir
-                            </button>
-                        </div>
-                    </nav>
-                    <!--navbar area end-->
+<div class="container animate__animated animate__fadeIn">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!--navbar area start-->
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="pagenav nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                            aria-selected="true" style="color:#009de0;">
+                        Məlumat
+                    </button>
+                    <button class="pagenav nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                            aria-selected="false" style="color:#009de0;">
+                        Menyu
+                    </button>
+                    <button class="pagenav nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                            aria-selected="false" style="color:#009de0;">
+                        Dəyərləndir
+                    </button>
+                </div>
+            </nav>
+            <!--navbar area end-->
 
 
-                    <div class="tab-content" id="nav-tabContent" style="padding: 30px;">
-                        <!--about area start-->
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 28px">
-                                <div class="restaurants-detail">
-                                    <h4>"@Model.Place.Name" haqqında məlumatlar</h4>
-                                    <p class="restdetailtext" style="padding-top: 20px">Ünvanlar: @Model.Place.Adress</p>
-                                    <p class="restdetailtext">Status: @Model.Place.Status</p>
-                                    <p class="restdetailtext">Açılış-Bağlanış: @Model.Place.OpenTime.ToString("HH:mm") - @Model.Place.CloseTime.ToString("HH:mm")</p>
-                                    <p class="restdetailtext">Servis haqqı: @Model.Place.Servisfee</p>
-                                    <p class="restdetailtext">Depozit: @Model.Place.Deposit</p>
-                                    <p class="restdetailtext">Əlaqə nömrəsi: @Model.Place.ContactPhone</p>
-                                    <p class="restdetailtext">
-                                        Tag:
-                                        @foreach (var item in Model.Place.PlaceTags)
-                                        {
-                                            <span>@item.Tag.Name</span>
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--about area end-->
-
-                        <!--menu area start-->
-                        @{
-                            string i = "";
-                        }
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="justify-content: space-between; align-items: center;">
-                                @foreach (var item in Model.Place.PlaceMenus)
+            <div class="tab-content" id="nav-tabContent" style="padding: 30px;">
+                <!--about area start-->
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 28px">
+                        <div class="restaurants-detail">
+                            <h4>"@Model.Place.Name" haqqında məlumatlar</h4>
+                            <p class="restdetailtext" style="padding-top: 20px">Ünvanlar: @Model.Place.Adress</p>
+                            <p class="restdetailtext">Status: @Model.Place.Status</p>
+                            <p class="restdetailtext">Açılış-Bağlanış: @Model.Place.OpenTime.ToString("HH:mm") - @Model.Place.CloseTime.ToString("HH:mm")</p>
+                            <p class="restdetailtext">Servis haqqı: @Model.Place.Servisfee</p>
+                            <p class="restdetailtext">Depozit: @Model.Place.Deposit</p>
+                            <p class="restdetailtext">Əlaqə nömrəsi: @Model.Place.ContactPhone</p>
+                            <p class="restdetailtext">
+                                Tag:
+                                @foreach (var item in Model.Place.PlaceTags)
                                 {
-                                    @if (!i.Equals(item.MenuCategory.Name))
-                                    {
-                                        <li class="nav-item section-3-button-1" role="presentation">
-                                            <button class="pagenav nav-link section-3-button-1"
-                                                    style="padding: 3px 65px; border-radius: 22px !important;"
-                                                    id="@item.MenuCategory.Name-tab section3libutton1" data-bs-toggle="pill"
-                                                    data-bs-target="#@item.MenuCategory.Name" type="button" role="tab" aria-controls="@item.MenuCategory.Name"
-                                                    aria-selected="@(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item.MenuCategory.Name) ? false:true)" style="color:#009de0;">
-                                                @item.MenuCategory.Name
-                                            </button>
-                                        </li>
-                                    }
-                                    i = item.MenuCategory.Name;
+                                    <span>@item.Tag.Name</span>
                                 }
-                            </ul>
-
-                            @{
-                                i = "";
-                            }
-                           @foreach (var item in Model.Place.PlaceMenus)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--about area end-->
+                <!--menu area start-->
+                @{
+                    string i = "";
+                }
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="justify-content: space-between; align-items: center;">
+                        @foreach (var item in Model.Place.PlaceMenus)
+                        {
+                            @if (!i.Equals(item.MenuCategory.Name))
                             {
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show @(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item.MenuCategory.Name) ? "":"active")" id="@item.MenuCategory.Name" role="tabpanel" aria-labelledby="@item.MenuCategory.Name-tab">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
-                                            <div class="menu-detail">
+                                <li class="nav-item" role="presentation">
+                                    <button class="pagenav nav-link section-3-button-1 text-white"
+                                            style="padding: 3px 65px; color:#009de0 !important; border-radius: 22px !important;"
+                                            id="@item.MenuCategory.Name-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-@item.MenuCategory.Name" type="button" role="tab" aria-controls="pills-@item.MenuCategory.Name"
+                                            aria-selected="@(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item.MenuCategory.Name) ? false:true)">
+                                        @item.MenuCategory.Name
+                                    </button>
+                                </li>
+                            }
+                            i = item.MenuCategory.Name;
+                        }
+                    </ul>
+
+                    @{
+                        i = "";
+                        int count = 0;
+                    }
+                    <div class="tab-content" id="pills-tabContent">
+                        @foreach (var item1 in Model.Place.PlaceMenus.GroupBy(x => x.MenuCategory.Name).Select(x => x.FirstOrDefault()))
+                        {
+                            <div class="tab-pane fade @(!Model.Place.PlaceMenus.First().MenuCategory.Name.Equals(item1.MenuCategory.Name) ? "":"show active")" id="pills-@item1.MenuCategory.Name" role="tabpanel" aria-labelledby="pills-@item1.MenuCategory.Name-tab">
+                                @{
+                                    i = item1.MenuCategory.Name;
+                                }
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px">
+                                    <div class="menu-detail">
+                                        @foreach (var item in Model.Place.PlaceMenus.Skip(count))
+                                        {
+                                            @if (i.Equals(item.MenuCategory.Name))
+                                            {
+                                                count++;
+
                                                 <h1 class="foodcap @(!i.Equals(item.MenuCategory.Name) ? "":"d-none")">
                                                     @item.MenuCategory.Name
                                                 </h1>
-                                                <h4 class="foodtext">@item.FoodName - @item.FoodPrice AZN<a asp-action="addbasket" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none"><i class="plus fas fa-plus-square"></i></a>
+                                                <h4 class="foodtext">
+                                                    @item.FoodName - @item.FoodPrice AZN<a asp-action="addbasket" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none"><i class="plus fas fa-plus-square"></i></a>
                                                 </h4>
                                                 <p class="fooddetailtext">
                                                     @item.FoodContent
                                                 </p>
-                                            </div>
-                                        </div>
+
+                                            }
+                                            else
+                                            {
+                                                break;
+                                            }
+
+                                            i = item.MenuCategory.Name;
+                                        }
                                     </div>
                                 </div>
-                                i = item.MenuCategory.Name;
-                            }
-                        </div>
-                        <!--menu area end-->
-
-
-                        <!--rate area start-->
-                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            <div id="full-stars-example-two">
-                                <form asp-action="addcomment" method="post">
-                                    <div class="rating-group">
-                                        <input disabled checked class="rating__input rating__input--none" name="Rate" id="rating3-none" value="0" type="radio">
-
-                                        <label aria-label="1 star" class="rating__label" for="rating3-1"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
-                                        <input class="rating__input" name="Rate" id="rating3-1" value="1" type="radio">
-
-                                        <label aria-label="2 stars" class="rating__label" for="rating3-2"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
-                                        <input class="rating__input" name="Rate" id="rating3-2" value="2" type="radio">
-
-                                        <label aria-label="3 stars" class="rating__label" for="rating3-3"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
-                                        <input class="rating__input" name="Rate" id="rating3-3" value="3" type="radio">
-
-                                        <label aria-label="4 stars" class="rating__label" for="rating3-4"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
-                                        <input class="rating__input" name="Rate" id="rating3-4" value="4" type="radio">
-
-                                        <label aria-label="5 stars" class="rating__label" for="rating3-5"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
-                                        <input class="rating__input" name="Rate" id="rating3-5" value="5" type="radio">
-                                    </div>
-                                    <input type="hidden" name="PlaceId" value="@Model.Place.Id" />
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label"></label>
-                                        <textarea name="Text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                        <button type="submit" class="cmntbtn btn">Paylaş</button>
-                                    </div>
-                                </form>
-                                <hr>
-                                @foreach (var comment in Model.Place.PlaceComments)
-                                {
-                                    <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h4 class="username">@comment.AppUser.UserName</h4>
-                                        <p class="usercmnt" style="font-size: 22px;">
-                                            @comment.Text
-                                        </p>
-                                        <p class="commentdatetime">@comment.CreatedAt.ToString("MMMM dd, yyyy")</p>
-                                        <i class="fas fa-star" style="color: #009de0;">@comment.Rate</i>
-                                    </div>
-                                }
                             </div>
-                        </div>
-                        <!--rate area end-->
+                        }
                     </div>
                 </div>
+                <!--menu area end-->
+                <!--rate area start-->
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div id="full-stars-example-two">
+                        <form asp-action="addcomment" method="post">
+                            <div class="rating-group">
+                                <input disabled checked class="rating__input rating__input--none" name="Rate" id="rating3-none" value="0" type="radio">
+
+                                <label aria-label="1 star" class="rating__label" for="rating3-1"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
+                                <input class="rating__input" name="Rate" id="rating3-1" value="1" type="radio">
+
+                                <label aria-label="2 stars" class="rating__label" for="rating3-2"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
+                                <input class="rating__input" name="Rate" id="rating3-2" value="2" type="radio">
+
+                                <label aria-label="3 stars" class="rating__label" for="rating3-3"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
+                                <input class="rating__input" name="Rate" id="rating3-3" value="3" type="radio">
+
+                                <label aria-label="4 stars" class="rating__label" for="rating3-4"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
+                                <input class="rating__input" name="Rate" id="rating3-4" value="4" type="radio">
+
+                                <label aria-label="5 stars" class="rating__label" for="rating3-5"> <i class="rating__icon rating__icon--star fa fa-star"></i> </label>
+                                <input class="rating__input" name="Rate" id="rating3-5" value="5" type="radio">
+                            </div>
+                            <input type="hidden" name="PlaceId" value="@Model.Place.Id" />
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label"></label>
+                                <textarea name="Text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <button type="submit" class="cmntbtn btn">Paylaş</button>
+                            </div>
+                        </form>
+                        <hr>
+                        @foreach (var comment in Model.Place.PlaceComments)
+                        {
+                            <div class="userscomment col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h4 class="username">@comment.AppUser.UserName</h4>
+                                <p class="usercmnt" style="font-size: 22px;">
+                                    @comment.Text
+                                </p>
+                                <p class="commentdatetime">@comment.CreatedAt.ToString("MMMM dd, yyyy")</p>
+                                <i class="fas fa-star" style="color: #009de0;">@comment.Rate</i>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!--rate area end-->
             </div>
         </div>
+    </div>
+</div>

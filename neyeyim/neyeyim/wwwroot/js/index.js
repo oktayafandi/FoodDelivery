@@ -18,7 +18,7 @@ $(document).ready(function () {
     }
   });
 
-  $(".ldmr").slice(0, 6).show();
+  $(".ldmr").slice(0, 3).show();
   $(".btnldmr").on("click", function () {
     $(".ldmr:hidden").slice(0, 3).slideDown();
     if ($(".ldmr:hidden").length == 0) {

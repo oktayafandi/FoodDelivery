@@ -111,6 +111,7 @@ namespace neyeyim.Controllers
             return RedirectToAction("detail", new { id = number });
         }
 
+        [Authorize(Roles = "Member")]
         public IActionResult AddBasket(int id)
         {
             //HttpContext.Session.SetString("foodName", "Burger");

@@ -24,6 +24,16 @@
   font-size: 20px;
 }
 
+.basketalert {
+  font-family: "Oswald", sans-serif;
+  color: #009de0;
+}
+
+.placealert {
+  font-family: "Oswald", sans-serif;
+  color: #009de0;
+}
+
 .fas {
   margin-right: 25px;
 }
@@ -145,7 +155,23 @@
   width: 40%;
 }
 
+.card1 {
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 40%;
+}
+
 .card:hover {
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card1:hover {
   -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -156,6 +182,23 @@
   }
   .topbaricons {
     display: none !important;
+  }
+}
+
+@media (max-width: 910px) {
+  .errorgif {
+    display: none !important;
+  }
+  .nobasketgif {
+    display: none !important;
+  }
+  .placealert {
+    padding-bottom: 180px;
+    padding-top: 180px;
+  }
+  .basketalert {
+    padding-bottom: 230px;
+    padding-top: 230px;
   }
 }
 
@@ -383,6 +426,19 @@
   margin-top: 15px;
 }
 
+.userscomment .username {
+  font-family: "Oswald", sans-serif !important;
+}
+
+.userscomment .usercmnt {
+  font-family: "Uchen", serif !important;
+}
+
+.userscomment .commentdatetime {
+  font-family: "Roboto", sans-serif !important;
+  color: #aaa !important;
+}
+
 .dropbtn {
   background-color: #009de0 !important;
   color: white !important;
@@ -555,5 +611,27 @@
 
 .foodtext {
   padding-top: 20px;
+}
+
+.btnldmr {
+  padding: 0.7rem 2rem;
+  background: #009de0;
+  border: none;
+  color: #fff;
+  margin: 20px auto;
+  display: block;
+  font-size: 1.3rem;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btnldmr:hover {
+  opacity: 0.8;
+}
+
+.contldmr .controw .ldmr {
+  display: none;
 }
 /*# sourceMappingURL=home.css.map */

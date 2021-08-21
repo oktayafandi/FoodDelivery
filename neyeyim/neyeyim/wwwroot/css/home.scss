@@ -24,6 +24,16 @@
   font-size: 20px;
 }
 
+.basketalert {
+  font-family: "Oswald", sans-serif;
+  color: #009de0;
+}
+
+.placealert {
+  font-family: "Oswald", sans-serif;
+  color: #009de0;
+}
+
 .fas {
   margin-right: 25px;
 }
@@ -166,6 +176,26 @@
   }
   .topbaricons {
     display: none !important;
+  }
+}
+
+@media (max-width: 910px) {
+  .errorgif {
+    display: none !important;
+  }
+
+  .nobasketgif {
+    display: none !important;
+  }
+
+  .placealert {
+    padding-bottom: 180px;
+    padding-top: 180px;
+  }
+
+  .basketalert {
+    padding-bottom: 230px;
+    padding-top: 230px;
   }
 }
 
@@ -562,4 +592,25 @@
 
 .foodtext {
   padding-top: 20px;
+}
+
+.btnldmr {
+  padding: 0.7rem 2rem;
+  background: #009de0;
+  border: none;
+  color: #fff;
+  margin: 20px auto;
+  display: block;
+  font-size: 1.3rem;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+}
+
+.btnldmr:hover {
+  opacity: 0.8;
+}
+
+.contldmr .controw .ldmr {
+  display: none;
 }

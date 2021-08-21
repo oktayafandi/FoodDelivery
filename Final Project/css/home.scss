@@ -24,6 +24,16 @@
   font-size: 20px;
 }
 
+.basketalert {
+  font-family: "Oswald", sans-serif;
+  color: #009de0;
+}
+
+.placealert {
+  font-family: "Oswald", sans-serif;
+  color: #009de0;
+}
+
 .fas {
   margin-right: 25px;
 }
@@ -143,7 +153,20 @@
   width: 40%;
 }
 
+.card1 {
+  margin: auto;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
 .card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card1:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -153,6 +176,26 @@
   }
   .topbaricons {
     display: none !important;
+  }
+}
+
+@media (max-width: 910px) {
+  .errorgif {
+    display: none !important;
+  }
+
+  .nobasketgif {
+    display: none !important;
+  }
+
+  .placealert {
+    padding-bottom: 180px;
+    padding-top: 180px;
+  }
+
+  .basketalert {
+    padding-bottom: 230px;
+    padding-top: 230px;
   }
 }
 
@@ -365,6 +408,16 @@
   border: solid 1px #ccc;
   padding: 17px 20px 15px;
   margin-top: 15px;
+  .username {
+    font-family: "Oswald", sans-serif !important;
+  }
+  .usercmnt {
+    font-family: "Uchen", serif !important;
+  }
+  .commentdatetime {
+    font-family: "Roboto", sans-serif !important;
+    color: #aaa !important;
+  }
 }
 
 .dropbtn {
@@ -539,4 +592,25 @@
 
 .foodtext {
   padding-top: 20px;
+}
+
+.btnldmr {
+  padding: 0.7rem 2rem;
+  background: #009de0;
+  border: none;
+  color: #fff;
+  margin: 20px auto;
+  display: block;
+  font-size: 1.3rem;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+}
+
+.btnldmr:hover {
+  opacity: 0.8;
+}
+
+.contldmr .controw .ldmr {
+  display: none;
 }

@@ -53,8 +53,9 @@
         <div class="row">
            @if (Model.FilterPlaces.Count() == 0)
             {
-            <div class="col-12">
-                <img src="~/uploads/img/error.gif" class="card-img-top" alt="...">
+            <div class="col-12 col-lg-12 col-md-12 col-xs-12" style="text-align: center">
+                <h1 class="placealert">Axtarışınız üzrə məkan yoxdur</h1>
+                <img src="~/uploads/img/error.gif" class="errorgif card-img-top" alt="..." style="width: auto">
             </div>
             }
             else

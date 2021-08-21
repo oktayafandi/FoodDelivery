@@ -117,14 +117,14 @@ namespace neyeyim.Controllers
         //{
         //    AppUser admin = new AppUser
         //    {
-        //        UserName = "SuperAdmin",
+        //        UserName = "Superadmin",
         //        Name = "Oktay Afandi",
         //        IsAdmin = true,
         //    };
 
-        //    //passsword: Superadmin123
-        //    await _userManager.CreateAsync(admin, "Superadmin123");
-        //    await _userManager.AddToRoleAsync(admin, "SuperAdmin");
+        //    //passsword: superadmin123
+        //    await _userManager.CreateAsync(admin, "superadmin123");
+        //    await _userManager.AddToRoleAsync(admin, "Superadmin");
 
         //    return Ok();
         //}

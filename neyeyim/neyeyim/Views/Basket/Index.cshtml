@@ -2,16 +2,19 @@
 
 <div class="container">
     <div class="row">
-        @if (Model.BasketItems == null)
+       @if (Model.BasketItems == null)
         {
-            <span>basket yoxdur</span>
+        <div class="col-12 col-lg-12 col-md-12 col-xs-12" style="text-align: center; padding-top: 15px;">
+            <h1 class="basketalert">Səbətdə məhsul yoxdur</h1>
+            <img src="~/uploads/img/nobasket.gif" class="nobasketgif card-img-top" alt="..." style="width: auto">
+        </div>
         }
         else
         {
             <div class="col-lg-8 col-sm-12 col-md-12 col-xs-12 animate__animated animate__fadeInLeft">
                @foreach (var item in Model.BasketItems)
                 {
-                    <div class="order-card">
+                   <div class="order-card">
                         <div class="card w-75">
                             <div class="card-body" style="position: relative;">
                                 <i class="fas fa-times" style="position: absolute; right: 0;"></i>
@@ -24,7 +27,7 @@
                                 <p class="card-text paytext">Qiymət: @item.FoodPrice AZN</p>
                             </div>
                         </div>
-                    </div>
+                   </div>
                 }
             </div>
 

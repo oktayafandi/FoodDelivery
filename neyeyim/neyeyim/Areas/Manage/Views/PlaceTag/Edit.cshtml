@@ -10,13 +10,13 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label asp-for="@Model.TagId">Tag</label>
-                <select class="form-control" asp-for="@Model.TagId" asp-items="ViewBag.Tags">
+                <select class="form-control" asp-for="@Model.TagId" asp-items="@(new SelectList(ViewBag.Tags, "Id", "Name"))">
                 </select>
             </div>
-
+            
             <div class="form-group col-md-6">
                 <label asp-for="@Model.PlaceId">Məkan</label>
-                <select class="form-control" asp-for="@Model.PlaceId" asp-items="ViewBag.Places">
+                <select class="form-control" asp-for="@Model.PlaceId" asp-items="@(new SelectList(ViewBag.Places, "Id", "Name"))">
                 </select>
             </div>
         </div>

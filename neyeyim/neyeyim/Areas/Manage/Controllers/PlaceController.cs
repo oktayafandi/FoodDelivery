@@ -122,11 +122,7 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Edit(int id)
         {
-            ViewBag.Categories = _context.Categories.Select(x => new SelectListItem
-            {
-                Value = x.Id.ToString(),
-                Text = x.Name
-            }).ToList();
+            ViewBag.Categories = _context.Categories.ToList();
 
             Place place = _context.Places.FirstOrDefault(x => x.Id == id);
 
@@ -141,11 +137,7 @@ namespace neyeyim.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Edit(int id, Place place)
         {
-            ViewBag.Categories = _context.Categories.Select(x => new SelectListItem
-            {
-                Value = x.Id.ToString(),
-                Text = x.Name
-            }).ToList();
+            ViewBag.Categories = _context.Categories.ToList();
 
             Place existPlace = _context.Places.FirstOrDefault(x => x.Id == id);
 
@@ -264,6 +256,7 @@ namespace neyeyim.Areas.Manage.Controllers
             existPlace.CloseTime = place.CloseTime;
             existPlace.Rate = place.Rate;
 
+            existPlace.CategoryId = place.CategoryId;
             _context.SaveChanges();
             return RedirectToAction("index");
         }

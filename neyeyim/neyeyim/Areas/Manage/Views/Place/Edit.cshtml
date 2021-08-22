@@ -36,7 +36,7 @@
 
             <div class="form-group col-md-4">
                 <label asp-for="@Model.CategoryId">Kateqoriya</label>
-                <select class="form-control" asp-for="@Model.CategoryId" asp-items="@ViewBag.Categories">
+                <select class="form-control" asp-for="@Model.CategoryId" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
                 </select>
             </div>
         </div>

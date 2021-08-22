@@ -22,7 +22,7 @@ namespace neyeyim.Controllers
         {
             JobadViewModel jobadVM = new JobadViewModel
             {
-                Jobads = _context.Jobads.Include(x => x.Category).Where(x => x.IsDeleted == false).Include(x => x.Place).Take(8).ToList(),
+                Jobads = _context.Jobads.Include(x => x.Category).Where(x => x.IsDeleted == false && !x.Place.IsDeleted).Include(x => x.Place).Take(8).ToList(),
                 Promotions = _context.Promotions.ToList(),
             };
 

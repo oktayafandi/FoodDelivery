@@ -69,7 +69,11 @@
                 </div>
             }
         </div>
-        <button class="btnldmr">Daha çox göstər</button>
+       @if (Model.Places.Count() > 3)
+        {
+            <button class="btnldmr">Daha çox göstər</button>
+
+        }
     </div>
 </section>
 <!--End of Places Area-->

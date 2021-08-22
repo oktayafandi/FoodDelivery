@@ -81,22 +81,10 @@ namespace neyeyim.Areas.Manage.Controllers
             return RedirectToAction("index");
         }
 
-
         public IActionResult Edit(int id)
         {
-            ViewBag.Tags = _context.Tags.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
-
-            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+            ViewBag.Tags = _context.Tags.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).ToList();
 
             PlaceTag placeTag = _context.PlaceTags.FirstOrDefault(x => x.Id == id);
 
@@ -104,7 +92,6 @@ namespace neyeyim.Areas.Manage.Controllers
             {
                 return RedirectToAction("index");
             }
-
             return View(placeTag);
         }
 
@@ -113,19 +100,8 @@ namespace neyeyim.Areas.Manage.Controllers
         {
             PlaceTag existPlaceTag = _context.PlaceTags.FirstOrDefault(x => x.Id == id);
 
-            ViewBag.Tags = _context.Tags.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
-
-            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+            ViewBag.Tags = _context.Tags.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).ToList();
 
             if (existPlaceTag == null)
             {
@@ -136,6 +112,9 @@ namespace neyeyim.Areas.Manage.Controllers
             {
                 return View();
             }
+
+            existPlaceTag.TagId = placeTag.TagId;
+            existPlaceTag.PlaceId = placeTag.PlaceId;
 
             _context.SaveChanges();
             return RedirectToAction("index");

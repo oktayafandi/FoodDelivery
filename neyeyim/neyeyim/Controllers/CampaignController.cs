@@ -21,7 +21,7 @@ namespace neyeyim.Controllers
         {
             CampaignViewModel campaignVM = new CampaignViewModel
             {
-                Campaigns = _context.Campaigns.Include(x => x.Place).Where(x => x.IsDeleted == false).Take(6).ToList(),
+                Campaigns = _context.Campaigns.Include(x => x.Place).Where(x => x.IsDeleted == false && !x.Place.IsDeleted).Take(6).ToList(),
             };
             return View(campaignVM);
         }

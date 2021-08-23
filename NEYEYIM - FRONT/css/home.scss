@@ -595,9 +595,10 @@
 }
 
 .btnldmr {
-  padding: 0.7rem 2rem;
+  padding: 0.5rem 1.5rem;
   background: #009de0;
   border: none;
+  border-radius: 12px 12px 12px 12px;
   color: #fff;
   margin: 20px auto;
   display: block;
@@ -613,4 +614,21 @@
 
 .contldmr .controw .ldmr {
   display: none;
+}
+
+.orders {
+  padding-top: 30px;
+  padding-bottom: 150px;
+  .table {
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+  .ordercap {
+    font-family: "Oswald", sans-serif;
+    color: #009de0;
+  }
+  .ordertablecap {
+    color: #009de0;
+  }
 }

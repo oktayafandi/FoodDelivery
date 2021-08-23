@@ -40,6 +40,7 @@ namespace neyeyim.Models
         [Required]
         [StringLength(maximumLength: 50)]
         public string ContactPhone { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public double Rate { get; set; }
         public Category Category { get; set; }
         public List<PlaceImage> PlaceImages { get; set; }

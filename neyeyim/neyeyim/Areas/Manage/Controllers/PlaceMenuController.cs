@@ -82,19 +82,8 @@ namespace neyeyim.Areas.Manage.Controllers
 
         public IActionResult Edit(int id)
         {
-            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
-
-            ViewBag.MenuCategories = _context.MenuCategories.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.MenuCategories = _context.MenuCategories.Where(x => x.IsDeleted == false).ToList();
 
             PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == id);
 
@@ -111,19 +100,8 @@ namespace neyeyim.Areas.Manage.Controllers
         {
             PlaceMenu existPlaceMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == id);
 
-            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
-
-            ViewBag.MenuCategories = _context.MenuCategories.Where(x => x.IsDeleted == false).Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.Name,
-                Selected = true
-            }).ToList();
+            ViewBag.Places = _context.Places.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.MenuCategories = _context.MenuCategories.Where(x => x.IsDeleted == false).ToList();
 
             if (existPlaceMenu == null)
             {
@@ -138,8 +116,8 @@ namespace neyeyim.Areas.Manage.Controllers
             existPlaceMenu.FoodName = placeMenu.FoodName;
             existPlaceMenu.FoodContent = placeMenu.FoodContent;
             existPlaceMenu.FoodPrice = placeMenu.FoodPrice;
-            existPlaceMenu.Place = placeMenu.Place;
-            existPlaceMenu.MenuCategory = placeMenu.MenuCategory;
+            existPlaceMenu.MenuCategoryId = placeMenu.MenuCategoryId;
+            existPlaceMenu.PlaceId = placeMenu.PlaceId;
 
             _context.SaveChanges();
             return RedirectToAction("index");

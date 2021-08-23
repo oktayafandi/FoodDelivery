@@ -400,3 +400,4 @@ C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Basket
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Order\Index.cshtml.g.cs
 C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Order\Detail.cshtml.g.cs
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.csprojAssemblyReference.cache

@@ -32,8 +32,10 @@
                     <div class="dropdown input-group">
                         <select name="Status" class="form-select" id="inputGroupSelect02">
                             <option selected>Status</option>
-                            <option value="1">Açıq</option>
-                            <option value="2">Qapalı</option>
+                            @foreach (var item in Model.Places.GroupBy(x => x.Status).Select(x => x.FirstOrDefault()))
+                            {
+                                <option value="@item.Status">@item.Status</option>
+                            }
                         </select>
                     </div>
                 </div>

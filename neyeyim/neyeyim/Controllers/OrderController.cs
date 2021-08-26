@@ -27,23 +27,33 @@ namespace neyeyim.Controllers
         {
             List<BasketItemViewModel> cookieBasketItems = new List<BasketItemViewModel>();
             cookieBasketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
-
+            BasketItemOrderVm productorder = new BasketItemOrderVm();
             List<BasketItemViewModel> basketItems = new List<BasketItemViewModel>();
-            foreach (var item in cookieBasketItems)
-            {
-                PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == item.Id);
-                BasketItemViewModel basketItem = new BasketItemViewModel
+            int i = cookieBasketItems.Count;
+            
+             foreach (var item in cookieBasketItems)
+             {
+                if (i!=0)
                 {
-                    Id = placeMenu.Id,
-                    FoodName = placeMenu.FoodName,
-                    FoodPrice = placeMenu.FoodPrice,
-                    TotalPrice = placeMenu.FoodPrice,
-                    Count = item.Count
-                };
-                basketItem.TotalPrice = basketItem.FoodPrice * basketItem.Count;
+                    PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == item.Id);
+                    BasketItemViewModel basketItem = new BasketItemViewModel
+                    {
+                        Id = placeMenu.Id,
+                        FoodName = placeMenu.FoodName,
+                        FoodPrice = placeMenu.FoodPrice,
+                        Count = item.Count,
+                        TotalPrice = placeMenu.FoodPrice * item.Count,
+                    };
 
-                basketItems.Add(basketItem);
-            }
+                    basketItems.Add(basketItem);
+                    i--;
+                }
+                   
+             }
+
+
+            productorder.basket = basketItems;
+
 
             ViewBag.IsAuthenticated = false;
             if (User.Identity.IsAuthenticated)
@@ -54,16 +64,17 @@ namespace neyeyim.Controllers
                 }
             }
 
-            return View(basketItems);
+            return View(productorder);
         }
 
         [HttpPost]
-        public IActionResult Create(Order order)
+        public IActionResult Checkout(BasketItemOrderVm order)
         {
+
             AppUser user = null;
             if (User.Identity.IsAuthenticated)
             {
-                user = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin);
+                user = _userManager?.Users?.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin);
             }
 
             if (user == null)
@@ -78,37 +89,57 @@ namespace neyeyim.Controllers
             }
             else
             {
+                order.AppUserId = user.Id;
+                if (user.Address != null)
+                {
+                    order.Address = user.Address;
+                }
                 order.Name = user.Name;
                 order.Surname = user.Surname;
-                order.Address = user.Address;
-                order.ContactPhone = user.ContactPhone;
+                if (user.ContactPhone!=null)
+                {
+                    order.ContactPhone = user.ContactPhone;
+                }
             }
+            Order or = new Order()
+            {
+                AppUserId = user.Id,
+                Address = order.Address,
+                Name = order.Name,
+                Surname = order.Surname,
+                ContactPhone = order.ContactPhone,
+                Note = order.Note,
+                TotalPrice = 0,
+                CreatedAt = DateTime.Now,
+            };
+            _context.Orderz.Add(or);
 
+            _context.SaveChanges();
             List<BasketItemViewModel> cookieBasketItems = new List<BasketItemViewModel>();
             cookieBasketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
-
-            order.OrderItems = new List<OrderItem>();
-            order.Status = Enums.OrderStatus.Pending;
-            order.CreatedAt = DateTime.UtcNow;
+            var totalPriceC = 0;
+            foreach (var product in cookieBasketItems)
+            {
+                //totalPriceC =  product.FoodPrice * product.Count;
+            }
             order.AppUserId = user != null ? user.Id : null;
+
             foreach (var item in cookieBasketItems)
             {
-                PlaceMenu placeMenu = _context.PlaceMenus.Include(x => x.Place).FirstOrDefault(x => x.Id == item.Id);
-                OrderItem orderItem = new OrderItem
+                    PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == item.Id);
+                OrderItem basketItem = new OrderItem
                 {
-                    Id = placeMenu.Id,
+                    OrderId = _context.Orderz.FirstOrDefault(x => x.Note == order.Note).Id,
+                    PlaceMenuId = placeMenu.Id,
                     Name = placeMenu.FoodName,
                     Price = placeMenu.FoodPrice,
-                    TotalPrice = placeMenu.FoodPrice,
-                    Count = item.Count
+                    Count = item.Count,
+                    TotalPrice = placeMenu.FoodPrice * item.Count,
                 };
-                orderItem.TotalPrice = orderItem.Price * orderItem.Count;
-                order.OrderItems.Add(orderItem);
+                _context.OrderItems.Add(basketItem);
 
-                order.TotalPrice += orderItem.TotalPrice;
             }
-
-            _context.Orders.Add(order);
+           
             _context.SaveChanges();
             HttpContext.Response.Cookies.Delete("basket");
             return RedirectToAction("index", "home");

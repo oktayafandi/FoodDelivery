@@ -94,7 +94,7 @@
     <div class="container">
         <div class="row">
             <h1 class="cardcaption" style="padding: 20px;">Son sifariş verdiyiniz məkanlar</h1>
-            @foreach (var item in Model.Places.Take(3))
+           @foreach (var item in Model.Places.Take(3))
             {
                 <div class="col-lg-4 col-md-4">
                     <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">

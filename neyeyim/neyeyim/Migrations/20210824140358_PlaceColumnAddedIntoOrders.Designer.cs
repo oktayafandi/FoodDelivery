@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using neyeyim.DAL;
 
 namespace neyeyim.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210824140358_PlaceColumnAddedIntoOrders")]
+    partial class PlaceColumnAddedIntoOrders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -435,6 +437,12 @@ namespace neyeyim.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PlaceId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PlaceId1")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -448,7 +456,9 @@ namespace neyeyim.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Orderz");
+                    b.HasIndex("PlaceId1");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("neyeyim.Models.OrderItem", b =>
@@ -477,6 +487,8 @@ namespace neyeyim.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("PlaceMenuId");
 
@@ -874,10 +886,20 @@ namespace neyeyim.Migrations
                     b.HasOne("neyeyim.Models.AppUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId");
+
+                    b.HasOne("neyeyim.Models.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId1");
                 });
 
             modelBuilder.Entity("neyeyim.Models.OrderItem", b =>
                 {
+                    b.HasOne("neyeyim.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("neyeyim.Models.PlaceMenu", "PlaceMenu")
                         .WithMany()
                         .HasForeignKey("PlaceMenuId");

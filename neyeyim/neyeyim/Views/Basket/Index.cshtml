@@ -18,9 +18,10 @@
                         <div class="card w-75">
                             <div class="card-body" style="position: relative;">
                                 <i class="fas fa-times" style="position: absolute; right: 0;"></i>
-                                <h1 class="orderrestn">Burger King</h1>
+                                <h1 class="orderrestn">Burgin King</h1>
                                 <h3 class=" ordername">@item.FoodName</h3>
                                 <p class="card-text paytext">Qiymət: @item.FoodPrice AZN</p>
+                                <p class="card-text paytext">Say: @item.Count</p>
                             </div>
                         </div>
                    </div>
@@ -31,9 +32,13 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h1 class="pay-card-title">Yekun</h1>
-                        <p class="pay-card-text">@Model.Count Məhsul: @Model.TotalPrice AZN</p>
+                        @foreach (var item in Model?.BasketItems)
+                        {
+                            <p class="pay-card-text">@item?.Count x @item?.FoodName: @item?.FoodPrice AZN</p>
+                        }
+
                         <hr>
-                        <p class="pay-card-text">Cəmi: @Model.TotalPrice AZN</p>
+                        <p class="pay-card-text">Cəmi: @Model?.TotalPrice AZN</p>
                         <a asp-action="checkout" asp-controller="order" class="paybtn btn">Sifariş ver</a>
                     </div>
                 </div>

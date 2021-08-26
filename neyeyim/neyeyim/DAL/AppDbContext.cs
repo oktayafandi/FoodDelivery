@@ -28,7 +28,7 @@ namespace neyeyim.DAL
          public DbSet<PlaceMenu> PlaceMenus { get; set; }
          public DbSet<MenuCategory> MenuCategories { get; set; }
         public DbSet<PlaceComment> PlaceComments { get; set; }
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<Order> Orderz { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
     }
 }

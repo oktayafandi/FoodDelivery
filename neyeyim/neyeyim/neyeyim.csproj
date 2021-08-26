@@ -25,6 +25,10 @@
     <Compile Remove="Migrations\20210727132140_SomeColumnChaged.Designer.cs" />
     <Compile Remove="Migrations\20210727132927_SomeCoumnsd.cs" />
     <Compile Remove="Migrations\20210727132927_SomeCoumnsd.Designer.cs" />
+    <Compile Remove="Migrations\20210826184839_test.cs" />
+    <Compile Remove="Migrations\20210826184839_test.Designer.cs" />
+    <Compile Remove="Migrations\20210826195700_cc.cs" />
+    <Compile Remove="Migrations\20210826195700_cc.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

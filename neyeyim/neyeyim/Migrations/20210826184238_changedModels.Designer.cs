@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using neyeyim.DAL;
 
 namespace neyeyim.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210826184238_changedModels")]
+    partial class changedModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -448,7 +450,7 @@ namespace neyeyim.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Orderz");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("neyeyim.Models.OrderItem", b =>
@@ -477,6 +479,8 @@ namespace neyeyim.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("PlaceMenuId");
 
@@ -878,6 +882,12 @@ namespace neyeyim.Migrations
 
             modelBuilder.Entity("neyeyim.Models.OrderItem", b =>
                 {
+                    b.HasOne("neyeyim.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("neyeyim.Models.PlaceMenu", "PlaceMenu")
                         .WithMany()
                         .HasForeignKey("PlaceMenuId");

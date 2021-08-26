@@ -109,10 +109,6 @@
                         <a href="" style="color: #009DE0;"><i class="searchbtn fas fa-search"></i></a>
                         <a asp-action="random" asp-controller="place" style="color: #009DE0;"><i class="fas fa-dice"></i></a>
                         <a asp-action="index" asp-controller="basket" style="color: #009DE0; position: relative;"><i class="fas fa-shopping-basket"></i></a>
-                       @if (user != null)
-                        {
-                            <a style="color: #009DE0; position: relative;" style="color: #009DE0;"><i class="fas fa-align-center"></i></a>
-                        }
                     </div>
                 </div>
                 <div class="searchform">
@@ -133,9 +129,9 @@
     <div class="footer-basic bg-light">
         <footer>
             <div class="social">
-                <a href="@setting.InstagramUrl"><i class="icon ion-social-instagram"></i></a>
-                <a href="@setting.TwitterUrl"><i class="icon ion-social-twitter"></i></a>
-                <a href="@setting.FacebookUrl"><i class="icon ion-social-facebook"></i></a>
+                <a href="@setting?.InstagramUrl"><i class="icon ion-social-instagram"></i></a>
+                <a href="@setting?.TwitterUrl"><i class="icon ion-social-twitter"></i></a>
+                <a href="@setting?.FacebookUrl"><i class="icon ion-social-facebook"></i></a>
             </div>
             <ul class="list-inline">
                 <li class="footer-text list-inline-item">

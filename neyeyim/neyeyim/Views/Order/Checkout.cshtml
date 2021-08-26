@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-sm-6 col-md-12 col-xs-12 animate__animated animate__fadeInLeft">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 animate__animated animate__fadeInLeft">
             <form id="order" method="post" class="mb-40">
                 <div class="orderfcard">
                     @if (!ViewBag.IsAuthenticated)
@@ -41,22 +41,5 @@
                 </div>
             </form>
         </div>
-        @*@if (basket.Count != 0)
-        {
-            @foreach (var item in basket)
-            {
-                <div class="col-lg-4 col-sm-12 col-md-12 col-xs-12 animate__animated animate__fadeIn">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h1 class="pay-card-title">Yekun</h1>
-                            <p class="pay-card-text">@item?.Count Məhsul: @item?.TotalPrice AZN</p>
-                            <hr>
-                            <p class="pay-card-text">Cəmi: @item?.TotalPrice AZN</p>
-                        </div>
-                    </div>
-                </div>
-            }
-        }*@
-
     </div>
 </div>

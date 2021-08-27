@@ -48,13 +48,8 @@ namespace neyeyim.Controllers
                     basketItems.Add(basketItem);
                     i--;
                 }
-                   
              }
-
-
             productorder.basket = basketItems;
-
-
             ViewBag.IsAuthenticated = false;
             if (User.Identity.IsAuthenticated)
             {
@@ -63,14 +58,12 @@ namespace neyeyim.Controllers
                     ViewBag.IsAuthenticated = true;
                 }
             }
-
             return View(productorder);
         }
 
         [HttpPost]
         public IActionResult Checkout(BasketItemOrderVm order)
         {
-
             AppUser user = null;
             if (User.Identity.IsAuthenticated)
             {
@@ -101,7 +94,7 @@ namespace neyeyim.Controllers
                     order.ContactPhone = user.ContactPhone;
                 }
             }
-            Order or = new Order()
+            Order ord = new Order()
             {
                 AppUserId = user.Id,
                 Address = order.Address,
@@ -112,21 +105,22 @@ namespace neyeyim.Controllers
                 TotalPrice = 0,
                 CreatedAt = DateTime.Now,
             };
-            _context.Orderz.Add(or);
+            _context.Orderz.Add(ord);
 
             _context.SaveChanges();
+
             List<BasketItemViewModel> cookieBasketItems = new List<BasketItemViewModel>();
             cookieBasketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
-            var totalPriceC = 0;
-            foreach (var product in cookieBasketItems)
-            {
-                //totalPriceC =  product.FoodPrice * product.Count;
-            }
+            //var totalPriceC = 0;
+            //foreach (var product in cookieBasketItems)
+            //{
+            //    //totalPriceC =  product.FoodPrice * product.Count;
+            //}
             order.AppUserId = user != null ? user.Id : null;
 
             foreach (var item in cookieBasketItems)
             {
-                    PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == item.Id);
+                PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == item.Id);
                 OrderItem basketItem = new OrderItem
                 {
                     OrderId = _context.Orderz.FirstOrDefault(x => x.Note == order.Note).Id,
@@ -137,9 +131,7 @@ namespace neyeyim.Controllers
                     TotalPrice = placeMenu.FoodPrice * item.Count,
                 };
                 _context.OrderItems.Add(basketItem);
-
             }
-           
             _context.SaveChanges();
             HttpContext.Response.Cookies.Delete("basket");
             return RedirectToAction("index", "home");

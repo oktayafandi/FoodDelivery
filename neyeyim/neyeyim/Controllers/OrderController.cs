@@ -106,7 +106,6 @@ namespace neyeyim.Controllers
                 CreatedAt = DateTime.Now,
             };
             _context.Orderz.Add(ord);
-
             _context.SaveChanges();
 
             List<BasketItemViewModel> cookieBasketItems = new List<BasketItemViewModel>();

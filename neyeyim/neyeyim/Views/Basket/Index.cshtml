@@ -17,7 +17,7 @@
                    <div class="order-card">
                         <div class="card w-75">
                             <div class="card-body" style="position: relative;">
-                                <i class="fas fa-times" style="position: absolute; right: 0;"></i>
+                               <a asp-action="removebasket" asp-controller="place"><i class="fas fa-times" style="position: absolute; right: 0;"></i></a> 
                                 <h1 class="orderrestn">Burgin King</h1>
                                 <h3 class=" ordername">@item.FoodName</h3>
                                 <p class="card-text paytext">Qiymət: @item.FoodPrice AZN</p>
@@ -34,11 +34,11 @@
                         <h1 class="pay-card-title">Yekun</h1>
                         @foreach (var item in Model?.BasketItems)
                         {
-                            <p class="pay-card-text">@item?.Count x @item?.FoodName: @item?.FoodPrice AZN</p>
+                            <p class="pay-card-text">@item.Count x @item.FoodName: @item.FoodPrice AZN</p>
                         }
 
                         <hr>
-                        <p class="pay-card-text">Cəmi: @Model?.TotalPrice AZN</p>
+                        <p class="pay-card-text">Cəmi: @Model.TotalPrice AZN</p>
                         <a asp-action="checkout" asp-controller="order" class="paybtn btn">Sifariş ver</a>
                     </div>
                 </div>

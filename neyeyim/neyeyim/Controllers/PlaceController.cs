@@ -170,5 +170,20 @@ namespace neyeyim.Controllers
 
             return Ok(placeMenu);
         }
+
+        public IActionResult RemoveBasket(int id)
+        {
+            var baskets = HttpContext.Request.Cookies["basket"];
+            var basketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
+
+            basketItems.Remove(basketItems.FirstOrDefault(x => x.Id == id));
+            
+            HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketItems, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            })); 
+            
+            return RedirectToAction("index", "basket");
+        }
     }
 }

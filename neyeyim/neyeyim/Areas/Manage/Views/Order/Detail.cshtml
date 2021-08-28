@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="card-body">
-            <p class="card-text">Total count: @Model.OrderItems.Sum(x => x.Count)</p>
-            <p class="card-text">Total amount: @Model.TotalPrice</p>
+            <p class="card-text">Məhsul sayı: @Model.OrderItems.Sum(x => x.Count)</p>
+            <p class="card-text">Ümumi qiymət: @Model.TotalPrice</p>
         </div>
     </div>
 
@@ -36,8 +36,7 @@
                <div class="card">
                    <div class="card-body">
                         <h5 class="card-title">@item.Name</h5>
-                        <p class="card-text">Price: @item.Price</p>
-                        <p class="card-text">Count: @item.Count</p>
+                        <p class="card-text">Qiymət: @item.Price AZN - Say: @item.Count</p>
                    </div>
                </div>
            </div>

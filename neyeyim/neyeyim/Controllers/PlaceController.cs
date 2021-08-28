@@ -181,8 +181,8 @@ namespace neyeyim.Controllers
             HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketItems, new JsonSerializerSettings()
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            })); 
-            
+            }));
+
             return RedirectToAction("index", "basket");
         }
     }

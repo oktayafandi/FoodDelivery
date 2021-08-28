@@ -110,11 +110,13 @@ namespace neyeyim.Controllers
 
             List<BasketItemViewModel> cookieBasketItems = new List<BasketItemViewModel>();
             cookieBasketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
+
             //var totalPriceC = 0;
             //foreach (var product in cookieBasketItems)
             //{
             //    //totalPriceC =  product.FoodPrice * product.Count;
             //}
+
             order.AppUserId = user != null ? user.Id : null;
 
             foreach (var item in cookieBasketItems)

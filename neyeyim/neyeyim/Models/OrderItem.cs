@@ -9,7 +9,6 @@ namespace neyeyim.Models
 {
     public class OrderItem : BaseEntity
     {
-        [NotMapped]
         public Order Order { get; set; }
         public int OrderId { get; set; }
         public int Count { get; set; }

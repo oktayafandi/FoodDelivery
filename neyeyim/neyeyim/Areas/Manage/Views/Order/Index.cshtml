@@ -15,6 +15,7 @@
             <tr class="row">
                 <th class="col-md-1">#</th>
                 <th class="col-md-2">Ad-Soyad</th>
+                <th class="col-md-1">Əlaqə nömrəsi</th>
                 <th class="col-md-1">Məhsul sayı</th>
                 <th class="col-md-2">Ümumi qiymət</th>
                 <th class="col-md-2">Yaranma tarixi</th>
@@ -26,32 +27,33 @@
             @foreach (var item in Model)
             {
                 i++;
-                <tr class="row">
-                    <td class="col-md-1">@i</td>
-                    <td class="col-md-2">@item.Name @item.Surname</td>
-                    <td class="col-md-1">@item.OrderItems.Count()</td>
-                    <td class="col-md-2">@item.TotalPrice</td>
-                    <td class="col-md-2">@item.CreatedAt.ToString("dd MMM yyyy")</td>
-                    <td class="col-md-2">
-                        @{
-                            if (item.Status == neyeyim.Enums.OrderStatus.Accepted)
-                            {
-                                <span style="padding:10px" class="badge badge-pill badge-secondary">Accepted</span>
-                            }
-                            else if (item.Status == neyeyim.Enums.OrderStatus.Pending)
-                            {
-                                <span style="padding:10px" class="badge badge-pill badge-info">Pending</span>
-                            }
-                            else if (item.Status == neyeyim.Enums.OrderStatus.AdminRejected)
-                            {
-                             <span style="padding:10px" class="badge badge-pill badge-info">Reject</span>
-                            }
+            <tr class="row">
+                <td class="col-md-1">@i</td>
+                <td class="col-md-2">@item.Name @item.Surname</td>
+                <td class="col-md-1">@item.ContactPhone</td>
+                <td class="col-md-1">@item.OrderItems.Count()</td>
+                <td class="col-md-2">@item.TotalPrice</td>
+                <td class="col-md-2">@item.CreatedAt.ToString("dd MMM yyyy")</td>
+                <td class="col-md-2">
+                    @{
+                        if (item.Status == neyeyim.Enums.OrderStatus.Accepted)
+                        {
+                            <span style="padding:10px" class="badge badge-pill badge-secondary">Accepted</span>
                         }
-                    </td>
-                    <td class="col-md-1">
-                        <a class="btn btn-warning" asp-action="detail" asp-route-id="@item.Id">Detal</a>
-                    </td>
-                </tr>
+                        else if (item.Status == neyeyim.Enums.OrderStatus.Pending)
+                        {
+                            <span style="padding:10px" class="badge badge-pill badge-info">Pending</span>
+                        }
+                        else if (item.Status == neyeyim.Enums.OrderStatus.AdminRejected)
+                        {
+                            <span style="padding:10px" class="badge badge-pill badge-info">Reject</span>
+                        }
+                    }
+                </td>
+                <td class="col-md-1">
+                    <a class="btn btn-warning" asp-action="detail" asp-route-id="@item.Id">Detal</a>
+                </td>
+            </tr>
             }
 
         </tbody>

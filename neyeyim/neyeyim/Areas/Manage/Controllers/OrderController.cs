@@ -24,7 +24,7 @@ namespace neyeyim.Areas.Manage.Controllers
         public IActionResult Index(int page = 1)
         {
             ViewBag.SelectedPage = page;
-            ViewBag.TotalPage = Math.Ceiling(_context.OrderItems.Count() / 3d);
+            ViewBag.TotalPage = Math.Ceiling(_context.Orderz.Count() / 3d);
 
             var model = _context.Orderz.Include(x => x.OrderItems).OrderByDescending(x => x.CreatedAt).Skip((page - 1) * 3).Take(3).ToList();
             return View(model);

@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-       @if (Model.BasketItems == null)
+       @if (Model.BasketItems == null || Model.Count == 0)
         {
         <div class="col-12 col-lg-12 col-md-12 col-xs-12" style="text-align: center; padding-top: 15px;">
             <h1 class="basketalert">Səbətdə məhsul yoxdur</h1>
@@ -17,10 +17,8 @@
                    <div class="order-card">
                         <div class="card w-75">
                             <div class="card-body" style="position: relative;">
-                               <a asp-action="removebasket" asp-controller="place"><i class="fas fa-times" style="position: absolute; right: 0;"></i></a> 
-
+                               <a asp-action="removebasket" asp-controller="place" asp-route-id="@item.Id"><i class="fas fa-times" style="position: absolute; right: 0;"></i></a> 
                                 <h1 class="orderrestn">Burgin King</h1>
-
                                 <h3 class=" ordername">@item.FoodName</h3>
                                 <p class="card-text paytext">Qiymət: @item.FoodPrice AZN</p>
                                 <p class="card-text paytext">Say: @item.Count</p>
@@ -34,12 +32,16 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h1 class="pay-card-title">Yekun</h1>
+                        @{
+                            decimal i = 0;
+                        }                       
                        @foreach (var item in Model?.BasketItems)
                         {
-                            <p class="pay-card-text">@item.Count x @item.FoodName: @item.FoodPrice AZN</p>
+                            <p class="pay-card-text">@item.FoodName: @item.FoodPrice AZN ×@item.Count</p>
+                            i += (item.Count * item.FoodPrice);
                         }
                         <hr>
-                        <p class="pay-card-text">Cəmi: @Model.TotalPrice AZN</p>
+                        <p class="pay-card-text">Cəmi: @i AZN</p>
                         <a asp-action="checkout" asp-controller="order" class="paybtn btn">Sifariş ver</a>
                     </div>
                 </div>

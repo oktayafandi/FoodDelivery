@@ -49,6 +49,7 @@ namespace neyeyim.Controllers
                     i--;
                 }
              }
+
             productorder.basket = basketItems;
             ViewBag.IsAuthenticated = false;
             if (User.Identity.IsAuthenticated)
@@ -114,7 +115,7 @@ namespace neyeyim.Controllers
             //var totalPriceC = 0;
             //foreach (var product in cookieBasketItems)
             //{
-            //    //totalPriceC =  product.FoodPrice * product.Count;
+            //    totalPriceC =  product.FoodPrice * product.Count;
             //}
 
             order.AppUserId = user != null ? user.Id : null;

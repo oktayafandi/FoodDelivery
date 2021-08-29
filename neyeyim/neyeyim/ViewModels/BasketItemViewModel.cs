@@ -13,6 +13,5 @@ namespace neyeyim.ViewModels
         public decimal FoodPrice { get; set; }
         public int Count { get; set; }
         public decimal TotalPrice { get; set; }
-       
     }
 }

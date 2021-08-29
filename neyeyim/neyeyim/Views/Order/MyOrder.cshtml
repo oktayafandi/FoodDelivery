@@ -3,38 +3,47 @@
 @{
     ViewData["Title"] = "MyOrder";
 }
-
-        <section class="orders animate__animated animate__fadeIn">
-            <div class="container">
-                <div class="row">
-                    <h1 class="ordercap">Sifarişlərim</h1>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="ordertablecap" scope="col">Tarix</th>
-                                <th class="ordertablecap" scope="col">Ödəniş</th>
-                                <th class="ordertablecap" scope="col">Sifariş</th>
-                                <th class="ordertablecap" scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.CreatedAt</td>
-                                    <td>@item.TotalPrice AZN</td>
-                                    <td>
-                                      @foreach (var item1 in item.OrderItems)
-                                       {
-                                           @(item1.Name  +"-"+ item1.PlaceMenu.Place.Name);
-                                          <br />
-                                       }
-                                    </td>
-                                    <td>@item.Status</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+@if (Model.Count == 0)
+{
+    <div class="col-12 col-lg-12 col-md-12 col-xs-12" style="text-align: center; padding-top: 15px;">
+        <h1 class="basketalert">Heç sifarişiniz yoxdur</h1>
+        <img src="~/uploads/img/nobasket.gif" class="nobasketgif card-img-top" alt="..." style="width: auto">
+    </div>
+}
+else
+{
+<section class="orders animate__animated animate__fadeIn">
+    <div class="container">
+        <div class="row">
+            <h1 class="ordercap">Sifarişlərim</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="ordertablecap" scope="col">Tarix</th>
+                        <th class="ordertablecap" scope="col">Ödəniş</th>
+                        <th class="ordertablecap" scope="col">Sifariş</th>
+                        <th class="ordertablecap" scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CreatedAt</td>
+                            <td>@item.TotalPrice AZN</td>
+                            <td>
+                                @foreach (var item1 in item.OrderItems)
+                                {
+                                    @(item1.Name  +"-"+ item1.PlaceMenu.Place.Name);
+                                    <br />
+                                }
+                            </td>
+                            <td>@item.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+}

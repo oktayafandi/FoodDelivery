@@ -8,11 +8,11 @@
     var myPieChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["Qəbul olundu", "Referral", "Gözləmədə"],
+            labels: ["Gözləmədə", "Qəbul olunmadı", "Qəbul olundu"],
             datasets: [{
                 data: [parametr1, parametr2, parametr3],
-                backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-                hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                backgroundColor: ['#36b9cc', '#BF0026','#1cc88a'],
+                hoverBackgroundColor: ['#2c9faf', '#8E0000','#17a673'],
                 hoverBorderColor: "rgba(234, 236, 244, 1)",
             }],
         },

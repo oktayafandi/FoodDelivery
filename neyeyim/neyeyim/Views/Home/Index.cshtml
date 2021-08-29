@@ -97,28 +97,3 @@
     </div>
 </section>
 <!--End of Most Popular places Area-->
-<!--Start of Last Ordered places Area-->
-<section class="cards4 animate__animated animate__fadeIn">
-    <div class="container">
-        <div class="row">
-            <h1 class="cardcaption" style="padding: 20px;">Son sifariş verdiyiniz məkanlar</h1>
-            @foreach (var item in Model.Places.OrderByDescending(x => x.Id).Take(3))
-            {
-                <div class="col-lg-4 col-md-4">
-                    <a class="book-modal" asp-action="detail" asp-controller="place" asp-route-id="@item.Id" style="text-decoration: none;">
-                        <div class="card" style="width: 18rem; border-bottom: 5px solid #009de0;">
-                            <img src="uploads/img/@item.Image" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h class="restname">@item.Name</h>
-                                <p class="Category-name">Kateqoriya: @item.Category.Name <br /> İş saatı: @item.OpenTime.ToString("HH:mm") - @item.CloseTime.ToString("HH:mm")</p>
-                                <hr>
-                                <i class="fas fa-star" style="color: #009de0;"> @item.Rate</i>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            }
-        </div>
-    </div>
-</section>
-<!--End of Last Ordered places Area-->

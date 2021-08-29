@@ -1,0 +1,48 @@
+--------------------------------------------------------------------------Ana səhifə---------------------------------------------------------------------------------
+1. Slayder
+2. Seçilmiş məkanlar - Admin tərəfindən seçilən 3 məkan düşür bu hissəyə. (İsSelected)
+3. Ən populyar məkanlar - Rate ortalaması ən yüksək olan 3 məkan düşür bu hissəyə.
+
+-------------------------------------------------------------------------Məkanlar------------------------------------------------------------------------------------
+1. Filterli axtarış - Məkanı taginə, kateqoriyasına, statusuna görə filterləyir və uyğun olan məkanları göstərir.
+2. Məkanlar və load more
+3. Məkanlar iş saatı aralığnda statusu "açıqdır", digər halda isə "qapalıdır" görsənir.
+
+------------------------------------------------------------------------Kampaniyalar---------------------------------------------------------------------------------
+1. Var olmayan bir restoranın kampaniyasın yaratmaq mümkün deyil.
+2. Əgər restoran silinirsə onunla birlikdə kampaniyasıda silinir.
+3. Loadmore
+
+------------------------------------------------------------------------------İş elanları----------------------------------------------------------------------------
+1. Var olmayan bir restoranın iş elanını yaratmaq mümkün deyil.
+2. İş elanları deadline tarixinə çatdıqda avtomatik silinir (İsDeleted)
+3. Xüsusi kampaniyalar posterinə kliklədikdə bizi kampaniaylar hissəsinə aparır. (Promotion CRUD)
+4. Əgər restoran silinirsə onunla birlikdə iş elanlarıda silinir.
+
+-----------------------------------------------------------Haqqımızda (Sizin dediklərinizdən əlavə yazdım)-----------------------------------------------------------
+1. Komanda haqqında və digər məlumatları edikləmək və ya yenisin yazmaq mümkündür.
+2. Xüsusi kampaniyalar posterinə kliklədikdə bizi kampaniaylar hissəsinə aparır. (Promotion CRUD)
+
+-------------------------------------------------------------Əlaqə (Sizin dediklərinizdən əlavə yazdım)---------------------------------------------------------------
+1. Ünvan, mail və nömrələri settingdə qeyd etmişəm və edit etmək mümkündür.
+2. Xüsusi kampaniyalar posterinə kliklədikdə bizi kampaniaylar hissəsinə aparır. (Promotion CRUD)
+
+-------------------------------------------------------------------------------Navbar---------------------------------------------------------------------------------
+1. Search button - Restorana görə search edir.
+2. Random button - Random restoran çıxarır.
+3. Basket button - Səbətə əlavə olunan məhsulları göstərir.
+4. User əgər login olubsa öz istifadəçi adının üstünə klikləsə öz məlumatların editləyə bilər.
+5. User öz sifariş keçmişini və hal-hazırda verdiyi sifarişin statusunu görə bilir.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------Admin panel-------------------------------------------------------------------------------
+1. CRUDLAR tam tamamlandı.
+2. Chartlar otuzduruldu.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Bütün datalar doldurulub, hətta haqqımızda hissəsində boş lorem ipsum yazmaq yerinə tam bir kopivraytinq nümunəsi göstərmişəm :D
+
+Qeyd: Tam 49 gün əlimdən gələnin ən yaxşısını etməyə çalışdım (Ad günümdə belə kod yazdım :D), bəzən bir xətanın üstündə 4 gün heçnə edə bilmədən qaldım, 
+amma yüz faiz stackoverfolwun gün ərzində istifadə rekordun qırmışam :D
+Məzun olmağım üçün ən az 90 bal almalıyam, ümid edirəm məni məzun edərsiniz. Təşəkkürlər hər şey üçün! :)

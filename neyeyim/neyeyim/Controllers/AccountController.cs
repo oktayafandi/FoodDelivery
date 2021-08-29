@@ -42,7 +42,6 @@ namespace neyeyim.Controllers
 
             AppUser existUser = await _userManager.FindByNameAsync(registerModel.UserName);
             AppUser existEmail = await _userManager.FindByEmailAsync(registerModel.Email);
-
             if (existUser != null)
             {
                 ModelState.AddModelError("UserName", "Bu username artıq istifadə olunur.");

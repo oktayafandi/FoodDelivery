@@ -19,5 +19,6 @@ namespace neyeyim.Models
         public decimal TotalPrice { get; set; }
         public PlaceMenu PlaceMenu { get; set; }
         public int? PlaceMenuId { get; set; }
+
     }
 }

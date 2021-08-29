@@ -611,3 +611,4 @@ C:\Users\Shahrza\Desktop\free\New folder (2)\neyeyim\neyeyim\obj\Debug\netcoreap
 C:\Users\Shahrza\Desktop\free\New folder (2)\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.pdb
 C:\Users\Shahrza\Desktop\free\New folder (2)\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.genruntimeconfig.cache
 C:\Users\Shahrza\Desktop\free\New folder (2)\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\neyeyim.csprojAssemblyReference.cache
+C:\Users\User\Desktop\neyeyim\neyeyim\obj\Debug\netcoreapp3.1\Razor\Views\Order\MyOrder.cshtml.g.cs

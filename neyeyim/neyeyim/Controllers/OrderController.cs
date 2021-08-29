@@ -163,5 +163,14 @@ namespace neyeyim.Controllers
             }
             return basketItems;
         }
+
+        public IActionResult MyOrder()
+        {
+            AppUser user = null;
+            user = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+            List<Order> orders = _context.Orderz.Include(x => x.OrderItems).ThenInclude(x => x.PlaceMenu).ThenInclude(x => x.Place).Where(x => x.AppUserId == user.Id).ToList();
+
+            return View(orders);
+        }
     }
 }

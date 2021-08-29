@@ -26,13 +26,13 @@ else
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                   @foreach (var item in Model)
                     {
                         <tr>
                             <td>@item.CreatedAt</td>
                             <td>@item.TotalPrice AZN</td>
                             <td>
-                                @foreach (var item1 in item.OrderItems)
+                               @foreach (var item1 in item.OrderItems)
                                 {
                                     @(item1.Name  +"-"+ item1.PlaceMenu.Place.Name);
                                     <br />

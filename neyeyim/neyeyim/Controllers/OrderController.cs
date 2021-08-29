@@ -95,6 +95,7 @@ namespace neyeyim.Controllers
                     order.ContactPhone = user.ContactPhone;
                 }
             }
+
             Order ord = new Order()
             {
                 AppUserId = user.Id,
@@ -103,7 +104,6 @@ namespace neyeyim.Controllers
                 Surname = order.Surname,
                 ContactPhone = order.ContactPhone,
                 Note = order.Note,
-                TotalPrice = 0,
                 CreatedAt = DateTime.Now,
             };
             _context.Orderz.Add(ord);
@@ -112,14 +112,8 @@ namespace neyeyim.Controllers
             List<BasketItemViewModel> cookieBasketItems = new List<BasketItemViewModel>();
             cookieBasketItems = JsonConvert.DeserializeObject<List<BasketItemViewModel>>(HttpContext.Request.Cookies["basket"]);
 
-            //var totalPriceC = 0;
-            //foreach (var product in cookieBasketItems)
-            //{
-            //    totalPriceC =  product.FoodPrice * product.Count;
-            //}
-
             order.AppUserId = user != null ? user.Id : null;
-
+            var i = 0;
             foreach (var item in cookieBasketItems)
             {
                 PlaceMenu placeMenu = _context.PlaceMenus.FirstOrDefault(x => x.Id == item.Id);
@@ -132,9 +126,12 @@ namespace neyeyim.Controllers
                     Count = item.Count,
                     TotalPrice = placeMenu.FoodPrice * item.Count,
                 };
+                i = i + (int)placeMenu.FoodPrice * item.Count;
                 _context.OrderItems.Add(basketItem);
             }
+            ord.TotalPrice = i;
             _context.SaveChanges();
+
             HttpContext.Response.Cookies.Delete("basket");
             return RedirectToAction("index", "home");
         }

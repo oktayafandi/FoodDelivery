@@ -33,10 +33,12 @@ namespace neyeyim.Areas.Manage.Controllers
         public IActionResult Detail(int id)
         {
             Order order = _context.Orderz.Include(x => x.OrderItems).FirstOrDefault(x => x.Id == id);
+
             if (order == null)
             {
                 return RedirectToAction("index");
             }
+
             return View(order);
         }
 

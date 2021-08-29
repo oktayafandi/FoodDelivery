@@ -25,6 +25,7 @@ namespace neyeyim.Controllers
             {
                 Sliders = _context.Sliders.Where(x => x.IsDeleted == false).OrderBy(x => x.Order).ToList(),
                 Places = _context.Places.Include(x => x.PlaceTags).Include(x => x.PlaceImages).Include(x => x.PlaceMenus).Include(x => x.Jobads).Include(x => x.Campaigns).Include(x => x.Category).Where(x => x.IsDeleted == false).ToList(),
+
             };
             return View(homeVM);
         }

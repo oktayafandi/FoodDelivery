@@ -18,7 +18,7 @@
                         <div class="card w-75">
                             <div class="card-body" style="position: relative;">
                                <a asp-action="removebasket" asp-controller="place" asp-route-id="@item.Id"><i class="fas fa-times" style="position: absolute; right: 0;"></i></a> 
-                                <h1 class="orderrestn">Burgin King</h1>
+                                <h1 class="orderrestn">@Model.placeMenus.FirstOrDefault(x => x.Id == item.Id).Place.Name</h1>
                                 <h3 class=" ordername">@item.FoodName</h3>
                                 <p class="card-text paytext">Qiymət: @item.FoodPrice AZN</p>
                                 <p class="card-text paytext">Say: @item.Count</p>
